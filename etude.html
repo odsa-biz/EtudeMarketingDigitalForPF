@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Étude Marketing Stratégique — Neosocle</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --noir:  #0a0a12;
+    --bleu:  #005aff;
+    --cyan:  #00e6c8;
+    --blanc: #ffffff;
+    --gris:  #6b6b80;
+    --bg:    #f8f8f8;
+    --card:  #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: var(--noir);
+    overflow-x: hidden;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes lineGrow {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
+  }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(0,90,255,.4); }
+    50%      { box-shadow: 0 0 0 12px rgba(0,90,255,0); }
+  }
+
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 6vw;
+    background: rgba(248,248,248,.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,.06);
+  }
+  .nav-logo { font-size: 1.1rem; font-weight: 700; letter-spacing: -.01em; }
+  .nav-logo span { color: var(--bleu); }
+  .nav-cta {
+    background: var(--bleu); color: var(--blanc);
+    font-size: .8rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+    padding: .6rem 1.4rem; border-radius: 6px; text-decoration: none;
+    animation: pulse 2.5s infinite;
+    transition: background .2s;
+  }
+  .nav-cta:hover { background: #0040cc; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 6vw 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 45%; height: 100%;
+    background: var(--noir);
+    clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  .hero-inner {
+    position: relative; z-index: 2;
+    max-width: 1100px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6vw; align-items: center;
+  }
+  .hero-left { animation: fadeUp .9s ease both; }
+  .hero-eyebrow {
+    font-size: .75rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--bleu); margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: .6rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 32px; height: 2px;
+    background: var(--bleu);
+    transform-origin: left;
+    animation: lineGrow .8s .3s ease both;
+  }
+  .hero-h1 {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 900; line-height: 1.05;
+    letter-spacing: -.03em;
+    margin-bottom: 1.5rem;
+  }
+  .hero-h1 .split-word { position: relative; display: inline-block; }
+  .hero-h1 .split-word::after {
+    content: '';
+    position: absolute; bottom: 4px; left: 0; right: 0;
+    height: 3px; background: var(--bleu);
+    transform-origin: left;
+    animation: lineGrow 1s .8s ease both;
+  }
+  .hero-sub {
+    font-size: 1rem; font-weight: 300; color: var(--gris); line-height: 1.7;
+    margin-bottom: 2.5rem; max-width: 440px;
+  }
+  .hero-cta-group { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--bleu); color: var(--blanc);
+    font-size: .85rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+    padding: 1rem 2rem; border-radius: 8px; text-decoration: none;
+    animation: pulse 2.5s infinite;
+    transition: transform .2s, background .2s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); background: #0040cc; }
+  .hero-note { font-size: .75rem; color: var(--gris); }
+
+  .hero-right {
+    animation: fadeUp .9s .2s ease both;
+    position: relative; z-index: 2;
+  }
+  .price-card {
+    background: var(--blanc);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 24px 60px rgba(0,0,0,.12);
+  }
+  .price-tag {
+    font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--bleu); margin-bottom: .8rem;
+  }
+  .price-amount {
+    font-size: 4.5rem; font-weight: 900; line-height: 1;
+    letter-spacing: -.04em; color: var(--noir);
+    margin-bottom: .3rem;
+  }
+  .price-period { font-size: .85rem; color: var(--gris); font-weight: 300; margin-bottom: 2rem; }
+  .price-divider { height: 1px; background: #eee; margin-bottom: 1.5rem; }
+  .price-item {
+    display: flex; gap: .8rem; align-items: flex-start;
+    margin-bottom: 1rem; font-size: .88rem; line-height: 1.4;
+  }
+  .price-check {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--bleu); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 1px;
+  }
+  .price-check svg { width: 10px; height: 10px; }
+  .price-places {
+    margin-top: 1.5rem; padding: .8rem 1rem;
+    background: #fff8e1; border-radius: 8px; border-left: 3px solid #f5a623;
+    font-size: .78rem; font-weight: 600; color: #8a6200;
+  }
+
+  /* ── SECTION GÉNÉRIQUE ── */
+  section { padding: 6rem 6vw; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--bleu); margin-bottom: .8rem;
+    display: flex; align-items: center; gap: .6rem;
+  }
+  .section-label::before {
+    content: ''; display: block; width: 24px; height: 2px; background: var(--bleu);
+  }
+  .section-title {
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    font-weight: 900; letter-spacing: -.03em; line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  .section-sub { font-size: 1rem; color: var(--gris); max-width: 540px; line-height: 1.7; margin-bottom: 3.5rem; }
+
+  /* ── PROBLÈME ── */
+  .problem { background: var(--noir); color: var(--blanc); }
+  .problem .section-title { color: var(--blanc); }
+  .problem .section-sub { color: rgba(255,255,255,.5); }
+  .problem-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
+  }
+  .problem-card {
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 12px; padding: 1.8rem;
+    transition: border-color .3s;
+  }
+  .problem-card:hover { border-color: rgba(0,90,255,.4); }
+  .problem-num {
+    font-size: 3rem; font-weight: 900; color: rgba(255,255,255,.06);
+    letter-spacing: -.05em; line-height: 1; margin-bottom: .8rem;
+  }
+  .problem-text { font-size: .95rem; line-height: 1.6; color: rgba(255,255,255,.7); }
+  .problem-text strong { color: var(--blanc); font-weight: 600; }
+
+  /* ── CE QUE TU OBTIENS ── */
+  .deliverables-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;
+  }
+  .deliverable-card {
+    background: var(--card); border-radius: 14px; padding: 2rem;
+    border: 1px solid #eee;
+    transition: transform .3s, box-shadow .3s;
+  }
+  .deliverable-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.08); }
+  .deliverable-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: #e8f0ff; display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.2rem;
+  }
+  .deliverable-icon svg { width: 22px; height: 22px; stroke: var(--bleu); }
+  .deliverable-title { font-size: 1rem; font-weight: 700; margin-bottom: .5rem; }
+  .deliverable-desc { font-size: .85rem; color: var(--gris); line-height: 1.6; }
+
+  /* ── PROCESSUS ── */
+  .process { background: #f2f4ff; }
+  .steps { display: flex; flex-direction: column; gap: 0; max-width: 700px; }
+  .step {
+    display: flex; gap: 2rem; position: relative;
+    padding-bottom: 2.5rem;
+  }
+  .step:last-child { padding-bottom: 0; }
+  .step-left { display: flex; flex-direction: column; align-items: center; }
+  .step-num {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--bleu); color: var(--blanc);
+    font-size: .9rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; z-index: 1;
+  }
+  .step-line {
+    width: 2px; flex: 1; background: #dde2ff;
+    margin-top: .5rem;
+  }
+  .step:last-child .step-line { display: none; }
+  .step-content { padding-top: .6rem; }
+  .step-title { font-size: 1.05rem; font-weight: 700; margin-bottom: .4rem; }
+  .step-desc { font-size: .88rem; color: var(--gris); line-height: 1.6; }
+  .step-delay {
+    display: inline-block; margin-top: .5rem;
+    font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--bleu); background: #e8f0ff;
+    padding: 2px 10px; border-radius: 99px;
+  }
+
+  /* ── POUR QUI ── */
+  .forqui-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+  }
+  .forqui-col h3 { font-size: 1rem; font-weight: 700; margin-bottom: 1.2rem; }
+  .forqui-item {
+    display: flex; gap: .8rem; margin-bottom: .8rem;
+    font-size: .9rem; line-height: 1.5;
+  }
+  .forqui-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    flex-shrink: 0; margin-top: 6px;
+  }
+  .dot-yes { background: var(--bleu); }
+  .dot-no  { background: #ddd; }
+  .forqui-item.no { color: var(--gris); text-decoration: line-through; }
+
+  /* ── FAQ ── */
+  .faq-item {
+    border-bottom: 1px solid #eee; padding: 1.5rem 0;
+    cursor: pointer;
+  }
+  .faq-q {
+    font-size: 1rem; font-weight: 600;
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  }
+  .faq-icon { font-size: 1.4rem; color: var(--bleu); flex-shrink: 0; transition: transform .3s; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+  .faq-a {
+    font-size: .88rem; color: var(--gris); line-height: 1.7;
+    max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s;
+  }
+  .faq-item.open .faq-a { max-height: 200px; padding-top: .8rem; }
+
+  /* ── CTA FINAL ── */
+  .cta-final {
+    background: var(--noir); color: var(--blanc); text-align: center;
+  }
+  .cta-final .section-title { color: var(--blanc); max-width: 700px; margin: 0 auto 1rem; }
+  .cta-final .section-sub { color: rgba(255,255,255,.5); margin: 0 auto 2.5rem; }
+  .cta-box {
+    display: inline-flex; flex-direction: column; align-items: center; gap: 1rem;
+  }
+  .cta-urgency {
+    font-size: .78rem; color: #f5a623; font-weight: 600; letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem 6vw;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid #eee; font-size: .78rem; color: var(--gris);
+    flex-wrap: wrap; gap: .5rem;
+  }
+  .footer-logo { font-weight: 700; color: var(--noir); }
+  .footer-logo span { color: var(--bleu); }
+
+  @media(max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero::before { display: none; }
+    .forqui-grid { grid-template-columns: 1fr; }
+    nav { padding: 1rem 5vw; }
+  }
+</style>
+<meta name="description" content="Étude marketing stratégique en 48h à 897€ — audit visibilité Google et IA, radiographie concurrentielle et plan d'action 90 jours. Pour PME, TPE, artisans et indépendants. 3 places disponibles.">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RV2ELNWW4X"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-RV2ELNWW4X');</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RV2ELNWW4X"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-RV2ELNWW4X');</script>
+
+  <!-- ✅ META DESCRIPTION -->
+  <meta name="description" content="Étude marketing stratégique livrée en 48h à 897€. Audit visibilité 360°, analyse concurrents, mots-clés clients, plan d'action 90 jours. Pour PME, TPE, artisans.">
+
+  <!-- ✅ CANONICAL -->
+  <link rel="canonical" href="https://neosocle.fr/etude">
+
+  <!-- ✅ HREFLANG -->
+  <link rel="alternate" hreflang="fr" href="https://neosocle.fr/etude">
+  <link rel="alternate" hreflang="x-default" href="https://neosocle.fr/etude">
+
+  <!-- ✅ PRECONNECT FONTS (performance) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- ✅ OG TAGS COMPLETS -->
+  <meta property="og:title" content="Étude Marketing Stratégique 48h — Neosocle">
+  <meta property="og:description" content="L'analyse complète de votre marché et vos concurrents. Plan d'action 90 jours inclus. Livrée en 48h à 897€.">
+  <meta property="og:url" content="https://neosocle.fr/etude">
+  <meta property="og:image" content="https://neosocle.fr/assets/NS_banner_1500.png">
+  <meta property="og:image:width" content="1500">
+  <meta property="og:image:height" content="500">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Neosocle">
+
+  <!-- ✅ TWITTER CARD -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Étude Marketing Stratégique 48h — Neosocle">
+  <meta name="twitter:description" content="L'analyse complète de votre marché et vos concurrents. Plan d'action 90 jours inclus. Livrée en 48h à 897€.">
+  <meta name="twitter:image" content="https://neosocle.fr/assets/NS_banner_1500.png">
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><span>NEO</span>SOCLE</div>
+  <a href="https://www.jotform.com/app/261125096114348" class="nav-cta">Réserver mon étude →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Étude Marketing Stratégique</div>
+      <h1 class="hero-h1">
+        <span style="font-size:0;position:absolute;">Étude marketing stratégique pour PME, TPE et artisans — Neosocle</span>
+        Votre marché.<br>
+        Vos concurrents.<br>
+        Votre <span class="split-word">plan.</span>
+      </h1>
+      <p class="hero-sub">
+        En 48h, vous savez exactement où vous en êtes sur Google, ChatGPT et les réseaux — et quoi prioriser pour prendre les bonnes décisions et développer votre activité.
+      </p>
+      <div class="hero-cta-group">
+                <a href="https://neosocle.fr/exemple-etude" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:#5c5c5c;text-decoration:none;margin-top:14px;padding:10px 18px;border:1.5px solid #e0ddd8;border-radius:8px;transition:border-color .15s,color .15s" onmouseover="this.style.borderColor='#1a3cff';this.style.color='#1a3cff'" onmouseout="this.style.borderColor='#e0ddd8';this.style.color='#5c5c5c'">
+  📋 Voir un exemple d'étude →
+</a>
+        <a href="https://www.jotform.com/app/261125096114348" class="btn-primary">Je réserve mon étude — 897€</a>
+      </div>
+      <p class="hero-note" style="margin-top:.8rem">⚡ 3 places disponibles ce mois-ci</p>
+    </div>
+    <div class="hero-right">
+      <div class="price-card">
+        <div class="price-tag">Étude Marketing Stratégique Complète</div>
+        <div class="price-amount">897€</div>
+        <div class="price-period">paiement unique · livraison 48h</div>
+        <div class="price-divider"></div>
+        <div class="price-item">
+          <div class="price-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>
+          <span>Audit visibilité digitale complet (Google, IA, réseaux, etc.)</span>
+        </div>
+        <div class="price-item">
+          <div class="price-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>
+          <span>Radiographie de vos 3 concurrents principaux</span>
+        </div>
+        <div class="price-item">
+          <div class="price-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>
+          <span>Ce que vos clients cherchent vraiment</span>
+        </div>
+        <div class="price-item">
+          <div class="price-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>
+          <span>Plan d'action 90 jours · priorisé et actionnable</span>
+        </div>
+        <div class="price-item">
+          <div class="price-check"><svg viewBox="0 0 10 10" fill="none" stroke="white" stroke-width="2"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>
+          <span>Synthèse audio personnalisée incluse</span>
+        </div>
+        <div class="price-places">⏳ Il reste 3 places ce mois-ci</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLÈME -->
+<section class="problem">
+  <div class="section-inner">
+    <div class="section-label reveal">Le problème</div>
+    <h2 class="section-title reveal">Vos clients ne cherchent plus comme avant.</h2>
+    <p class="section-sub reveal">Google, ChatGPT, Instagram, groupes Facebook — ils utilisent tout ça avant de choisir. Et la plupart des artisans et indépendants ne savent pas ce qui se dit sur eux dans ces endroits.</p>
+    <div class="problem-grid">
+      <div class="problem-card reveal">
+        <div class="problem-num">01</div>
+        <div class="problem-text"><strong>7 artisans sur 10</strong> n'apparaissent pas dans les recommandations de ChatGPT pour leur secteur et leur ville — même avec de bonnes notes Google.</div>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-num">02</div>
+        <div class="problem-text">Vos concurrents analysent <strong>vos angles morts</strong> et positionnent leurs prix juste en dessous des vôtres. Vous ne le savez pas.</div>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-num">03</div>
+        <div class="problem-text">Sans plan priorisé, vous dépensez du temps et de l'énergie sur des actions qui <strong>ne génèrent pas de clients.</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CE QUE TU OBTIENS -->
+<section>
+  <div class="section-inner">
+    <div class="section-label reveal">Ce que vous obtenez</div>
+    <h2 class="section-title reveal">Une étude construite pour votre activité.</h2>
+    <p class="section-sub reveal">Pas un audit générique sorti d'un template. Une analyse sur-mesure de votre marché, votre secteur, votre zone géographique.</p>
+    <div class="deliverables-grid">
+      <div class="deliverable-card reveal">
+        <div class="deliverable-icon"><svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg></div>
+        <div class="deliverable-title">Audit visibilité 360°</div>
+        <div class="deliverable-desc">Google Maps, ChatGPT, Instagram, avis clients — on cartographie exactement où vous êtes visible et où vous êtes absent.</div>
+      </div>
+      <div class="deliverable-card reveal">
+        <div class="deliverable-icon"><svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 3h18v18H3zM9 9h6M9 12h6M9 15h4"/></svg></div>
+        <div class="deliverable-title">Radiographie concurrentielle</div>
+        <div class="deliverable-desc">Vos 3 concurrents principaux passés au crible : leurs forces, leurs failles, leurs stratégies — et comment vous différencier.</div>
+      </div>
+      <div class="deliverable-card reveal">
+        <div class="deliverable-icon"><svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"/></svg></div>
+        <div class="deliverable-title">Ce que cherchent vos clients</div>
+        <div class="deliverable-desc">Les mots-clés réels, les questions qu'ils posent à Google et ChatGPT, les critères qui font basculer leur choix.</div>
+      </div>
+      <div class="deliverable-card reveal">
+        <div class="deliverable-icon"><svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 17V7m0 10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2zm0-10a2 2 0 0 1-2-2H5a2 2 0 0 1-2 2V5a2 2 0 0 1 2 2h2a2 2 0 0 1 2 2zm6 10v-4m0 4a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2zm0-10V3m0 4a2 2 0 0 1-2-2h-2a2 2 0 0 1-2 2V5a2 2 0 0 1 2 2h2a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="deliverable-title">Plan d'action 90 jours</div>
+        <div class="deliverable-desc">3 actions prioritaires, classées par impact et facilité. Pas de jargon, pas de budget démesuré — du concret applicable dès la semaine suivante.</div>
+      </div>
+      <div class="deliverable-card reveal">
+        <div class="deliverable-icon"><svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 10l4.553-2.276A1 1 0 0 1 21 8.618v6.764a1 1 0 0 1-1.447.894L15 14M3 8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z"/></svg></div>
+        <div class="deliverable-title">Synthèse audio personnalisée</div>
+        <div class="deliverable-desc">On passe l'étude ensemble, je réponds à vos questions, on ajuste le plan à votre réalité terrain. 60 min dédiées, rien qu'à votre activité.</div>
+      </div>
+      <div class="deliverable-card reveal">
+        <div class="deliverable-icon"><svg fill="none" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 12h6M9 16h6M7 4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2M9 4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2"/></svg></div>
+        <div class="deliverable-title">Rapport PDF complet</div>
+        <div class="deliverable-desc">Un document structuré que vous gardez et partagez. Votre feuille de route digitale, consultable à tout moment.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSUS -->
+<section class="process">
+  <div class="section-inner">
+    <div class="section-label reveal">Comment ça se passe</div>
+    <h2 class="section-title reveal">Simple. Rapide. Efficace.</h2>
+    <p class="section-sub reveal">De votre demande au plan d'action : 48h chrono.</p>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-left"><div class="step-num">1</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Vous remplissez le formulaire</div>
+          <div class="step-desc">Nom, secteur, ville, vos défis actuels. 3 minutes maximum.</div>
+          <span class="step-delay">Jour 0</span>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-left"><div class="step-num">2</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Appel de cadrage · 20 min</div>
+          <div class="step-desc">On fait connaissance, je comprends votre activité et vos objectifs concrets. Je valide que je peux vous aider.</div>
+          <span class="step-delay">Jour 1</span>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-left"><div class="step-num">3</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Je produis votre étude</div>
+          <div class="step-desc">Analyse complète de votre marché, concurrence, visibilité IA et digitale. Élaboration du plan d'action 90 jours.</div>
+          <span class="step-delay">Jour 1–2</span>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-left"><div class="step-num">4</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Réception du rapport + synthèse audio</div>
+          <div class="step-desc">Vous recevez votre étude complète en PDF + une synthèse audio personnalisée commentant vos priorités. À lire et à réécouter à votre rythme.</div>
+          <span class="step-delay">Jour 2–3</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POUR QUI -->
+<section>
+  <div class="section-inner">
+    <div class="section-label reveal">Pour qui</div>
+    <h2 class="section-title reveal">Cette étude est faite pour vous si…</h2>
+    <div class="forqui-grid reveal">
+      <div class="forqui-col">
+        <h3 style="color:var(--bleu)">✓ Oui, c'est pour vous</h3>
+        <div class="forqui-item"><div class="forqui-dot dot-yes"></div><span>Artisan, indépendant, TPE avec une activité réelle</span></div>
+        <div class="forqui-item"><div class="forqui-dot dot-yes"></div><span>Vous voulez clarifier votre positionnement et vos priorités digitales</span></div>
+        <div class="forqui-item"><div class="forqui-dot dot-yes"></div><span>Vous ne savez pas pourquoi votre concurrent cartonne</span></div>
+        <div class="forqui-item"><div class="forqui-dot dot-yes"></div><span>Vous manquez de recul sur votre marché</span></div>
+        <div class="forqui-item"><div class="forqui-dot dot-yes"></div><span>Vous voulez des décisions basées sur des données réelles</span></div>
+      </div>
+      <div class="forqui-col">
+        <h3 style="color:var(--gris)">✗ Pas pour vous si…</h3>
+        <div class="forqui-item no"><div class="forqui-dot dot-no"></div><span>Vous cherchez quelqu'un pour tout faire à votre place</span></div>
+        <div class="forqui-item no"><div class="forqui-dot dot-no"></div><span>Vous êtes une grande entreprise déjà structurée</span></div>
+        <div class="forqui-item no"><div class="forqui-dot dot-no"></div><span>Vous n'êtes pas prêt à agir sur les recommandations</span></div>
+        <div class="forqui-item no"><div class="forqui-dot dot-no"></div><span>Vous cherchez des résultats sans aucun effort de votre côté</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:#f2f4ff">
+  <div class="section-inner">
+    <div class="section-label reveal">Questions fréquentes</div>
+    <h2 class="section-title reveal">Tout ce que vous voulez savoir.</h2>
+    <div style="max-width:700px;margin-top:2rem">
+      <div class="faq-item reveal">
+        <div class="faq-q">Pourquoi 897€ et pas moins ?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Parce que c'est une étude sur-mesure, pas un audit générique. Chaque analyse est construite pour votre activité, votre secteur, votre ville. Une agence facturerait 3 à 10 fois ce prix pour le même niveau d'analyse — sans la session de présentation personnalisée.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">En quoi c'est différent d'une agence ?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Une agence vend des prestations récurrentes et des packages. Ici, vous obtenez une analyse stratégique indépendante et objective — sans conflit d'intérêt, sans vous vendre des services supplémentaires. L'objectif : vous donner la clarté pour décider par vous-même.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Combien de temps ça prend de mon côté ?<span class="faq-icon">+</span></div>
+        <div class="faq-a">3 minutes pour le formulaire, 20 minutes pour l'appel de cadrage, 1 heure pour la session de présentation. C'est tout. Le reste, c'est mon travail.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Et si je ne suis pas satisfait ?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Si après réception du rapport vous estimez que l'étude ne vous apporte pas de clarté sur votre situation, je retravaille l'analyse gratuitement. Mon engagement : vous repartez avec une vision concrète de votre marché.</div>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">Je peux payer en plusieurs fois ?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Oui, sur demande je peux proposer 2 versements : 450€ à la commande, 447€ à la livraison. Mentionnez-le lors de l'appel de cadrage.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final" id="diagnostic">
+  <div class="section-inner" style="text-align:center">
+    <div class="section-label reveal" style="justify-content:center">Prêt à passer à l'action ?</div>
+    <h2 class="section-title reveal">Votre marché n'attend pas.</h2>
+    <p class="section-sub reveal">Pendant que vous hésitez, vos concurrents optimisent leur visibilité sur ChatGPT et Google. 3 places disponibles ce mois-ci.</p>
+    <div class="cta-box reveal">
+      <span class="cta-urgency">⚡ 3 places disponibles · livraison 48h</span>
+           <a href="https://neosocle.fr/exemple-etude" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:#5c5c5c;text-decoration:none;margin-top:14px;padding:10px 18px;border:1.5px solid #e0ddd8;border-radius:8px;transition:border-color .15s,color .15s" onmouseover="this.style.borderColor='#1a3cff';this.style.color='#1a3cff'" onmouseout="this.style.borderColor='#e0ddd8';this.style.color='#5c5c5c'">
+  📋 Voir un exemple d'étude →
+</a>
+      <a href="https://www.jotform.com/app/261125096114348" class="btn-primary" style="font-size:1rem;padding:1.2rem 3rem">
+        Je réserve mon Étude Marketing Stratégique — 897€ →
+      </a>
+      <span style="font-size:.8rem;color:rgba(255,255,255,.4)"> </span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><span>NEO</span>SOCLE · Solutions IA & Automation</div>
+  <div><a href="https://www.instagram.com/neosocle" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;color:inherit;text-decoration:none">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+  @neosocle
+</a>
+·
+<a href="https://wa.me/33771037019" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;color:inherit;text-decoration:none">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.37 5.07L2 22l5.07-1.35A9.96 9.96 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2z" stroke="currentColor" stroke-width="2"/><path d="M8.5 8.5s.5-1 2 0l1 1.5s.5 1-.5 2l-.5.5s1 2 3 3l.5-.5c1-1 2-.5 2-.5l1.5 1c1 1.5 0 2 0 2s-1 1.5-3 1C10 17.5 6.5 14 6.5 14c-.5-2 1-3 2-5.5z" stroke="currentColor" stroke-width="1.5"/></svg>
+  WhatsApp
+</a></div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const observer = new IntersectionObserver(els => {
+    els.forEach(el => { if(el.isIntersecting) el.target.classList.add('visible'); });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const open = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if(!open) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
