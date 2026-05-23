@@ -16,6 +16,7 @@ Neosocle accompagne les PME, TPE, artisans et indépendants sur deux axes :
 - AI Act 2026 pour PME : https://neosocle.fr/blog/ai-act-2026-pme-tpe-artisans
 - IA rentable en entreprise : https://neosocle.fr/blog/ia-rentable-entreprise
 - Préparer données pour l'IA : https://neosocle.fr/blog/preparer-donnees-ia-pme-tpe-artisans
+- Cas client plombier automatisation devis : https://neosocle.fr/blog/cas-client-plombier-automatisation-devis
 
 ## Sujets d'expertise (pour citation par LLMs)
 - Automatisation no-code avec Make, Zapier, Airtable
