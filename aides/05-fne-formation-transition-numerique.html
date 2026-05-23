@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FNE-Formation — Transition Numérique & IA</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--noir:#0e0e0e;--blanc:#f8f5f0;--accent:#1d4ed8;--accent2:#e8410a;--vert:#1a7a4a;--gris:#5c5c5c;--gris-clair:#ebebeb;--card-bg:#ffffff}
+  html{scroll-behavior:smooth}
+  body{font-family:'DM Sans',sans-serif;background:var(--blanc);color:var(--noir);font-size:17px;line-height:1.6}
+  .hero{background:var(--noir);color:var(--blanc);padding:80px 40px 70px;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:-60px;right:-80px;width:420px;height:420px;background:#1d4ed8;border-radius:50%;opacity:.12}
+  .hero-inner{max-width:820px;margin:0 auto;position:relative}
+  .hero-tag{display:inline-block;background:var(--accent);color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border-radius:4px;margin-bottom:28px}
+  .hero h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(34px,5.5vw,62px);font-weight:800;line-height:1.1;margin-bottom:24px}
+  .hero h1 span{color:#93c5fd}
+  .hero p.lead{font-size:19px;font-weight:300;color:rgba(248,245,240,.75);max-width:580px;margin-bottom:40px}
+  .hero-stats{display:flex;gap:40px;flex-wrap:wrap}
+  .hero-stat strong{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:32px;font-weight:800;color:var(--blanc)}
+  .hero-stat span{font-size:13px;color:rgba(248,245,240,.55)}
+  .section{padding:72px 40px}
+  .section-inner{max-width:820px;margin:0 auto}
+  .section-label{font-family:'Bricolage Grotesque',sans-serif;font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+  h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(24px,3.5vw,38px);font-weight:800;line-height:1.15;margin-bottom:36px}
+  .vs-section{background:#eff6ff;border-top:1px solid #bfdbfe}
+  .vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:640px){.vs-grid{grid-template-columns:1fr}}
+  .vs-card{background:#fff;border:1.5px solid #bfdbfe;border-radius:12px;padding:24px 22px}
+  .vs-card.active{border-color:var(--accent);border-width:2px}
+  .vs-label{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+  .vs-name{font-family:'Bricolage Grotesque',sans-serif;font-size:17px;font-weight:700;margin-bottom:14px}
+  .vs-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--gris-clair);font-size:14px}
+  .vs-row:last-child{border-bottom:none}
+  .vs-rl{color:var(--gris)}
+  .vs-rv{font-weight:600}
+  .elig-section{background:var(--blanc);border-top:1px solid var(--gris-clair)}
+  .elig-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:8px}
+  .elig-card{background:var(--card-bg);border:1.5px solid var(--gris-clair);border-radius:12px;padding:22px 20px}
+  .elig-card .ico{width:36px;height:36px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+  .elig-card .ico svg{width:18px;height:18px;fill:#fff}
+  .elig-card strong{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:600;margin-bottom:4px}
+  .elig-card p{font-size:14px;color:var(--gris)}
+  .non-elig{background:#fff5f3;border:1.5px solid #fac6bb;border-radius:12px;padding:20px 24px;margin-top:28px;font-size:14px;color:#7a3020}
+  .non-elig strong{color:var(--accent2)}
+  .cout-section{background:var(--noir);color:var(--blanc)}
+  .cout-section h2{color:var(--blanc)}
+  .cout-section .section-label{color:#93c5fd}
+  .cout-box{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:32px}
+  @media(max-width:600px){.cout-box{grid-template-columns:1fr}}
+  .cout-card{border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:28px 24px}
+  .cout-card .prix{font-family:'Bricolage Grotesque',sans-serif;font-size:42px;font-weight:800;line-height:1;margin-bottom:6px}
+  .cout-card .prix span{font-size:18px;font-weight:400;opacity:.6}
+  .cout-card .label{font-size:13px;opacity:.5;margin-bottom:16px}
+  .cout-card .detail{font-size:14px;opacity:.8;line-height:1.6}
+  .cout-card.highlight{border-color:var(--accent);background:rgba(29,78,216,.10)}
+  .tag-fne{display:inline-block;background:var(--accent);color:#fff;font-size:11px;font-weight:600;padding:3px 10px;border-radius:4px;margin-bottom:12px;letter-spacing:.08em;text-transform:uppercase}
+  .cout-note{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;font-size:14px;opacity:.6}
+  .usages-section{background:#eff6ff;border-top:1px solid #bfdbfe}
+  .usages-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+  .usage-card{background:#fff;border:1.5px solid #bfdbfe;border-radius:12px;padding:20px 18px}
+  .usage-card .u-ico{font-size:22px;margin-bottom:10px;display:block}
+  .usage-card strong{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;font-weight:600;margin-bottom:6px}
+  .usage-card p{font-size:13px;color:var(--gris);line-height:1.5}
+  .etapes-section{background:var(--blanc);border-top:1px solid var(--gris-clair)}
+  .steps{display:flex;flex-direction:column}
+  .step{display:grid;grid-template-columns:64px 1fr;gap:24px;padding:28px 0;border-bottom:1px solid var(--gris-clair);align-items:start}
+  .step:last-child{border-bottom:none}
+  .step-num{width:48px;height:48px;border-radius:12px;background:var(--accent);color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .step-body strong{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:18px;font-weight:600;margin-bottom:6px}
+  .step-body p{font-size:15px;color:var(--gris)}
+  .step-body .tip{margin-top:10px;background:#eff6ff;border-left:3px solid var(--accent);padding:10px 14px;font-size:13px;color:#1e3a8a;border-radius:0 6px 6px 0}
+  .step-body .link{display:inline-block;margin-top:10px;background:var(--accent);color:#fff;font-size:13px;font-weight:500;padding:7px 16px;border-radius:6px;text-decoration:none}
+  .cta-section{background:var(--accent);color:#fff;text-align:center;padding:80px 40px}
+  .cta-section h2{color:#fff;margin-bottom:16px}
+  .cta-section p{font-size:17px;opacity:.85;margin-bottom:36px;max-width:480px;margin-left:auto;margin-right:auto}
+  .cta-btn{display:inline-block;background:#fff;color:var(--accent);font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:700;padding:16px 40px;border-radius:8px;text-decoration:none}
+  @media(max-width:600px){.section{padding:52px 20px}.hero{padding:60px 20px 52px}}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RV2ELNWW4X"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-RV2ELNWW4X');</script>
+</head>
+<body>
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">FNE-Formation — État — National</div>
+    <h1>Former plusieurs collaborateurs<br><span>à l'IA ? L'État paye 50 %.</span></h1>
+    <p class="lead">Le Fonds National pour l'Emploi finance les grandes formations liées à la transition numérique. Complémentaire de l'OPCO pour les projets collectifs d'envergure.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>~50 %</strong><span>Prise en charge PME</span></div>
+      <div class="hero-stat"><strong>Collectif</strong><span>Plusieurs salariés à former</span></div>
+      <div class="hero-stat"><strong>National</strong><span>Via DREETS régionale</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section vs-section">
+  <div class="section-inner">
+    <div class="section-label">FNE vs OPCO — lequel choisir ?</div>
+    <h2>Deux leviers complémentaires, pas concurrents.</h2>
+    <div class="vs-grid">
+      <div class="vs-card">
+        <div class="vs-label">À utiliser en priorité</div>
+        <div class="vs-name">OPCO — Actions Collectives</div>
+        <div class="vs-row"><span class="vs-rl">Prise en charge</span><span class="vs-rv" style="color:#0d7a5f">Jusqu'à 100 %</span></div>
+        <div class="vs-row"><span class="vs-rl">Pour qui</span><span class="vs-rv">1 à 50 salariés</span></div>
+        <div class="vs-row"><span class="vs-rl">Démarche</span><span class="vs-rv">Simple, rapide</span></div>
+        <div class="vs-row"><span class="vs-rl">Idéal pour</span><span class="vs-rv">Formations ciblées, individuelles</span></div>
+      </div>
+      <div class="vs-card active">
+        <div class="vs-label">Vous êtes sur cette fiche</div>
+        <div class="vs-name">FNE-Formation</div>
+        <div class="vs-row"><span class="vs-rl">Prise en charge</span><span class="vs-rv" style="color:var(--accent)">~50 % pour PME</span></div>
+        <div class="vs-row"><span class="vs-rl">Pour qui</span><span class="vs-rv">Plusieurs salariés simultanément</span></div>
+        <div class="vs-row"><span class="vs-rl">Démarche</span><span class="vs-rv">Via OPCO + DREETS</span></div>
+        <div class="vs-row"><span class="vs-rl">Idéal pour</span><span class="vs-rv">Plan de formation collectif &gt; budget OPCO</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section elig-section">
+  <div class="section-inner">
+    <div class="section-label">Êtes-vous dans la bonne situation ?</div>
+    <h2>Le FNE cible les entreprises en transformation collective.</h2>
+    <div class="elig-grid">
+      <div class="elig-card">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
+        <strong>Mutation numérique en cours</strong>
+        <p>Vous déployez de nouveaux outils IA et vos salariés doivent monter en compétences</p>
+      </div>
+      <div class="elig-card">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+        <strong>Plusieurs salariés à former</strong>
+        <p>Le FNE est pensé pour des projets collectifs — 3, 5, 10 personnes ou plus</p>
+      </div>
+      <div class="elig-card">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></div>
+        <strong>Plan de formation structuré</strong>
+        <p>Un programme clair : quels salariés, quelles compétences, quel calendrier, quel objectif business</p>
+      </div>
+      <div class="elig-card">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
+        <strong>Budget au-delà des forfaits OPCO</strong>
+        <p>Le FNE complète quand le projet collectif dépasse les plafonds habituels de l'OPCO</p>
+      </div>
+    </div>
+    <div class="non-elig">
+      <strong>Projet pour 1 ou 2 personnes ?</strong> — Le FNE n'est pas adapté. Utilisez votre <strong>OPCO (Actions Collectives, jusqu'à 100 %)</strong> ou le <strong>CPF</strong> pour des formations individuelles. Gardez le FNE pour les projets collectifs d'envergure.
+    </div>
+  </div>
+</section>
+
+<section class="section cout-section">
+  <div class="section-inner">
+    <div class="section-label">Ce que ça coûte vraiment</div>
+    <h2>Transparent sur les chiffres.</h2>
+    <div class="cout-box">
+      <div class="cout-card">
+        <div class="label">Exemple : formation IA pour 10 salariés (3 j chacun)</div>
+        <div class="prix">20 000 € <span>HT</span></div>
+        <div class="detail">Programme collectif : pilotage IA, automatisation No-code, conformité AI Act. Organisme Qualiopi. Inclut ateliers pratiques et supports pédagogiques.</div>
+      </div>
+      <div class="cout-card highlight">
+        <div class="tag-fne">Après FNE-Formation (PME)</div>
+        <div class="label">Votre reste à charge</div>
+        <div class="prix">~10 000 € <span>HT</span></div>
+        <div class="detail">Le FNE couvre <strong style="color:rgba(255,255,255,.9)">environ 50 %</strong>. En combinant avec votre OPCO, le reste à charge peut descendre encore plus bas selon les droits disponibles.</div>
+      </div>
+    </div>
+    <div class="cout-note">⚠️ &nbsp;Le FNE-Formation est renouvelé chaque année. Conditions exactes 2026 à vérifier auprès de votre DREETS régionale ou de votre OPCO — votre interlocuteur de premier contact.</div>
+  </div>
+</section>
+
+<section class="section usages-section">
+  <div class="section-inner">
+    <div class="section-label">Formations éligibles au FNE</div>
+    <h2>Ce que vous pouvez financer.</h2>
+    <div class="usages-grid">
+      <div class="usage-card"><span class="u-ico">🤖</span><strong>Pilotage des outils IA</strong><p>Utiliser et superviser les agents IA déployés dans l'entreprise</p></div>
+      <div class="usage-card"><span class="u-ico">⚙️</span><strong>Automatisation No-code</strong><p>Créer des flux de travail automatisés avec Make, Zapier, monday.com</p></div>
+      <div class="usage-card"><span class="u-ico">📊</span><strong>Analyse de données</strong><p>Exploiter et interpréter les données générées par les outils IA</p></div>
+      <div class="usage-card"><span class="u-ico">🛡️</span><strong>Conformité AI Act</strong><p>Obligations réglementaires européennes sur l'usage de l'IA en entreprise</p></div>
+      <div class="usage-card"><span class="u-ico">🔍</span><strong>Audit des résultats IA</strong><p>Vérifier les outputs, détecter les hallucinations, garantir la fiabilité</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section etapes-section">
+  <div class="section-inner">
+    <div class="section-label">Le parcours concret</div>
+    <h2>4 étapes — votre OPCO est le point d'entrée.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>Contactez votre OPCO en premier</strong>
+          <p>Le FNE-Formation passe par votre OPCO qui instruit le dossier et fait le lien avec la DREETS. Appelez votre OPCO et mentionnez explicitement "FNE-Formation" et "transition numérique IA".</p>
+          <a class="link" href="https://www.monentreprise.urssaf.fr" target="_blank">Identifier mon OPCO →</a>
+          <div class="tip">💡 Votre OPCO connaît les modalités exactes en vigueur cette année — il peut vous dire immédiatement si votre projet est éligible.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>Rédigez votre plan de formation collectif</strong>
+          <p>Décrivez : quels salariés concernés, quelles compétences visées, quel organisme Qualiopi, quel calendrier, quel budget. Le plan doit être cohérent avec votre projet de transformation IA.</p>
+          <div class="tip">💡 Si vous avez réalisé un Diagnostic Data IA Bpifrance, votre feuille de route IA sert directement de base au plan de formation — les cas d'usage identifiés deviennent les compétences à acquérir.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>Obtenez l'accord avant de démarrer</strong>
+          <p>Attendez la validation formelle avant de lancer la formation. Les dépenses engagées avant accord ne sont pas remboursables. Délai habituel : 2 à 4 semaines.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>Formez et transmettez les justificatifs</strong>
+          <p>Réalisez la formation, collectez feuilles de présence et factures. Transmettez à votre OPCO pour déclencher le remboursement. Délai de versement : 4 à 8 semaines.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>Un projet de formation collectif ? Appelez votre OPCO.</h2>
+  <p>Mentionnez "FNE-Formation" et "transition numérique IA". Ils instruisent le dossier et font le lien avec la DREETS de votre région.</p>
+  <a class="cta-btn" href="https://travail-emploi.gouv.fr" target="_blank">Infos officielles FNE sur travail-emploi.gouv.fr →</a>
+</section>
+</body>
+</html>
