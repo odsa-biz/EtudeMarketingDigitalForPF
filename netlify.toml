@@ -1,14 +1,70 @@
 [build]
   publish = "."
-  command = "echo 'Site ready to deploy'"
+  command = "echo 'Site ready'"
 
-# ✅ REDIRECTS
+# Fichiers statiques — ne pas rediriger
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/robots.txt"
+  to = "/robots.txt"
   status = 200
 
-# ✅ HEADERS SÉCURITÉ + PERFORMANCE (toutes pages)
+[[redirects]]
+  from = "/llms.txt"
+  to = "/llms.txt"
+  status = 200
+
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap.xml"
+  status = 200
+
+# Pages HTML
+[[redirects]]
+  from = "/etude"
+  to = "/etude.html"
+  status = 200
+
+[[redirects]]
+  from = "/aides"
+  to = "/aides.html"
+  status = 200
+
+[[redirects]]
+  from = "/exemple-etude"
+  to = "/exemple-etude.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog"
+  to = "/blog.html"
+  status = 200
+
+[[redirects]]
+  from = "/blog/:slug"
+  to = "/blog/:slug.html"
+  status = 200
+
+[[redirects]]
+  from = "/cgv"
+  to = "/cgv.html"
+  status = 200
+
+[[redirects]]
+  from = "/cookies"
+  to = "/cookies.html"
+  status = 200
+
+[[redirects]]
+  from = "/confidentialite"
+  to = "/confidentialite.html"
+  status = 200
+
+[[redirects]]
+  from = "/mentions-legales"
+  to = "/mentions-legales.html"
+  status = 200
+
+# Headers sécurité
 [[headers]]
   for = "/*"
   [headers.values]
@@ -19,25 +75,21 @@
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
     Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://cdn.jotfor.ms; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com; frame-src https://form.jotform.com https://www.youtube.com; object-src 'none';"
 
-# ✅ CACHE LONG TERME pour assets statiques
+# Cache assets (1 an)
 [[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# ✅ CACHE COURT pour HTML (toujours frais)
+# Cache HTML (1h)
 [[headers]]
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=3600, must-revalidate"
 
-# ✅ CACHE MOYEN pour sitemap et robots
+# llms.txt — forcer text/plain
 [[headers]]
-  for = "/sitemap.xml"
+  for = "/llms.txt"
   [headers.values]
-    Cache-Control = "public, max-age=86400"
-
-[[headers]]
-  for = "/robots.txt"
-  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
     Cache-Control = "public, max-age=86400"

@@ -7,7 +7,6 @@
     <lastmod>2026-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://neosocle.fr/"/>
   </url>
 
   <url>
@@ -15,7 +14,6 @@
     <lastmod>2026-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://neosocle.fr/etude"/>
   </url>
 
   <url>
@@ -23,7 +21,6 @@
     <lastmod>2026-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://neosocle.fr/aides"/>
   </url>
 
   <url>
@@ -31,7 +28,13 @@
     <lastmod>2026-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://neosocle.fr/exemple-etude"/>
+  </url>
+
+  <url>
+    <loc>https://neosocle.fr/blog</loc>
+    <lastmod>2026-05-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <url>
@@ -39,7 +42,6 @@
     <lastmod>2026-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://neosocle.fr/blog/ai-act-2026-pme-tpe-artisans"/>
   </url>
 
   <url>
@@ -47,7 +49,6 @@
     <lastmod>2026-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://neosocle.fr/blog/ia-rentable-entreprise"/>
   </url>
 
   <url>
@@ -55,7 +56,6 @@
     <lastmod>2026-05-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://neosocle.fr/blog/preparer-donnees-ia-pme-tpe-artisans"/>
   </url>
 
   <url>

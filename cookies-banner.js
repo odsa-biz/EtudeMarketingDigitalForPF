@@ -1,121 +1,124 @@
-/**
- * Neosocle — Bandeau cookies CNIL conforme
- * 3 options : Accepter / Refuser / Continuer sans accepter
- * Conforme CNIL (délibération n°2020-091) et RGPD
- */
-(function() {
-  'use strict';
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page not found</title>
+    <style>
+      :root {
+        --colorRgbFacetsTeal600: 2 128 125;
+        --colorTealAction: var(--colorRgbFacetsTeal600);
+        --colorRgbFacetsNeutralLight200: 233 235 237;
+        --colorHr: var(--colorRgbFacetsNeutralLight200);
+        --colorRgbFacetsNeutralLight700: 53 58 62;
+        --colorGrayDarkest: var(--colorRgbFacetsNeutralLight700);
+        --colorGrayLighter: var(--colorRgbFacetsNeutralLight200);
+        --colorText: var(--colorGrayDarkest);
+        --effectShadowLightShallow: 0 1px 10px 0 rgb(53 58 62 / 6%),
+          0 2px 4px 0 rgb(53 58 62 / 8%);
+        --colorRgbFacetsNeutralDark900: 6 11 16;
+      }
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
+          "Segoe UI Emoji", "Segoe UI Symbol";
+        background: white;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        line-height: 1.5;
+        color: rgb(var(--colorText));
+      }
 
-  var STORAGE_KEY = 'neosocle_cookies_consent';
-  var GOOGLE_FONTS_URL = 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap';
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: rgb(var(--colorRgbFacetsNeutralDark900));
+        }
+      }
 
-  // Charger Google Fonts seulement si consentement donné
-  function loadGoogleFonts() {
-    if (document.querySelector('link[href*="googleapis"]')) return;
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = GOOGLE_FONTS_URL;
-    document.head.appendChild(link);
-  }
+      h1 {
+        margin: 0;
+        font-size: 1.375rem;
+        line-height: 1;
+      }
 
-  // Vérifier le consentement existant
-  function getConsent() {
-    try { return localStorage.getItem(STORAGE_KEY); } catch(e) { return null; }
-  }
+      h1 + p {
+        margin-top: 8px;
+      }
 
-  function setConsent(value) {
-    try { localStorage.setItem(STORAGE_KEY, value); } catch(e) {}
-  }
+      .main {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+      }
 
-  // Appliquer le choix
-  function applyConsent(choice) {
-    if (choice === 'accepted') {
-      loadGoogleFonts();
-    }
-    // 'refused' ou 'skipped' : polices système utilisées, aucun cookie tiers
-  }
+      .card {
+        position: relative;
+        width: 75%;
+        max-width: 364px;
+        padding: 24px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: var(--effectShadowLightShallow);
+        border: 1px solid rgb(var(--colorGrayLighter));
+      }
 
-  // Fermer et mémoriser le choix
-  function handleChoice(choice) {
-    setConsent(choice);
-    applyConsent(choice);
-    var banner = document.getElementById('ns-cookie-banner');
-    if (banner) {
-      banner.style.transform = 'translateY(100%)';
-      banner.style.opacity = '0';
-      setTimeout(function() { if (banner.parentNode) banner.parentNode.removeChild(banner); }, 400);
-    }
-  }
+      a {
+        margin: 0;
+        font-weight: 600;
+        color: rgb(var(--colorTealAction));
+        text-decoration-skip-ink: all;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
+        text-decoration-color: rgb(var(--colorTealAction) / 0.5);
+        transition: text-decoration-color 0.15s ease-in-out;
+      }
 
-  // Créer le bandeau
-  function createBanner() {
-    var banner = document.createElement('div');
-    banner.id = 'ns-cookie-banner';
-    banner.setAttribute('role', 'dialog');
-    banner.setAttribute('aria-label', 'Gestion des cookies');
-    banner.style.cssText = [
-      'position:fixed', 'bottom:0', 'left:0', 'right:0', 'z-index:99999',
-      'background:#0e0e0e', 'color:#f8f5f0',
-      'padding:20px 24px', 'border-top:1px solid rgba(248,245,240,.12)',
-      'font-family:system-ui,-apple-system,sans-serif', 'font-size:14px', 'line-height:1.5',
-      'transition:transform .4s ease,opacity .4s ease',
-      'box-shadow:0 -4px 24px rgba(0,0,0,.3)'
-    ].join(';');
+      a:hover,
+      a:focus-visible {
+        text-decoration-color: rgb(var(--colorTealAction));
+      }
 
-    banner.innerHTML = [
-      '<div style="max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:16px;justify-content:space-between">',
-        '<div style="flex:1;min-width:280px">',
-          '<strong style="font-size:15px;color:#fff;display:block;margin-bottom:6px">🍪 Ce site utilise des cookies</strong>',
-          '<span style="color:rgba(248,245,240,.7)">',
-            'Les polices de caractères (Google Fonts) peuvent déposer des cookies tiers. ',
-            'Vous pouvez les accepter, les refuser ou continuer sans vous prononcer. ',
-            '<a href="/cookies.html" target="_blank" rel="noopener" style="color:#a5b8ff;text-decoration:underline">En savoir plus</a>.',
-          '</span>',
-        '</div>',
-        '<div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;flex-shrink:0">',
-          '<button id="ns-skip" style="background:transparent;border:none;color:rgba(248,245,240,.55);font-size:13px;cursor:pointer;text-decoration:underline;padding:4px 0;font-family:inherit">',
-            'Continuer sans accepter',
-          '</button>',
-          '<button id="ns-refuse" style="background:transparent;border:1.5px solid rgba(248,245,240,.3);color:#f8f5f0;font-size:13px;font-weight:600;padding:10px 18px;border-radius:7px;cursor:pointer;font-family:inherit;transition:border-color .15s">',
-            'Tout refuser',
-          '</button>',
-          '<button id="ns-accept" style="background:#1a3cff;color:#fff;border:none;font-size:13px;font-weight:700;padding:10px 20px;border-radius:7px;cursor:pointer;font-family:inherit;transition:background .15s">',
-            'Tout accepter',
-          '</button>',
-        '</div>',
-      '</div>'
-    ].join('');
+      p:last-of-type {
+        margin-bottom: 0;
+      }
 
-    document.body.appendChild(banner);
+      hr {
+        border: 0;
+        height: 1px;
+        background: rgb(var(--colorHr));
+        margin-top: 16px;
+        margin-bottom: 16px;
+      }
 
-    document.getElementById('ns-accept').onclick = function() { handleChoice('accepted'); };
-    document.getElementById('ns-refuse').onclick = function() { handleChoice('refused'); };
-    document.getElementById('ns-skip').onclick = function() { handleChoice('skipped'); };
-
-    // Hover effects
-    document.getElementById('ns-refuse').onmouseover = function() { this.style.borderColor = '#f8f5f0'; };
-    document.getElementById('ns-refuse').onmouseout = function() { this.style.borderColor = 'rgba(248,245,240,.3)'; };
-    document.getElementById('ns-accept').onmouseover = function() { this.style.background = '#0a2bcc'; };
-    document.getElementById('ns-accept').onmouseout = function() { this.style.background = '#1a3cff'; };
-  }
-
-  // Initialisation
-  function init() {
-    var existing = getConsent();
-    if (existing) {
-      applyConsent(existing);
-      return; // Pas de bandeau si choix déjà fait
-    }
-    // Premier chargement : retirer Google Fonts du <head> (remplacé par le consentement)
-    var gfLinks = document.querySelectorAll('link[href*="googleapis.com/css"]');
-    gfLinks.forEach(function(l) { l.parentNode.removeChild(l); });
-
-    createBanner();
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-})();
+      .your-site {
+        font-size: 0.875rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="card">
+        <h1>Page not found</h1>
+        <p>
+          Looks like you’ve followed a broken link or entered a URL that doesn’t
+          exist on this site.
+        </p>
+        <hr />
+        <p class="your-site">
+          If this is your site, and you weren’t expecting a 404 for this path,
+          please visit Netlify’s
+          <a
+            href="https://answers.netlify.com/t/support-guide-i-ve-deployed-my-site-but-i-still-see-page-not-found/125?utm_source=404page&utm_campaign=community_tracking"
+            >“page not found” support guide</a
+          >
+          for troubleshooting tips.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
