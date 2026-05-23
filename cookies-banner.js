@@ -1,124 +1,119 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page not found</title>
-    <style>
-      :root {
-        --colorRgbFacetsTeal600: 2 128 125;
-        --colorTealAction: var(--colorRgbFacetsTeal600);
-        --colorRgbFacetsNeutralLight200: 233 235 237;
-        --colorHr: var(--colorRgbFacetsNeutralLight200);
-        --colorRgbFacetsNeutralLight700: 53 58 62;
-        --colorGrayDarkest: var(--colorRgbFacetsNeutralLight700);
-        --colorGrayLighter: var(--colorRgbFacetsNeutralLight200);
-        --colorText: var(--colorGrayDarkest);
-        --effectShadowLightShallow: 0 1px 10px 0 rgb(53 58 62 / 6%),
-          0 2px 4px 0 rgb(53 58 62 / 8%);
-        --colorRgbFacetsNeutralDark900: 6 11 16;
-      }
-      body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
-          "Segoe UI Emoji", "Segoe UI Symbol";
-        background: white;
-        overflow: hidden;
-        margin: 0;
-        padding: 0;
-        line-height: 1.5;
-        color: rgb(var(--colorText));
-      }
+/**
+ * Neosocle — Gestion consentement cookies (conforme CNIL / ePrivacy)
+ * GA4 chargé UNIQUEMENT après acceptation explicite
+ */
+(function () {
+  const CONSENT_KEY = 'neo_cookie_consent';
+  const GA_ID = 'G-RV2ELNWW4X';
 
-      @media (prefers-color-scheme: dark) {
-        body {
-          background: rgb(var(--colorRgbFacetsNeutralDark900));
-        }
-      }
+  /* --- Charger GA4 --- */
+  function loadGA() {
+    if (window._gaLoaded) return;
+    window._gaLoaded = true;
+    var s = document.createElement('script');
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    s.async = true;
+    document.head.appendChild(s);
+    s.onload = function () {
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', GA_ID, { anonymize_ip: true });
+    };
+  }
 
-      h1 {
-        margin: 0;
-        font-size: 1.375rem;
-        line-height: 1;
-      }
+  /* --- Vérifier consentement existant --- */
+  var consent = '';
+  try { consent = localStorage.getItem(CONSENT_KEY) || ''; } catch (e) {}
 
-      h1 + p {
-        margin-top: 8px;
-      }
+  if (consent === 'accepted') { loadGA(); return; }
+  if (consent === 'refused') { return; }
 
-      .main {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        width: 100vw;
-      }
+  /* --- Afficher le banner --- */
+  function showBanner() {
+    var el = document.createElement('div');
+    el.id = 'neo-cookie-banner';
+    el.setAttribute('role', 'dialog');
+    el.setAttribute('aria-label', 'Gestion des cookies');
+    el.innerHTML = [
+      '<div class="neo-cb-inner">',
+        '<div class="neo-cb-text">',
+          '<span class="neo-cb-icon">🍪</span>',
+          '<div>',
+            '<strong>Ce site utilise des cookies</strong>',
+            '<p>Nous utilisons des cookies pour mesurer l\'audience et améliorer notre site.',
+            ' <a href="/cookies">En savoir plus</a></p>',
+          '</div>',
+        '</div>',
+        '<div class="neo-cb-actions">',
+          '<button id="neo-cb-refuse" onclick="neoCookieRefuse()">Refuser</button>',
+          '<button id="neo-cb-accept" onclick="neoCookieAccept()">Accepter</button>',
+        '</div>',
+      '</div>'
+    ].join('');
 
-      .card {
-        position: relative;
-        width: 75%;
-        max-width: 364px;
-        padding: 24px;
-        background: white;
-        border-radius: 8px;
-        box-shadow: var(--effectShadowLightShallow);
-        border: 1px solid rgb(var(--colorGrayLighter));
-      }
+    var style = document.createElement('style');
+    style.textContent = [
+      '#neo-cookie-banner{',
+        'position:fixed;bottom:0;left:0;right:0;z-index:9999;',
+        'background:#1a1a2e;color:#f8f5f0;',
+        'padding:16px 24px;',
+        'box-shadow:0 -4px 24px rgba(0,0,0,.25);',
+        'font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;',
+        'font-size:14px;',
+      '}',
+      '.neo-cb-inner{',
+        'max-width:1180px;margin:0 auto;',
+        'display:flex;align-items:center;justify-content:space-between;',
+        'gap:24px;flex-wrap:wrap;',
+      '}',
+      '.neo-cb-text{display:flex;align-items:flex-start;gap:12px;flex:1;min-width:200px}',
+      '.neo-cb-icon{font-size:20px;flex-shrink:0;margin-top:2px}',
+      '.neo-cb-text strong{display:block;margin-bottom:4px;font-size:15px}',
+      '.neo-cb-text p{margin:0;opacity:.8;line-height:1.5}',
+      '.neo-cb-text a{color:#a78bfa;text-decoration:underline}',
+      '.neo-cb-actions{display:flex;gap:10px;flex-shrink:0}',
+      '#neo-cb-refuse{',
+        'padding:10px 20px;border-radius:6px;border:1px solid rgba(248,245,240,.3);',
+        'background:transparent;color:#f8f5f0;cursor:pointer;font-size:14px;font-weight:500;',
+        'transition:background .15s;',
+      '}',
+      '#neo-cb-refuse:hover{background:rgba(248,245,240,.1)}',
+      '#neo-cb-accept{',
+        'padding:10px 20px;border-radius:6px;border:none;',
+        'background:#6d28d9;color:#fff;cursor:pointer;font-size:14px;font-weight:500;',
+        'transition:background .15s;',
+      '}',
+      '#neo-cb-accept:hover{background:#7c3aed}',
+      '@media(max-width:600px){',
+        '.neo-cb-inner{flex-direction:column}',
+        '.neo-cb-actions{width:100%;justify-content:flex-end}',
+      '}'
+    ].join('');
 
-      a {
-        margin: 0;
-        font-weight: 600;
-        color: rgb(var(--colorTealAction));
-        text-decoration-skip-ink: all;
-        text-decoration-thickness: 1px;
-        text-underline-offset: 2px;
-        text-decoration-color: rgb(var(--colorTealAction) / 0.5);
-        transition: text-decoration-color 0.15s ease-in-out;
-      }
+    document.head.appendChild(style);
+    document.body.appendChild(el);
+  }
 
-      a:hover,
-      a:focus-visible {
-        text-decoration-color: rgb(var(--colorTealAction));
-      }
+  /* --- Actions boutons --- */
+  window.neoCookieAccept = function () {
+    try { localStorage.setItem(CONSENT_KEY, 'accepted'); } catch (e) {}
+    var b = document.getElementById('neo-cookie-banner');
+    if (b) b.remove();
+    loadGA();
+  };
 
-      p:last-of-type {
-        margin-bottom: 0;
-      }
+  window.neoCookieRefuse = function () {
+    try { localStorage.setItem(CONSENT_KEY, 'refused'); } catch (e) {}
+    var b = document.getElementById('neo-cookie-banner');
+    if (b) b.remove();
+  };
 
-      hr {
-        border: 0;
-        height: 1px;
-        background: rgb(var(--colorHr));
-        margin-top: 16px;
-        margin-bottom: 16px;
-      }
-
-      .your-site {
-        font-size: 0.875rem;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="main">
-      <div class="card">
-        <h1>Page not found</h1>
-        <p>
-          Looks like you’ve followed a broken link or entered a URL that doesn’t
-          exist on this site.
-        </p>
-        <hr />
-        <p class="your-site">
-          If this is your site, and you weren’t expecting a 404 for this path,
-          please visit Netlify’s
-          <a
-            href="https://answers.netlify.com/t/support-guide-i-ve-deployed-my-site-but-i-still-see-page-not-found/125?utm_source=404page&utm_campaign=community_tracking"
-            >“page not found” support guide</a
-          >
-          for troubleshooting tips.
-        </p>
-      </div>
-    </div>
-  </body>
-</html>
+  /* --- Attendre que le DOM soit prêt --- */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', showBanner);
+  } else {
+    showBanner();
+  }
+})();

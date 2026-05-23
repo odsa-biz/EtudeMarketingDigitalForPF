@@ -53,7 +53,7 @@
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(0,0,0,.06);
   }
-  .nav-logo { text-decoration: none; color: inherit; font-size: 1.1rem; font-weight: 700; letter-spacing: -.01em; }
+  .nav-logo { font-size: 1.1rem; font-weight: 700; letter-spacing: -.01em; }
   .nav-logo span { color: var(--bleu); }
   .nav-cta {
     background: var(--bleu); color: var(--blanc);
@@ -315,14 +315,11 @@
     .forqui-grid { grid-template-columns: 1fr; }
     nav { padding: 1rem 5vw; }
   }
+
+
 </style>
 <meta name="description" content="Étude marketing stratégique en 48h à 897€ — audit visibilité Google et IA, radiographie concurrentielle et plan d'action 90 jours. Pour PME, TPE, artisans et indépendants. 3 places disponibles.">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RV2ELNWW4X"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-RV2ELNWW4X');</script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RV2ELNWW4X"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-RV2ELNWW4X');</script>
-
-  <!-- ✅ META DESCRIPTION -->
+<!-- ✅ META DESCRIPTION -->
   <meta name="description" content="Étude marketing stratégique livrée en 48h à 897€. Audit visibilité 360°, analyse concurrents, mots-clés clients, plan d'action 90 jours. Pour PME, TPE, artisans.">
 
   <!-- ✅ CANONICAL -->
@@ -358,7 +355,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="/" class="nav-logo" aria-label="Retour à l'accueil Neosocle"><span>NEO</span>SOCLE</a>
+  <div class="nav-logo"><span>NEO</span>SOCLE</div>
   <a href="https://www.jotform.com/app/261125096114348" class="nav-cta">Réserver mon étude →</a>
 </nav>
 
@@ -599,16 +596,49 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo"><span>NEO</span>SOCLE · Solutions IA & Automation</div>
-  <div><a href="https://www.instagram.com/neosocle" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;color:inherit;text-decoration:none">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
-  @neosocle
-</a>
-·
-<a href="https://wa.me/33771037019" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;color:inherit;text-decoration:none">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.37 5.07L2 22l5.07-1.35A9.96 9.96 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2z" stroke="currentColor" stroke-width="2"/><path d="M8.5 8.5s.5-1 2 0l1 1.5s.5 1-.5 2l-.5.5s1 2 3 3l.5-.5c1-1 2-.5 2-.5l1.5 1c1 1.5 0 2 0 2s-1 1.5-3 1C10 17.5 6.5 14 6.5 14c-.5-2 1-3 2-5.5z" stroke="currentColor" stroke-width="1.5"/></svg>
-  WhatsApp
-</a></div>
+  <div class="footer-inner">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <h4>
+          <img src="/assets/NS_icon_white.png" alt="Logo Neosocle" width="30" height="30" loading="lazy">
+          Neosocle
+        </h4>
+        <div class="footer-tagline">Solutions IA &amp; Automation</div>
+        <p>Votre croissance digitale, analysée. Pour les PME, TPE, artisans et indépendants en France.</p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="https://form.jotform.com/261125230398049" target="_blank" rel="noopener">Diagnostic gratuit</a></li>
+          <li><a href="/etude">Étude Marketing 897€</a></li>
+          <li><a href="https://form.jotform.com/261174531559056" target="_blank" rel="noopener">Démarrer un projet d'automatisation</a></li>
+          <li><a href="/aides">13 aides publiques</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Ressources</h5>
+        <ul>
+          <li><a href="/blog/ai-act-2026-pme-tpe-artisans">Guide AI Act 2026</a></li>
+          <li><a href="/blog/ia-rentable-entreprise">IA rentable</a></li>
+          <li><a href="/blog/preparer-donnees-ia-pme-tpe-artisans">Préparer ses données</a></li>
+          <li><a href="/blog" style="color:var(--blanc);font-weight:500">Tous les articles →</a></li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Neosocle. Tous droits réservés.</div>
+      <div class="legal">
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/cgv">CGV</a>
+        <a href="/confidentialite">Confidentialité</a>
+        <a href="/cookies">Cookies</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <script>
