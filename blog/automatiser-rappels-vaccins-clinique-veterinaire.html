@@ -106,16 +106,10 @@ body { font-family:'Poppins', sans-serif; background:var(--bg); color:var(--noir
 @keyframes lineGrow { from{transform:scaleX(0);}to{transform:scaleX(1);} }
 @keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(0,90,255,.4);}50%{box-shadow:0 0 0 12px rgba(0,90,255,0);} }
 
-nav {
-  position:fixed; top:0; left:0; right:0; z-index:100;
-  display:flex; align-items:center; justify-content:space-between;
-  padding:1.2rem 6vw;
-  background:rgba(248,248,248,.95); backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(0,0,0,.06);
-}
-.nav-logo { font-size:1.1rem; font-weight:700; text-decoration:none; color:var(--noir); }
-.nav-logo span { color:var(--bleu); }
-.nav-cta { background:var(--bleu); color:var(--blanc); font-size:.8rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:.6rem 1.4rem; border-radius:6px; text-decoration:none; animation:pulse 2.5s infinite; }
+/* old nav rule removed */
+
+
+
 .nav-cta:hover { background:#0040cc; }
 
 .article-header {
