@@ -38,7 +38,10 @@ body{font-family:'DM Sans',-apple-system,sans-serif;background:var(--blanc);colo
 .nav-dropdown-btn:hover{color:var(--accent)}
 .nav-dropdown-btn::after{content:'▾';font-size:10px;opacity:.6}
 .nav-dropdown-menu{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(-4px);background:#fff;border:1px solid var(--gris-clair);border-radius:12px;padding:8px;min-width:220px;box-shadow:0 8px 32px rgba(0,0,0,.12);opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;z-index:200}
-.nav-dropdown:hover .nav-dropdown-menu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.nav-dropdown.open .nav-dropdown-menu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+  .nav-dropdown-menu::before{content:'';position:absolute;top:-10px;left:0;right:0;height:10px}
+  .nav-dropdown-btn::after{content:'▾';font-size:10px;opacity:.6;transition:transform .15s}
+  .nav-dropdown.open .nav-dropdown-btn::after{transform:rotate(180deg)}
 .nav-dropdown-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;text-decoration:none;color:var(--noir);font-size:13px;font-weight:500;transition:background .1s}
 .nav-dropdown-item:hover{background:var(--gris-tres-clair)}
 .nav-dropdown-item .dd-icon{font-size:16px;width:24px;text-align:center}
@@ -294,5 +297,25 @@ footer{background:var(--noir);color:rgba(248,245,240,.6);padding:56px 32px 26px;
   </div>
 </footer>
 <script src="/cookies-banner.js" defer></script>
+<script>
+(function(){
+  var dropdowns = document.querySelectorAll('.nav-dropdown');
+  dropdowns.forEach(function(dd){
+    var btn = dd.querySelector('.nav-dropdown-btn');
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var isOpen = dd.classList.contains('open');
+      dropdowns.forEach(function(d){ d.classList.remove('open'); });
+      if(!isOpen) dd.classList.add('open');
+    });
+  });
+  document.addEventListener('click', function(){
+    dropdowns.forEach(function(d){ d.classList.remove('open'); });
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape') dropdowns.forEach(function(d){ d.classList.remove('open'); });
+  });
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<title>Blog — Automatisation, IA et financement pour TPE, PME, artisans | Neosocle</title>
+<meta name="description" content="Articles pratiques sur l'automatisation no-code, l'IA appliquée aux TPE/PME, les cas clients et les aides publiques pour financer vos projets en France.">
+<link rel="canonical" href="https://neosocle.fr/blog">
+<link rel="icon" type="image/png" sizes="64x64" href="/assets/NS_favicon_64.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Blog Neosocle — Automatisation IA pour TPE, PME, artisans">
+<meta property="og:description" content="Articles pratiques sur l'automatisation, les cas clients et les aides publiques pour financer vos projets IA en France.">
+<meta property="og:url" content="https://neosocle.fr/blog">
+<meta property="og:image" content="https://neosocle.fr/assets/NS_banner_1500.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Blog","name":"Blog Neosocle","description":"Automatisation no-code, IA et financement pour TPE, PME et artisans en France.","url":"https://neosocle.fr/blog","publisher":{"@type":"Organization","name":"Neosocle","url":"https://neosocle.fr"},"inLanguage":"fr-FR"}
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RV2ELNWW4X"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-RV2ELNWW4X');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--noir:#0e0e0e;--blanc:#f8f5f0;--accent:#1a3cff;--accent-dark:#0a2bcc;--accent-light:#dde4ff;--accent-pale:#a5b8ff;--vert:#1a7a4a;--vert-light:#d4f0e3;--gris:#5c5c5c;--gris-clair:#ebebeb;--gris-tres-clair:#f4f2ed}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',-apple-system,sans-serif;background:var(--blanc);color:var(--noir);font-size:17px;line-height:1.6;overflow-x:hidden}
+.nav{position:sticky;top:0;z-index:100;background:rgba(248,245,240,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(14,14,14,.08)}
+.nav-inner{max-width:1180px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:32px}
+.nav-logo{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.02em;color:var(--noir);text-decoration:none;display:flex;align-items:center;gap:10px}
+.nav-logo img{width:32px;height:32px}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-size:14px;color:var(--noir);text-decoration:none;font-weight:400;transition:color .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--accent)}
+.nav-links a.active{font-weight:600}
+.nav-cta{background:var(--accent)!important;color:#fff!important;padding:11px 20px;border-radius:8px;font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:700;text-decoration:none;white-space:nowrap}
+.nav-cta:hover{background:var(--accent-dark)!important;color:#fff!important}
+.nav-dropdown{position:relative}
+.nav-dropdown-btn{font-size:14px;color:var(--noir);font-weight:400;cursor:pointer;background:none;border:none;padding:0;display:flex;align-items:center;gap:4px;font-family:'DM Sans',-apple-system,sans-serif}
+.nav-dropdown-btn:hover,.nav-dropdown.open .nav-dropdown-btn{color:var(--accent)}
+.nav-dropdown-btn::after{content:'▾';font-size:10px;opacity:.6;transition:transform .15s}
+.nav-dropdown.open .nav-dropdown-btn::after{transform:rotate(180deg)}
+.nav-dropdown-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(-6px);background:#fff;border:1px solid var(--gris-clair);border-radius:12px;padding:8px;min-width:240px;box-shadow:0 8px 32px rgba(0,0,0,.12);opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;z-index:200;margin-top:4px}
+.nav-dropdown-menu::before{content:'';position:absolute;top:-10px;left:0;right:0;height:10px}
+.nav-dropdown.open .nav-dropdown-menu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.nav-dropdown-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;text-decoration:none;color:var(--noir);font-size:13px;font-weight:500;transition:background .1s}
+.nav-dropdown-item:hover{background:var(--gris-tres-clair)}
+.nav-dropdown-item .dd-icon{font-size:16px;width:24px;text-align:center}
+.nav-dropdown-item .dd-text{line-height:1.3}
+.nav-dropdown-item .dd-sub{font-size:11px;color:var(--gris);font-weight:400;display:block}
+@media(max-width:780px){.nav-links a:not(.nav-cta){display:none}.nav-inner{padding:12px 20px}.nav-logo span{display:none}}
+/* Hero */
+.blog-hero{padding:60px 32px 52px;border-bottom:1px solid var(--gris-clair)}
+.blog-hero-inner{max-width:1180px;margin:0 auto}
+.blog-hero-tag{display:inline-block;background:var(--accent-light);color:var(--accent);font-family:'Bricolage Grotesque',sans-serif;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border-radius:6px;margin-bottom:20px}
+.blog-hero h1{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(32px,4.5vw,52px);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-bottom:14px}
+.blog-hero p{font-size:18px;font-weight:300;color:var(--gris);max-width:560px}
+.blog-stats{display:flex;gap:32px;flex-wrap:wrap;margin-top:28px}
+.blog-stat strong{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:28px;font-weight:800}
+.blog-stat span{font-size:13px;color:var(--gris)}
+/* Grid */
+.blog-wrap{max-width:1180px;margin:0 auto;padding:44px 32px}
+@media(max-width:600px){.blog-wrap{padding:28px 16px}}
+.blog-section-title{font-family:'Bricolage Grotesque',sans-serif;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gris);margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--gris-clair)}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:48px}
+@media(max-width:900px){.blog-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.blog-grid{grid-template-columns:1fr}}
+/* Cards */
+.blog-card{background:#fff;border:1.5px solid var(--gris-clair);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:10px;text-decoration:none;color:var(--noir);transition:transform .15s,border-color .15s,box-shadow .15s}
+.blog-card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 8px 24px rgba(26,60,255,.09)}
+.blog-card-top{display:flex;align-items:center;gap:8px}
+.blog-tag{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:3px 10px;border-radius:4px;white-space:nowrap}
+.tag-vert{background:var(--vert-light);color:var(--vert)}
+.tag-blue{background:var(--accent-light);color:var(--accent)}
+.tag-orange{background:#fff0e6;color:#c45000}
+.new-badge{font-size:10px;font-weight:700;background:var(--vert);color:#fff;padding:2px 8px;border-radius:4px;letter-spacing:.06em;text-transform:uppercase}
+.blog-card h2{font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:700;line-height:1.3;flex-grow:1}
+.blog-card p{font-size:13px;color:var(--gris);line-height:1.55}
+.blog-card-footer{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--gris);padding-top:10px;border-top:1px solid var(--gris-clair);margin-top:auto}
+.blog-read-more{font-weight:600;color:var(--accent)}
+/* CTA */
+.blog-cta{background:var(--noir);padding:64px 32px;text-align:center}
+.blog-cta-inner{max-width:560px;margin:0 auto}
+.blog-cta h2{font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(24px,3.5vw,36px);font-weight:800;color:#f8f5f0;margin-bottom:12px;line-height:1.15}
+.blog-cta p{font-size:16px;color:rgba(248,245,240,.65);margin-bottom:24px}
+.btn-p{background:var(--accent);color:#fff!important;font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:700;padding:13px 24px;border-radius:8px;text-decoration:none;display:inline-block}
+.btn-p:hover{background:var(--accent-dark)}
+/* Footer */
+footer{background:var(--noir);color:rgba(248,245,240,.6);padding:56px 32px 26px;border-top:1px solid rgba(248,245,240,.08)}
+.footer-inner{max-width:1180px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:28px;margin-bottom:44px}
+@media(max-width:780px){.footer-grid{grid-template-columns:1fr 1fr;gap:20px}}
+.footer-brand h4{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:800;color:#f8f5f0;margin-bottom:6px;display:flex;align-items:center;gap:10px}
+.footer-brand h4 img{width:26px;height:26px}
+.footer-brand .footer-tagline{font-size:11px;color:var(--accent-pale);font-weight:500;margin-bottom:12px;letter-spacing:.04em;font-family:'Bricolage Grotesque',sans-serif}
+.footer-brand p{font-size:13px;line-height:1.6;color:rgba(248,245,240,.5);max-width:260px}
+.footer-col h5{font-family:'Bricolage Grotesque',sans-serif;font-size:11px;font-weight:600;color:#f8f5f0;margin-bottom:12px;letter-spacing:.07em;text-transform:uppercase}
+.footer-col ul{list-style:none}
+.footer-col li{padding:3px 0}
+.footer-col a{color:rgba(248,245,240,.5);text-decoration:none;font-size:13px;transition:color .15s}
+.footer-col a:hover{color:#f8f5f0}
+.footer-bottom{border-top:1px solid rgba(248,245,240,.08);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:12px;color:rgba(248,245,240,.3)}
+.footer-bottom .legal{display:flex;gap:16px}
+.footer-bottom .legal a{color:rgba(248,245,240,.3);text-decoration:none}
+.footer-bottom .legal a:hover{color:#f8f5f0}
+@media(max-width:600px){.blog-hero,.blog-cta{padding-left:18px;padding-right:18px}}
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/" aria-label="Neosocle — Accueil">
+      <img src="/assets/NS_icon_dark.png" alt="Logo Neosocle" width="32" height="32" loading="eager">
+      <span>Neosocle</span>
+    </a>
+    <div class="nav-links">
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-btn">Secteurs</button>
+        <div class="nav-dropdown-menu">
+          <a class="nav-dropdown-item" href="/veterinaires"><span class="dd-icon">&#x1F43E;</span><span class="dd-text">Professionnels de santé<span class="dd-sub">Cliniques vétérinaires</span></span></a>
+          <a class="nav-dropdown-item" href="/comptables"><span class="dd-icon">&#x1F9FE;</span><span class="dd-text">Cabinets de gestion<span class="dd-sub">Experts-comptables TPE</span></span></a>
+          <a class="nav-dropdown-item" href="/opticiens"><span class="dd-icon">&#x1F453;</span><span class="dd-text">Commerçants indépendants<span class="dd-sub">Opticiens &amp; audioprothésistes</span></span></a>
+        </div>
+      </div>
+      <a href="/#etude">Étude</a>
+      <a href="/#automatisation">Automatisation</a>
+      <a href="/aides">Aides</a>
+      <a href="/blog" class="active">Blog</a>
+      <a class="nav-cta" href="https://form.jotform.com/261125230398049" target="_blank" rel="noopener">Diagnostic gratuit →</a>
+    </div>
+  </div>
+</nav>
+
+<header class="blog-hero">
+  <div class="blog-hero-inner">
+    <div class="blog-hero-tag">Ressources Neosocle</div>
+    <h1>Automatisation, IA et financement<br>pour votre entreprise.</h1>
+    <p>Cas pratiques, tutoriels no-code, aides publiques et stratégies concrètes pour TPE, PME et artisans en France.</p>
+    <div class="blog-stats">
+      <div class="blog-stat"><strong>11</strong><span>Articles disponibles</span></div>
+      <div class="blog-stat"><strong>4</strong><span>Secteurs couverts</span></div>
+      <div class="blog-stat"><strong>0 €</strong><span>Accès libre</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="blog-wrap">
+  <div class="blog-section-title">Financement &amp; aides publiques — Récents</div>
+  <div class="blog-grid">
+      <a class="blog-card" href="/blog/aides-financement-ia-tpe-artisan">
+        <div class="blog-card-top">
+          <span class="blog-tag tag-orange">Financement</span>
+          <span class="new-badge">Nouveau</span>
+        </div>
+        <h2>TPE et artisans : aides publiques pour financer votre projet IA</h2>
+        <p>Bpifrance, OPCO, FNE, Chèques régionaux, FSE+ : tous les dispositifs pour financer 50 à 100 % d'un projet d'automatisation, quelle que soit votre activité.</p>
+        <div class="blog-card-footer">
+          <span>&#9679; 7 min de lecture</span>
+          <span class="blog-read-more">Lire →</span>
+        </div>
+      </a>
+      <a class="blog-card" href="/blog/aides-financement-automatisation-veterinaire">
+        <div class="blog-card-top">
+          <span class="blog-tag tag-vert">Financement</span>
+          <span class="new-badge">Nouveau</span>
+        </div>
+        <h2>Cliniques vétérinaires : 5 aides pour financer vos automatisations</h2>
+        <p>OPCO Santé, Bpifrance, FNE-Formation, Chèques régionaux : les dispositifs pour financer les rappels vaccins et relances automatiques sans avancer l'argent.</p>
+        <div class="blog-card-footer">
+          <span>&#9679; 6 min de lecture</span>
+          <span class="blog-read-more">Lire →</span>
+        </div>
+      </a>
+      <a class="blog-card" href="/blog/aides-financement-automatisation-cabinet-comptable">
+        <div class="blog-card-top">
+          <span class="blog-tag tag-blue">Financement</span>
+          <span class="new-badge">Nouveau</span>
+        </div>
+        <h2>Cabinet comptable : 4 aides pour financer la collecte automatique de documents</h2>
+        <p>OPCO Atlas, Bpifrance, FNE, Chèques régionaux : les dispositifs pour financer vos workflows de collecte sans avancer l'argent.</p>
+        <div class="blog-card-footer">
+          <span>&#9679; 5 min de lecture</span>
+          <span class="blog-read-more">Lire →</span>
+        </div>
+      </a>
+      <a class="blog-card" href="/blog/aides-financement-automatisation-opticien">
+        <div class="blog-card-top">
+          <span class="blog-tag tag-vert">Financement</span>
+          <span class="new-badge">Nouveau</span>
+        </div>
+        <h2>Opticien indépendant : 5 aides pour automatiser vos rappels clients</h2>
+        <p>OPCO Commerce, Chèques régionaux, Bpifrance : les dispositifs pour financer les rappels contrôle de vue et fidélisation sans avancer l'argent.</p>
+        <div class="blog-card-footer">
+          <span>&#9679; 5 min de lecture</span>
+          <span class="blog-read-more">Lire →</span>
+        </div>
+      </a>
+  </div>
+
+  <div class="blog-section-title">Automatisation &amp; cas clients</div>
+  <div class="blog-grid">
+      <a class="blog-card" href="/blog/automatiser-rappels-vaccins-clinique-veterinaire">
+        <div class="blog-card-top">
+          <span class="blog-tag tag-vert">Automatisation</span>
+          
+        </div>
+        <h2>Automatiser les rappels vaccinaux en clinique vétérinaire avec Make</h2>
+        <p>Comment une clinique vétérinaire économise 4h/semaine en automatisant ses rappels vaccins, confirmations de RDV et relances clients avec Make et Airtable.</p>
+        <div class="blog-card-footer">
+          <span>&#9679; 8 min de lecture</span>
+          <span class="blog-read-more">Lire →</span>
+        </div>
+      </a>
+      <a class="blog-card" href="/blog/automatiser-collecte-documents-cabinet-comptable">
+        <div class="blog-card-top">
+          <span class="blog-tag tag-blue">Automatisation</span>
+          
+        </div>
+        <h2>Collecte de documents automatisée pour cabinet comptable : Make + Airtable</h2>
+        <p>Zéro relance manuelle : comment connecter Jotform, Airtable et Make pour collecter les pièces comptables automatiquement avec rappels J+3 et J+7.</p>
+        <div class="blog-card-footer">
+          <span>&#9679; 7 min de lecture</span>
+          <span class="blog-read-more">Lire →</span>
+        </div>
+      </a>
+      <a class="blog-card" href="/blog/rappel-controle-vue-automatique-opticien">
+        <div class="blog-card-top">
+          <span class="blog-tag tag-vert">Automatisation</span>
+          
+        </div>
+        <h2>Opticien : automatiser les rappels contrôle de vue et récupérer 38 % de clients inactifs</h2>
+        <p>Séquence de réactivation automatique pour opticiens indépendants : email + SMS + suivi Airtable. Résultat : 38 % de clients inactifs recontactés et revenus.</p>
+        <div class="blog-card-footer">
+          <span>&#9679; 6 min de lecture</span>
+          <span class="blog-read-more">Lire →</span>
+        </div>
+      </a>
+      <a class="blog-card" href="/blog/cas-client-plombier-automatisation-devis">
+        <div class="blog-card-top">
+          <span class="blog-tag tag-orange">Cas client</span>
+          
+        </div>
+        <h2>Cas client : un plombier automatise ses devis et gagne 5h par semaine</h2>
+        <p>De la demande de devis au suivi client : comment un artisan plombier a structuré son workflow avec Jotform + Make + Notion et récupéré 5h par semaine.</p>
+        <div class="blog-card-footer">
+          <span>&#9679; 5 min de lecture</span>
+          <span class="blog-read-more">Lire →</span>
+        </div>
+      </a>
+      <a class="blog-card" href="/blog/ia-rentable-entreprise">
+        <div class="blog-card-top">
+          <span class="blog-tag tag-blue">Stratégie IA</span>
+          
+        </div>
+        <h2>IA rentable en entreprise : passer des essais aux résultats</h2>
+        <p>Pourquoi 70 % des projets IA en PME échouent à passer du POC au déploiement, et les 3 conditions pour que votre projet génère un ROI mesurable.</p>
+        <div class="blog-card-footer">
+          <span>&#9679; 6 min de lecture</span>
+          <span class="blog-read-more">Lire →</span>
+        </div>
+      </a>
+      <a class="blog-card" href="/blog/preparer-donnees-ia-pme-tpe-artisans">
+        <div class="blog-card-top">
+          <span class="blog-tag tag-blue">Stratégie IA</span>
+          
+        </div>
+        <h2>Préparer ses données pour l'IA : guide PME, TPE et artisans</h2>
+        <p>Avant d'investir dans un outil IA, vérifiez si vos données sont prêtes. Checklist pratique en 3 étapes pour les structures sans DSI ni data scientist.</p>
+        <div class="blog-card-footer">
+          <span>&#9679; 5 min de lecture</span>
+          <span class="blog-read-more">Lire →</span>
+        </div>
+      </a>
+      <a class="blog-card" href="/blog/ai-act-2026-pme-tpe-artisans">
+        <div class="blog-card-top">
+          <span class="blog-tag tag-orange">Réglementation</span>
+          
+        </div>
+        <h2>AI Act 2026 — guide de conformité PME, TPE, artisans en 3 étapes</h2>
+        <p>Ce que la réglementation européenne sur l'IA change concrètement pour les petites structures françaises à partir de 2026, et comment se mettre en conformité.</p>
+        <div class="blog-card-footer">
+          <span>&#9679; 7 min de lecture</span>
+          <span class="blog-read-more">Lire →</span>
+        </div>
+      </a>
+  </div>
+</main>
+
+<section class="blog-cta">
+  <div class="blog-cta-inner">
+    <h2>Un projet en tête ? Parlons-en.</h2>
+    <p>30 minutes pour identifier ce qui peut être automatisé et financé dans votre structure.</p>
+    <a class="btn-p" href="https://form.jotform.com/261125230398049" target="_blank" rel="noopener">Diagnostic gratuit →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h4><img src="/assets/NS_icon_white.png" alt="Logo Neosocle" width="28" height="28" loading="lazy">Neosocle</h4>
+        <div class="footer-tagline">Solutions IA &amp; Automation</div>
+        <p>Votre croissance digitale, analysée. Pour les PME, TPE, artisans et indépendants en France.</p>
+      </div>
+      <div class="footer-col"><h5>Services</h5><ul>
+        <li><a href="https://form.jotform.com/261125230398049" target="_blank" rel="noopener">Diagnostic gratuit</a></li>
+        <li><a href="/etude">Étude Marketing 897€</a></li>
+        <li><a href="/aides">13 aides publiques</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Secteurs</h5><ul>
+        <li><a href="/veterinaires">&#x1F43E; Professionnels de santé</a></li>
+        <li><a href="/comptables">&#x1F9FE; Cabinets de gestion</a></li>
+        <li><a href="/opticiens">&#x1F453; Commerçants indépendants</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Ressources</h5><ul>
+        <li><a href="/aides">13 aides publiques IA</a></li>
+        <li><a href="/blog/aides-financement-ia-tpe-artisan">Financer son projet IA</a></li>
+        <li><a href="/blog" style="color:#f8f5f0;font-weight:500">Tous les articles →</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Neosocle. Tous droits réservés.</div>
+      <div class="legal">
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/cgv">CGV</a>
+        <a href="/confidentialite">Confidentialité</a>
+        <a href="/cookies">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="/cookies-banner.js" defer></script>
+<script>
+(function(){
+  var dropdowns = document.querySelectorAll('.nav-dropdown');
+  dropdowns.forEach(function(dd){
+    var btn = dd.querySelector('.nav-dropdown-btn');
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var isOpen = dd.classList.contains('open');
+      dropdowns.forEach(function(d){ d.classList.remove('open'); });
+      if(!isOpen) dd.classList.add('open');
+    });
+  });
+  document.addEventListener('click', function(){ dropdowns.forEach(function(d){ d.classList.remove('open'); }); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') dropdowns.forEach(function(d){ d.classList.remove('open'); }); });
+})();
+</script>
+</body>
+</html>
