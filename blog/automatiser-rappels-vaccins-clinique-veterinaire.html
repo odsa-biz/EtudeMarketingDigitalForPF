@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Automatiser les rappels vaccinaux en clinique vétérinaire avec Make — Neosocle</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 <meta name="description" content="Comment automatiser les rappels vaccinaux (BCH, RCP, leishmaniose) dans une clinique vétérinaire avec Make et Vetup. Votre ASV regagne 20h/mois. Guide pratique 2026.">
 <link rel="canonical" href="https://neosocle.fr/blog/automatiser-rappels-vaccins-clinique-veterinaire">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -264,14 +264,38 @@ footer { background:var(--noir); color:rgba(255,255,255,.5); padding:3rem 6vw 2r
   .article-header, .article-body { padding-left:5vw; padding-right:5vw; }
   .stats-row { grid-template-columns:repeat(2, 1fr); }
 }
+  /* NAV SITE PRINCIPAL */
+  .site-nav{position:sticky;top:0;z-index:100;background:rgba(248,245,240,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(14,14,14,.08)}
+  .site-nav-inner{max-width:1180px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:32px}
+  .site-nav-logo{font-family:'Bricolage Grotesque','Poppins',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.02em;color:#0e0e0e;text-decoration:none;display:flex;align-items:center;gap:10px}
+  .site-nav-logo img{width:32px;height:32px;display:block;border-radius:6px}
+  .site-nav-links{display:flex;gap:24px;align-items:center}
+  .site-nav-links a{font-size:14px;color:#0e0e0e;text-decoration:none;font-weight:400;transition:color .15s}
+  .site-nav-links a:hover{color:#1a3cff}
+  .site-nav-cta{background:#1a3cff!important;color:#ffffff!important;padding:10px 18px;border-radius:8px;font-family:'Bricolage Grotesque','Poppins',sans-serif;font-size:14px;font-weight:700;text-decoration:none;transition:background .15s;white-space:nowrap;box-shadow:0 1px 3px rgba(26,60,255,.25)}
+  .site-nav-cta:hover{background:#0a2bcc!important}
+  @media(max-width:780px){.site-nav-links a:not(.site-nav-cta){display:none}.site-nav-inner{padding:12px 20px}}
+
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="https://neosocle.fr" class="nav-logo"><span>NEO</span>SOCLE</a>
-  <a href="https://form.jotform.com/261125230398049" class="nav-cta">Diagnostic gratuit →</a>
+<nav class="site-nav" aria-label="Navigation principale">
+  <div class="site-nav-inner">
+    <a class="site-nav-logo" href="https://neosocle.fr" aria-label="Neosocle - Accueil">
+      <img src="/assets/NS_icon_dark.png" alt="Logo Neosocle" width="32" height="32" loading="eager">
+      <span>Neosocle</span>
+    </a>
+    <div class="site-nav-links">
+      <a href="https://neosocle.fr/#etude">Étude</a>
+      <a href="https://neosocle.fr/#automatisation">Automatisation</a>
+      <a href="https://neosocle.fr/#aides">Aides</a>
+      <a href="https://neosocle.fr/#blog">Blog</a>
+      <a class="site-nav-cta" href="https://form.jotform.com/261125230398049" target="_blank" rel="noopener">Diagnostic gratuit →</a>
+    </div>
+  </div>
 </nav>
+
 
 <header class="article-header">
   <nav class="breadcrumb" aria-label="Fil d'Ariane">
