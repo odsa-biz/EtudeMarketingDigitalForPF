@@ -42,6 +42,20 @@
 [[redirects]]
   from = "/blog/:slug"
   to = "/blog/:slug.html"
+
+[[redirects]]
+  from = "/veterinaires"
+  to = "/veterinaires.html"
+  status = 200
+
+[[redirects]]
+  from = "/comptables"
+  to = "/comptables.html"
+  status = 200
+
+[[redirects]]
+  from = "/opticiens"
+  to = "/opticiens.html"
   status = 200
 
 [[redirects]]

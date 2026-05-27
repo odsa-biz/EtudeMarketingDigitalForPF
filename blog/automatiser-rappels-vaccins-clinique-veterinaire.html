@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automatiser les rappels vaccinaux en clinique vétérinaire avec Make — Neosocle</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<meta name="description" content="Comment automatiser les rappels vaccinaux (BCH, RCP, leishmaniose) dans une clinique vétérinaire avec Make et Vetup. Votre ASV regagne 20h/mois. Guide pratique 2026.">
+<link rel="canonical" href="https://neosocle.fr/blog/automatiser-rappels-vaccins-clinique-veterinaire">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta property="og:title" content="Automatiser les rappels vaccinaux en clinique vétérinaire avec Make — Neosocle">
+<meta property="og:description" content="Votre ASV passe 20h/mois à rappeler les propriétaires pour les vaccins. Voici comment automatiser ça en 2 jours avec Make et Vetup.">
+<meta property="og:url" content="https://neosocle.fr/blog/automatiser-rappels-vaccins-clinique-veterinaire">
+<meta property="og:image" content="https://neosocle.fr/assets/NS_banner_1500.png">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Neosocle">
+<meta property="article:published_time" content="2026-05-27T09:00:00+02:00">
+<meta property="article:modified_time" content="2026-05-27T09:00:00+02:00">
+<meta property="article:author" content="Neosocle">
+<meta property="article:section" content="Automatisation vétérinaire">
+<meta property="article:tag" content="automatisation, vétérinaire, Make, rappels vaccins, ASV, no-code">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automatiser les rappels vaccinaux en clinique vétérinaire — Neosocle">
+<meta name="twitter:description" content="20h/mois perdues sur les rappels vaccins. Voici comment automatiser avec Make et Vetup en 2 jours.">
+<meta name="twitter:image" content="https://neosocle.fr/assets/NS_banner_1500.png">
+<meta name="theme-color" content="#0e0e0e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Automatiser les rappels vaccinaux en clinique vétérinaire avec Make : guide pratique 2026",
+      "description": "Comment automatiser les rappels de vaccination (BCH, RCP, leishmaniose) dans une clinique vétérinaire avec Make et Vetup/Veterisoft. Votre ASV regagne 20h par mois.",
+      "author": {"@type": "Organization", "name": "Neosocle", "url": "https://neosocle.fr"},
+      "publisher": {"@type": "Organization", "name": "Neosocle", "url": "https://neosocle.fr", "logo": {"@type": "ImageObject", "url": "https://neosocle.fr/assets/NS_icon_dark.png"}},
+      "datePublished": "2026-05-27",
+      "dateModified": "2026-05-27",
+      "mainEntityOfPage": {"@type": "WebPage", "@id": "https://neosocle.fr/blog/automatiser-rappels-vaccins-clinique-veterinaire"},
+      "image": "https://neosocle.fr/assets/NS_banner_1500.png",
+      "keywords": ["automatisation vétérinaire", "rappels vaccins automatiques", "Make workflow clinique", "ASV automatisation", "Vetup intégration"],
+      "about": {"@type": "Thing", "name": "Automatisation no-code pour cliniques vétérinaires"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Combien d'heures une clinique vétérinaire perd-elle sur les rappels vaccinaux ?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Une clinique vétérinaire de 3 à 6 praticiens avec 800 à 2000 animaux actifs perd en moyenne 15 à 20 heures par mois sur les rappels vaccinaux manuels réalisés par l'ASV. Ce chiffre monte à 25-30h pour les cliniques de plus grande taille."}
+        },
+        {
+          "@type": "Question",
+          "name": "Est-ce que Make est compatible avec Vetup et Veterisoft ?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Oui. Make peut s'interfacer avec Vetup et Veterisoft via export CSV automatisé ou via webhook selon la version du logiciel. Le workflow récupère les dates d'expiration des vaccins et déclenche les SMS ou emails automatiquement à J-30."}
+        },
+        {
+          "@type": "Question",
+          "name": "Quel est le coût d'une automatisation des rappels vaccinaux pour une clinique vétérinaire ?",
+          "acceptedAnswer": {"@type": "Answer", "text": "La mise en place est un forfait unique entre 1 500 et 2 500€ selon le périmètre. Dans 90% des cliniques, les outils utilisés (Make, Jotform, Brevo) restent dans leur tier gratuit, donc aucun coût mensuel récurrent. ROI typique : rentabilisé en moins de 2 mois."}
+        },
+        {
+          "@type": "Question",
+          "name": "Comment automatiser les rappels vaccins sans remplacer le logiciel vétérinaire ?",
+          "acceptedAnswer": {"@type": "Answer", "text": "On n'installe rien dans Vetup ou Veterisoft. Le workflow Make récupère un export CSV du logiciel (planifié chaque semaine), détecte les animaux avec un vaccin expirant dans 30 jours, et envoie automatiquement un SMS ou email aux propriétaires avec un lien de prise de RDV. Le logiciel vétérinaire reste intact."}
+        },
+        {
+          "@type": "Question",
+          "name": "Combien de temps faut-il pour mettre en place l'automatisation des rappels dans une clinique vétérinaire ?",
+          "acceptedAnswer": {"@type": "Answer", "text": "La configuration complète prend 2 à 3 jours ouvrés : 1 jour pour l'intégration avec le logiciel vétérinaire et les tests, 1 jour pour la configuration des messages et workflows, et 1 session de formation de l'ASV (45 minutes). Les workflows sont actifs et testés en conditions réelles avant d'être généralisés."}
+        }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "Automatiser les rappels vaccinaux dans une clinique vétérinaire avec Make",
+      "description": "Guide étape par étape pour configurer un workflow Make qui envoie automatiquement des rappels SMS aux propriétaires dont les animaux ont un vaccin expirant dans 30 jours.",
+      "totalTime": "PT3D",
+      "estimatedCost": {"@type": "MonetaryAmount", "currency": "EUR", "value": "1500"},
+      "step": [
+        {"@type": "HowToStep", "name": "Export de la base animaux depuis Vetup", "text": "Configurer un export CSV hebdomadaire automatique depuis Vetup ou Veterisoft avec les champs : numéro client, nom propriétaire, téléphone, email, nom animal, type de vaccin, date dernière injection, date expiration."},
+        {"@type": "HowToStep", "name": "Création du scénario Make", "text": "Dans Make, créer un scénario qui lit le fichier CSV, filtre les animaux dont la date d'expiration est dans 25 à 35 jours, et déclenche l'envoi d'un SMS via Brevo ou Twilio."},
+        {"@type": "HowToStep", "name": "Personnalisation des messages", "text": "Rédiger les templates de messages personnalisés avec le nom du propriétaire et de l'animal. Exemple : 'Bonjour [Prénom], Rex est dû pour son rappel BCH annuel dans 30 jours. Prenez RDV ici : [lien]'"},
+        {"@type": "HowToStep", "name": "Tests sur un échantillon", "text": "Tester le workflow sur 10 à 20 animaux réels avant généralisation. Vérifier les messages reçus, les liens de RDV, et les cas d'erreur (numéros invalides, emails manquants)."},
+        {"@type": "HowToStep", "name": "Formation de l'ASV et lancement", "text": "Former l'ASV en 45 minutes sur le suivi des workflows et la gestion des exceptions. Documenter les procédures. Lancer sur l'ensemble de la patientèle."}
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+:root {
+  --noir: #0a0a12; --bleu: #005aff; --cyan: #00e6c8;
+  --blanc: #ffffff; --gris: #6b6b80; --bg: #f8f8f8; --card: #ffffff;
+}
+html { scroll-behavior:smooth; }
+body { font-family:'Poppins', sans-serif; background:var(--bg); color:var(--noir); overflow-x:hidden; line-height:1.7; }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);} }
+@keyframes lineGrow { from{transform:scaleX(0);}to{transform:scaleX(1);} }
+@keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(0,90,255,.4);}50%{box-shadow:0 0 0 12px rgba(0,90,255,0);} }
+
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:1.2rem 6vw;
+  background:rgba(248,248,248,.95); backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+.nav-logo { font-size:1.1rem; font-weight:700; text-decoration:none; color:var(--noir); }
+.nav-logo span { color:var(--bleu); }
+.nav-cta { background:var(--bleu); color:var(--blanc); font-size:.8rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:.6rem 1.4rem; border-radius:6px; text-decoration:none; animation:pulse 2.5s infinite; }
+.nav-cta:hover { background:#0040cc; }
+
+.article-header {
+  padding:8rem 6vw 3rem;
+  max-width:760px; margin:0 auto;
+  animation:fadeUp .8s ease both;
+}
+.breadcrumb { font-size:.75rem; color:var(--gris); margin-bottom:1.5rem; }
+.breadcrumb a { color:var(--gris); text-decoration:none; }
+.breadcrumb a:hover { color:var(--bleu); }
+.breadcrumb span { margin:0 .4rem; }
+
+.article-tag {
+  display:inline-flex; align-items:center; gap:.4rem;
+  background:#e8f4ff; color:var(--bleu);
+  font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  padding:.3rem .8rem; border-radius:99px; margin-bottom:1rem;
+}
+.article-h1 {
+  font-size:clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight:900; letter-spacing:-.03em; line-height:1.1;
+  margin-bottom:1.2rem; color:var(--noir);
+}
+.article-meta {
+  display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap;
+  font-size:.78rem; color:var(--gris); margin-bottom:2rem;
+}
+.article-meta strong { color:var(--noir); }
+
+/* RÉSUMÉ GEO - Citation clé pour LLMs */
+.article-summary {
+  background:linear-gradient(135deg, #0a0a12 0%, #12122a 100%);
+  color:var(--blanc); border-radius:14px; padding:1.8rem 2rem;
+  margin-bottom:2.5rem; border-left:4px solid var(--bleu);
+}
+.article-summary h2 {
+  font-size:.7rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--bleu); margin-bottom:.8rem;
+}
+.article-summary p { font-size:.95rem; line-height:1.7; color:rgba(255,255,255,.85); }
+.article-summary p + p { margin-top:.6rem; }
+
+/* CORPS DE L'ARTICLE */
+.article-body {
+  max-width:760px; margin:0 auto; padding:0 6vw 4rem;
+  font-size:.97rem; line-height:1.8;
+}
+.article-body h2 {
+  font-size:1.5rem; font-weight:800; letter-spacing:-.02em;
+  margin:3rem 0 1rem; color:var(--noir);
+  padding-top:1rem; border-top:1px solid #eee;
+}
+.article-body h3 {
+  font-size:1.1rem; font-weight:700; margin:2rem 0 .7rem; color:var(--noir);
+}
+.article-body p { margin-bottom:1.2rem; color:#2a2a3a; }
+.article-body strong { font-weight:700; color:var(--noir); }
+.article-body ul, .article-body ol { margin:1rem 0 1.5rem 1.2rem; }
+.article-body li { margin-bottom:.5rem; color:#2a2a3a; }
+
+/* ENCADRÉS */
+.callout {
+  border-radius:12px; padding:1.4rem 1.6rem; margin:2rem 0;
+  display:flex; gap:1rem; align-items:flex-start;
+}
+.callout.blue { background:#e8f4ff; border-left:4px solid var(--bleu); }
+.callout.green { background:#e8fff2; border-left:4px solid #00a651; }
+.callout.warning { background:#fff8e1; border-left:4px solid #f5a623; }
+.callout-icon { font-size:1.3rem; flex-shrink:0; margin-top:.1rem; }
+.callout-text { font-size:.88rem; line-height:1.6; color:#2a2a3a; }
+.callout-text strong { color:var(--noir); }
+
+/* WORKFLOW VISUEL */
+.workflow-box {
+  background:var(--noir); border-radius:14px; padding:1.8rem 2rem;
+  margin:2rem 0;
+}
+.workflow-box h3 { font-size:.7rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--bleu); margin-bottom:1.2rem; }
+.workflow-step {
+  display:flex; gap:1rem; align-items:flex-start; margin-bottom:1rem;
+}
+.workflow-step:last-child { margin-bottom:0; }
+.workflow-num {
+  width:28px; height:28px; border-radius:50%; background:var(--bleu);
+  color:var(--blanc); font-size:.75rem; font-weight:800;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.workflow-content { font-size:.85rem; color:rgba(255,255,255,.8); line-height:1.5; padding-top:.3rem; }
+.workflow-content strong { color:var(--blanc); }
+
+/* STATS INLINE */
+.stats-row {
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr));
+  gap:1rem; margin:2rem 0;
+}
+.stat-box {
+  background:var(--card); border-radius:12px; padding:1.2rem;
+  text-align:center; border:1px solid #eee;
+}
+.stat-box .num { font-size:1.8rem; font-weight:900; color:var(--bleu); letter-spacing:-.03em; line-height:1; }
+.stat-box .lbl { font-size:.72rem; color:var(--gris); margin-top:.3rem; line-height:1.3; }
+
+/* FAQ */
+.faq-section { background:#f2f4ff; border-radius:16px; padding:2rem; margin:3rem 0; }
+.faq-section h2 { font-size:1.2rem; font-weight:800; margin-bottom:1.5rem; border:none; padding:0; }
+.faq-item { border-bottom:1px solid #dde2ff; padding:1.2rem 0; cursor:pointer; }
+.faq-item:last-child { border-bottom:none; padding-bottom:0; }
+.faq-q { font-size:.95rem; font-weight:600; display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+.faq-icon { font-size:1.3rem; color:var(--bleu); flex-shrink:0; transition:transform .3s; }
+.faq-item.open .faq-icon { transform:rotate(45deg); }
+.faq-a { font-size:.86rem; color:var(--gris); line-height:1.7; max-height:0; overflow:hidden; transition:max-height .4s ease, padding .3s; }
+.faq-item.open .faq-a { max-height:300px; padding-top:.8rem; }
+
+/* CTA ARTICLE */
+.article-cta {
+  background:var(--noir); color:var(--blanc); border-radius:16px;
+  padding:2.5rem; text-align:center; margin:3rem 0;
+}
+.article-cta h3 { font-size:1.3rem; font-weight:800; color:var(--blanc); margin-bottom:.8rem; }
+.article-cta p { font-size:.88rem; color:rgba(255,255,255,.5); margin-bottom:1.8rem; max-width:480px; margin-left:auto; margin-right:auto; }
+.btn-primary { background:var(--bleu); color:var(--blanc); font-size:.85rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:1rem 2rem; border-radius:8px; text-decoration:none; animation:pulse 2.5s infinite; display:inline-block; }
+.btn-primary:hover { background:#0040cc; }
+.btn-note { font-size:.72rem; color:rgba(255,255,255,.3); margin-top:.8rem; display:block; }
+
+/* RELATED */
+.related { margin:3rem 0 0; }
+.related h3 { font-size:1rem; font-weight:700; margin-bottom:1.2rem; color:var(--noir); }
+.related-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1rem; }
+.related-card {
+  background:var(--card); border-radius:12px; padding:1.2rem 1.4rem;
+  border:1px solid #eee; text-decoration:none; transition:all .2s;
+}
+.related-card:hover { border-color:var(--bleu); transform:translateY(-2px); }
+.related-card .tag { font-size:.65rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--bleu); margin-bottom:.5rem; }
+.related-card h4 { font-size:.88rem; font-weight:700; color:var(--noir); line-height:1.4; }
+
+footer { background:var(--noir); color:rgba(255,255,255,.5); padding:3rem 6vw 2rem; }
+.footer-inner { max-width:1100px; margin:0 auto; }
+.footer-bottom { display:flex; align-items:center; justify-content:space-between; border-top:1px solid rgba(255,255,255,.08); padding-top:1.5rem; font-size:.76rem; flex-wrap:wrap; gap:.5rem; }
+.footer-bottom a { color:rgba(255,255,255,.4); text-decoration:none; }
+.footer-bottom a:hover { color:var(--blanc); }
+.footer-nav { display:flex; gap:1.5rem; }
+
+@media(max-width:768px) {
+  nav { padding:1rem 5vw; }
+  .article-header, .article-body { padding-left:5vw; padding-right:5vw; }
+  .stats-row { grid-template-columns:repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://neosocle.fr" class="nav-logo"><span>NEO</span>SOCLE</a>
+  <a href="https://form.jotform.com/261125230398049" class="nav-cta">Diagnostic gratuit →</a>
+</nav>
+
+<header class="article-header">
+  <nav class="breadcrumb" aria-label="Fil d'Ariane">
+    <a href="https://neosocle.fr">Accueil</a>
+    <span>›</span>
+    <a href="https://neosocle.fr/#blog">Blog</a>
+    <span>›</span>
+    <span>Rappels vaccinaux automatisés</span>
+  </nav>
+
+  <div class="article-tag">🐾 Automatisation vétérinaire</div>
+
+  <h1 class="article-h1">
+    Automatiser les rappels vaccinaux en clinique vétérinaire avec Make : guide pratique 2026
+  </h1>
+
+  <div class="article-meta">
+    <span>Par <strong>Neosocle</strong></span>
+    <span>·</span>
+    <span><time datetime="2026-05-27">27 mai 2026</time></span>
+    <span>·</span>
+    <span><strong>8 min</strong> de lecture</span>
+  </div>
+</header>
+
+<main class="article-body">
+
+  <!-- RÉSUMÉ GEO - 3 phrases citables -->
+  <div class="article-summary">
+    <h2>En bref — ce que couvre cet article</h2>
+    <p>Une clinique vétérinaire de 3 à 6 praticiens avec 800 à 2000 animaux actifs perd en moyenne <strong>15 à 20 heures par mois</strong> sur les rappels vaccinaux manuels réalisés par l'ASV. Make peut automatiser ces rappels en s'interfaçant avec Vetup, Veterisoft ou Clovis via export CSV, déclenchant des SMS personnalisés aux propriétaires 30 jours avant l'expiration du vaccin. La mise en place prend 2 à 3 jours ouvrés pour un investissement unique de 1 500 à 2 500€, sans coût mensuel récurrent dans 90% des cas.</p>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-box"><div class="num">20h</div><div class="lbl">perdues/mois sur rappels manuels (moyenne clinique 4 vétos)</div></div>
+    <div class="stat-box"><div class="num">-40%</div><div class="lbl">de no-show avec rappel SMS J-1 automatisé</div></div>
+    <div class="stat-box"><div class="num">+80</div><div class="lbl">avis Google/an avec demande post-consultation automatisée</div></div>
+    <div class="stat-box"><div class="num">2-3j</div><div class="lbl">pour configurer et former l'ASV</div></div>
+  </div>
+
+  <h2>Pourquoi les rappels vaccinaux sont-ils encore manuels dans la plupart des cliniques ?</h2>
+
+  <p>Vetup, Veterisoft, Clovis, Isyvet — ces logiciels gèrent excellemment les dossiers médicaux, la facturation et le stock de médicaments. Mais sur la <strong>communication sortante automatisée</strong>, ils ont tous la même lacune : ils stockent les dates d'expiration des vaccins, mais n'envoient pas de SMS aux propriétaires.</p>
+
+  <p>Le résultat est systématique : c'est l'ASV qui prend le relais. Elle exporte la liste des animaux dont les vaccins expirent ce mois-ci, et commence sa tournée d'appels. Pour une clinique avec 400 chiens, 300 chats et une centaine d'autres animaux, ça représente <strong>150 à 200 contacts par mois</strong>. À 6 minutes par appel en moyenne (messagerie, rappels, confirmations), on arrive facilement à 15-20 heures mensuelles sur cette seule tâche.</p>
+
+  <div class="callout warning">
+    <div class="callout-icon">⚠️</div>
+    <div class="callout-text"><strong>Ce que ça coûte vraiment :</strong> 20h d'ASV au coût complet (25-30€/h chargé), c'est 500 à 600€ par mois perdus sur des appels que des SMS pourraient remplacer à 95%. Sur un an : 6 000 à 7 200€ de temps non optimisé.</div>
+  </div>
+
+  <h2>Comment fonctionne l'automatisation des rappels vaccinaux avec Make</h2>
+
+  <p>Le principe est simple : on n'installe rien dans votre logiciel vétérinaire. On crée une passerelle entre votre base de données existante et un outil d'envoi de SMS/email, orchestrée par Make (ex-Integromat).</p>
+
+  <div class="workflow-box">
+    <h3>Workflow — Rappel vaccin automatique</h3>
+    <div class="workflow-step">
+      <div class="workflow-num">1</div>
+      <div class="workflow-content"><strong>Export CSV hebdomadaire depuis Vetup/Veterisoft</strong><br>Chaque lundi à 7h, Make récupère un export automatique de votre base : numéro client, nom propriétaire, téléphone, email, nom animal, type vaccin, date expiration.</div>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num">2</div>
+      <div class="workflow-content"><strong>Filtrage des animaux à J-30</strong><br>Make identifie les animaux dont le vaccin expire dans 25 à 35 jours. Ni trop tôt (le propriétaire oublie), ni trop tard (le créneau est plein).</div>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num">3</div>
+      <div class="workflow-content"><strong>Envoi SMS personnalisé</strong><br>"Bonjour Marie, Rex est dû pour son rappel BCH annuel dans 30 jours. Prenez RDV directement ici : [lien Calendly ou votre agenda en ligne]". Le message contient le nom du propriétaire et de l'animal — ce n'est pas du spam générique.</div>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num">4</div>
+      <div class="workflow-content"><strong>Relance J-14 si pas de RDV</strong><br>Si aucun RDV n'est détecté 2 semaines plus tard, un second SMS plus court est envoyé. Si toujours rien à J-7 : alerte email à votre ASV pour traitement manuel des cas difficiles seulement.</div>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num">5</div>
+      <div class="workflow-content"><strong>Tableau de bord Airtable (optionnel)</strong><br>Toutes les interactions sont loggées : SMS envoyés, RDV pris, animaux qui n'ont pas répondu. Votre ASV voit en un coup d'œil ce qui reste à traiter manuellement.</div>
+    </div>
+  </div>
+
+  <h2>Les autres automatisations indispensables pour une clinique vétérinaire</h2>
+
+  <h3>Rappel de RDV J-1 : éliminateur de no-show</h3>
+
+  <p>Le taux de no-show dans les cliniques vétérinaires sans rappel automatique tourne entre <strong>12 et 18%</strong>. Un créneau chirurgical de 90 minutes laissé vacant par un propriétaire qui a oublié, c'est une perte sèche de 120 à 180€ et un animal qui aurait pu bénéficier de la plage.</p>
+
+  <p>La solution est triviale : un SMS la veille à 18h. "RDV demain à 14h00 pour Mia avec le Dr Leblanc — répondez OUI pour confirmer ou NON pour annuler." Les cliniques qui ont mis ça en place descendent à <strong>3 à 5% de no-show</strong>. Les annulations de dernière minute permettent de re-proposer le créneau immédiatement.</p>
+
+  <h3>Demande d'avis Google post-consultation</h3>
+
+  <p>Vos clients vous adorent. Après une chirurgie réussie, une consultation rassurante, un diagnostic difficile bien géré — l'émotion est là. Mais personne ne leur demande de la partager à ce moment précis. Résultat : votre clinique a 45 avis Google alors que vos concurrents en ont 180.</p>
+
+  <div class="callout blue">
+    <div class="callout-icon">💡</div>
+    <div class="callout-text"><strong>Le bon timing :</strong> Un SMS à J+3 après la consultation ("Comment va Rex suite à sa visite de lundi ?") → si réponse positive → SMS automatique "On est ravis ! Si vous avez 2 minutes, un avis Google nous aide beaucoup : [lien direct]". Ce n'est pas intrusif — c'est du suivi. Et les propriétaires d'animaux sont parmi les clients les plus enclins à laisser des avis positifs.</div>
+  </div>
+
+  <h3>Gestion de liste d'attente chirurgie</h3>
+
+  <p>Si vous faites de la chirurgie ou des actes spécialisés, vous avez certainement une liste d'attente. Dans la plupart des cliniques, c'est un cahier ou un fichier Excel. Quand un créneau se libère (annulation), votre ASV doit trouver le premier disponible sur la liste, l'appeler, espérer qu'il répond, puis passer au suivant si ce n'est pas le cas.</p>
+
+  <p>Un formulaire Jotform + Make réduit ça à : une annulation dans votre logiciel → SMS automatique au premier de la liste → "Créneau disponible jeudi 14h, intéressé ?" → confirmation en 1 réponse → créneau réattribué. Votre ASV n'intervient que si personne ne répond.</p>
+
+  <h2>Compatibilité avec les logiciels vétérinaires courants</h2>
+
+  <p>Voici l'état des intégrations selon les principaux logiciels utilisés en France :</p>
+
+  <ul>
+    <li><strong>Vetup</strong> : Export CSV planifiable via l'interface admin. Intégration Make via module "CSV Parser". Compatible.</li>
+    <li><strong>Veterisoft</strong> : Export CSV depuis la gestion des rappels. Intégration identique. Compatible.</li>
+    <li><strong>Clovis</strong> : Export Excel paramétrable. Make lit le fichier via Google Drive ou dépôt FTP. Compatible.</li>
+    <li><strong>Isyvet</strong> : API disponible sur les versions récentes. Intégration directe possible sans export CSV. Plus fluide.</li>
+    <li><strong>Autres logiciels</strong> : Si votre logiciel permet un export des données clients et des dates de vaccination, l'intégration est possible. À valider lors du diagnostic.</li>
+  </ul>
+
+  <div class="callout green">
+    <div class="callout-icon">✅</div>
+    <div class="callout-text"><strong>Important :</strong> On ne modifie rien dans votre logiciel vétérinaire. On lit seulement les exports qu'il génère. Si votre logiciel est mis à jour ou change de format d'export, l'ajustement Make prend 30 minutes maximum.</div>
+  </div>
+
+  <h2>Coût et retour sur investissement</h2>
+
+  <p>La mise en place est un <strong>forfait unique de 1 500 à 2 500€</strong> selon le périmètre (rappels vaccinaux seulement, ou rappels + RDV + avis Google + liste d'attente). Aucun abonnement mensuel dans 90% des cliniques — les outils utilisés restent dans leur tier gratuit.</p>
+
+  <p>Le calcul ROI pour une clinique de 4 vétérinaires :</p>
+
+  <ul>
+    <li>Temps ASV récupéré : 20h/mois × 28€/h = <strong>560€/mois</strong></li>
+    <li>Réduction no-show : 3 créneaux × 120€ = <strong>360€/mois</strong></li>
+    <li>Clients rappelés supplémentaires (vaccin non oublié) : 5 à 10 × 45€ = <strong>225 à 450€/mois</strong></li>
+    <li><strong>Total : 1 145 à 1 370€/mois de valeur récupérée</strong></li>
+    <li>Investissement : 2 000€ → <strong>rentabilisé en 6 semaines</strong></li>
+  </ul>
+
+  <!-- FAQ GEO -->
+  <div class="faq-section">
+    <h2>Questions fréquentes</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">Combien d'heures une clinique vétérinaire perd-elle sur les rappels vaccinaux ?<span class="faq-icon">+</span></div>
+      <div class="faq-a">Une clinique de 3 à 6 praticiens avec 800 à 2000 animaux actifs perd en moyenne 15 à 20 heures par mois sur les rappels vaccinaux manuels. Ce chiffre inclut les appels sortants, les messages laissés, les rappels de rappels, et les relances pour les propriétaires qui n'ont pas pris de RDV après le premier contact.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Est-ce que Make est compatible avec Vetup et Veterisoft ?<span class="faq-icon">+</span></div>
+      <div class="faq-a">Oui. Make s'interface avec Vetup et Veterisoft via un export CSV automatisé ou via webhook selon la version du logiciel. Le workflow lit les dates d'expiration des vaccins et déclenche les SMS automatiquement à J-30. On ne touche pas à l'installation de votre logiciel vétérinaire.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Quel est le coût d'une automatisation des rappels vaccinaux pour une clinique vétérinaire ?<span class="faq-icon">+</span></div>
+      <div class="faq-a">La mise en place est un forfait unique entre 1 500 et 2 500€ selon le périmètre. Dans 90% des cliniques, les outils (Make, Brevo ou Twilio pour les SMS) restent dans leur tier gratuit — donc 0€ par mois après installation. ROI typique : rentabilisé en 6 à 8 semaines.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Est-ce conforme au RGPD d'envoyer des SMS automatiques aux propriétaires ?<span class="faq-icon">+</span></div>
+      <div class="faq-a">Oui. Les contacts commerciaux par SMS sont autorisés pour les clients existants (relation client en cours). On configure un opt-out propre sur chaque message ("STOP pour ne plus recevoir"). Les données sont stockées en Europe, les connexions sont chiffrées. Une documentation RGPD adaptée est fournie avec chaque mission.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Combien de temps faut-il pour mettre en place l'automatisation dans une clinique vétérinaire ?<span class="faq-icon">+</span></div>
+      <div class="faq-a">2 à 3 jours ouvrés : 1 jour pour l'intégration avec le logiciel vétérinaire et les tests sur données réelles, 1 jour pour la configuration des messages et workflows, et 1 session de formation de l'ASV (45 minutes). Les workflows sont testés sur 20 cas réels avant d'être généralisés à toute la patientèle.</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="article-cta">
+    <h3>Votre ASV pourrait regagner 20h par mois.</h3>
+    <p>Diagnostic gratuit de 30 minutes pour voir ce qu'on peut automatiser dans votre clinique. Même si on ne travaille pas ensemble, vous repartez avec une liste des workflows pertinents pour votre configuration.</p>
+    <a href="https://form.jotform.com/261125230398049" class="btn-primary">Réserver mon diagnostic gratuit →</a>
+    <span class="btn-note">Sans engagement · Formation ASV incluse · Documentation fournie</span>
+  </div>
+
+  <!-- ARTICLES LIÉS -->
+  <div class="related">
+    <h3>À lire aussi</h3>
+    <div class="related-grid">
+      <a href="https://neosocle.fr/veterinaires" class="related-card">
+        <div class="tag">🐾 Vétérinaires</div>
+        <h4>Page complète — Automatisation pour cliniques vétérinaires</h4>
+      </a>
+      <a href="https://neosocle.fr/blog/automatiser-collecte-documents-cabinet-comptable" class="related-card">
+        <div class="tag">🧾 Comptables</div>
+        <h4>Collecte de documents automatisée pour cabinet comptable TPE</h4>
+      </a>
+      <a href="https://neosocle.fr/blog/rappel-controle-vue-automatique-opticien" class="related-card">
+        <div class="tag">👓 Opticiens</div>
+        <h4>Fidélisation opticien indépendant : rappels contrôle de vue automatisés</h4>
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-bottom">
+      <div>© 2026 Neosocle. Tous droits réservés.</div>
+      <div class="footer-nav">
+        <a href="https://neosocle.fr/mentions-legales">Mentions légales</a>
+        <a href="https://neosocle.fr/confidentialite">Confidentialité</a>
+        <a href="https://neosocle.fr/#blog">Blog</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => {
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if(!open) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

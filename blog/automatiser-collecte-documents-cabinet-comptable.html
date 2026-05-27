@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collecte de documents automatisée pour cabinet comptable TPE : Make + Airtable — Neosocle</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<meta name="description" content="Comment automatiser la collecte de pièces mensuelles, l'onboarding client et les relances dans un cabinet comptable de 1 à 5 collaborateurs avec Make et Airtable. Guide pratique 2026.">
+<link rel="canonical" href="https://neosocle.fr/blog/automatiser-collecte-documents-cabinet-comptable">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta property="og:title" content="Collecte de documents automatisée pour cabinet comptable TPE — Neosocle">
+<meta property="og:description" content="Votre cabinet perd 10h/mois par collaborateur à relancer des clients pour leurs pièces. Voici comment automatiser avec Make et Airtable en 3 jours.">
+<meta property="og:url" content="https://neosocle.fr/blog/automatiser-collecte-documents-cabinet-comptable">
+<meta property="og:image" content="https://neosocle.fr/assets/NS_banner_1500.png">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Neosocle">
+<meta property="article:published_time" content="2026-05-27T09:00:00+02:00">
+<meta property="article:modified_time" content="2026-05-27T09:00:00+02:00">
+<meta property="article:section" content="Automatisation cabinet comptable">
+<meta property="article:tag" content="automatisation, cabinet comptable, Make, Airtable, collecte documents, no-code">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Collecte de documents automatisée pour cabinet comptable TPE — Neosocle">
+<meta name="twitter:description" content="10h/mois perdues par collaborateur sur les relances. Make + Airtable automatisent ça en 3 jours.">
+<meta name="twitter:image" content="https://neosocle.fr/assets/NS_banner_1500.png">
+<meta name="theme-color" content="#0e0e0e">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Collecte de documents automatisée pour cabinet comptable TPE : Make + Airtable en pratique",
+      "description": "Comment automatiser la collecte de pièces mensuelle, l'onboarding et les relances dans un cabinet comptable de 1 à 5 collaborateurs avec Make et Airtable.",
+      "author": {"@type": "Organization", "name": "Neosocle", "url": "https://neosocle.fr"},
+      "publisher": {"@type": "Organization", "name": "Neosocle", "url": "https://neosocle.fr"},
+      "datePublished": "2026-05-27",
+      "dateModified": "2026-05-27",
+      "mainEntityOfPage": {"@type": "WebPage", "@id": "https://neosocle.fr/blog/automatiser-collecte-documents-cabinet-comptable"},
+      "image": "https://neosocle.fr/assets/NS_banner_1500.png",
+      "keywords": ["automatisation cabinet comptable", "collecte documents no-code", "Make cabinet comptable", "Airtable comptable", "relances clients automatiques"]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Combien d'heures un cabinet comptable perd-il sur la collecte de documents clients ?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Un cabinet comptable de 3 collaborateurs avec 120 dossiers actifs perd en moyenne 28 à 36 heures par mois en collecte de pièces manuelle. Soit 9 à 12 heures par collaborateur. Ces heures incluent les emails de relance, les appels téléphoniques, le suivi des réponses et la relance des clients non réactifs."}
+        },
+        {
+          "@type": "Question",
+          "name": "Est-ce que Make est compatible avec ACD, Cegid et MyUnisoft ?",
+          "acceptedAnswer": {"@type": "Answer", "text": "ACD, Cegid et MyUnisoft gèrent la comptabilité, pas la communication client. Make crée la couche de communication qui manque : envoi automatique de demandes de collecte, relances, onboarding. On s'appuie sur les exports de ces logiciels et sur les emails, sans toucher à l'installation des logiciels comptables."}
+        },
+        {
+          "@type": "Question",
+          "name": "Quel est le taux de pièces reçues à J+5 avant et après automatisation ?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Avant automatisation, le taux de pièces reçues à J+5 (5 jours après la demande mensuelle) est en moyenne de 40% dans les cabinets qui relancent manuellement. Avec Make + Airtable et des relances automatiques à J+2 et J+5, ce taux monte à 78 à 85%."}
+        },
+        {
+          "@type": "Question",
+          "name": "Comment automatiser l'onboarding d'un nouveau client dans un cabinet comptable ?",
+          "acceptedAnswer": {"@type": "Answer", "text": "Dès signature de la lettre de mission (via Docusign ou Adobe), Make déclenche automatiquement : envoi d'un email de bienvenue avec une checklist de pièces initiales, création d'un dossier Notion ou Airtable pour le collaborateur responsable, et rappel automatique à J+3 si les pièces ne sont pas déposées. Le nouveau client reçoit un lien de dépôt unique et sécurisé."}
+        },
+        {
+          "@type": "Question",
+          "name": "Quel budget prévoir pour automatiser un cabinet comptable de 3 collaborateurs ?",
+          "acceptedAnswer": {"@type": "Answer", "text": "La mise en place est un forfait unique de 1 800 à 3 000€ selon le périmètre (collecte seulement, ou collecte + onboarding + relances devis + newsletter fiscale). Dans la majorité des cabinets de 1 à 5 collaborateurs, les outils (Make, Airtable, Brevo) restent dans leur tier gratuit. ROI estimé : 2 mois maximum à 150€/h de facturation."}
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+:root { --noir:#0a0a12; --bleu:#005aff; --blanc:#ffffff; --gris:#6b6b80; --bg:#f8f8f8; --card:#ffffff; }
+html { scroll-behavior:smooth; }
+body { font-family:'Poppins', sans-serif; background:var(--bg); color:var(--noir); overflow-x:hidden; line-height:1.7; }
+@keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(0,90,255,.4);}50%{box-shadow:0 0 0 12px rgba(0,90,255,0);} }
+nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:1.2rem 6vw; background:rgba(248,248,248,.95); backdrop-filter:blur(12px); border-bottom:1px solid rgba(0,0,0,.06); }
+.nav-logo { font-size:1.1rem; font-weight:700; text-decoration:none; color:var(--noir); }
+.nav-logo span { color:var(--bleu); }
+.nav-cta { background:var(--bleu); color:var(--blanc); font-size:.8rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; padding:.6rem 1.4rem; border-radius:6px; text-decoration:none; animation:pulse 2.5s infinite; }
+.article-header { padding:8rem 6vw 3rem; max-width:760px; margin:0 auto; }
+.breadcrumb { font-size:.75rem; color:var(--gris); margin-bottom:1.5rem; }
+.breadcrumb a { color:var(--gris); text-decoration:none; }
+.breadcrumb a:hover { color:var(--bleu); }
+.breadcrumb span { margin:0 .4rem; }
+.article-tag { display:inline-flex; align-items:center; gap:.4rem; background:#fff8e1; color:#8a6200; font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:.3rem .8rem; border-radius:99px; margin-bottom:1rem; border:1px solid #f5d68a; }
+.article-h1 { font-size:clamp(1.8rem, 3.5vw, 2.6rem); font-weight:900; letter-spacing:-.03em; line-height:1.1; margin-bottom:1.2rem; }
+.article-meta { display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap; font-size:.78rem; color:var(--gris); margin-bottom:2rem; }
+.article-meta strong { color:var(--noir); }
+.article-summary { background:linear-gradient(135deg, #0a0a12 0%, #12122a 100%); color:var(--blanc); border-radius:14px; padding:1.8rem 2rem; margin-bottom:2.5rem; border-left:4px solid var(--bleu); }
+.article-summary h2 { font-size:.7rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--bleu); margin-bottom:.8rem; }
+.article-summary p { font-size:.95rem; line-height:1.7; color:rgba(255,255,255,.85); }
+.article-body { max-width:760px; margin:0 auto; padding:0 6vw 4rem; font-size:.97rem; line-height:1.8; }
+.article-body h2 { font-size:1.5rem; font-weight:800; letter-spacing:-.02em; margin:3rem 0 1rem; color:var(--noir); padding-top:1rem; border-top:1px solid #eee; }
+.article-body h3 { font-size:1.1rem; font-weight:700; margin:2rem 0 .7rem; }
+.article-body p { margin-bottom:1.2rem; color:#2a2a3a; }
+.article-body strong { font-weight:700; color:var(--noir); }
+.article-body ul, .article-body ol { margin:1rem 0 1.5rem 1.2rem; }
+.article-body li { margin-bottom:.5rem; color:#2a2a3a; }
+.callout { border-radius:12px; padding:1.4rem 1.6rem; margin:2rem 0; display:flex; gap:1rem; align-items:flex-start; }
+.callout.blue { background:#e8f4ff; border-left:4px solid var(--bleu); }
+.callout.green { background:#e8fff2; border-left:4px solid #00a651; }
+.callout.warning { background:#fff8e1; border-left:4px solid #f5a623; }
+.callout-icon { font-size:1.3rem; flex-shrink:0; margin-top:.1rem; }
+.callout-text { font-size:.88rem; line-height:1.6; color:#2a2a3a; }
+.callout-text strong { color:var(--noir); }
+.workflow-box { background:var(--noir); border-radius:14px; padding:1.8rem 2rem; margin:2rem 0; }
+.workflow-box h3 { font-size:.7rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--bleu); margin-bottom:1.2rem; color:var(--bleu); border:none; padding:0; }
+.workflow-step { display:flex; gap:1rem; align-items:flex-start; margin-bottom:1rem; }
+.workflow-step:last-child { margin-bottom:0; }
+.workflow-num { width:28px; height:28px; border-radius:50%; background:var(--bleu); color:var(--blanc); font-size:.75rem; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.workflow-content { font-size:.85rem; color:rgba(255,255,255,.8); line-height:1.5; padding-top:.3rem; }
+.workflow-content strong { color:var(--blanc); }
+.stats-row { display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:1rem; margin:2rem 0; }
+.stat-box { background:var(--card); border-radius:12px; padding:1.2rem; text-align:center; border:1px solid #eee; }
+.stat-box .num { font-size:1.8rem; font-weight:900; color:var(--bleu); letter-spacing:-.03em; line-height:1; }
+.stat-box .lbl { font-size:.72rem; color:var(--gris); margin-top:.3rem; line-height:1.3; }
+.compare-table { width:100%; border-collapse:collapse; margin:2rem 0; font-size:.88rem; }
+.compare-table th { padding:.8rem 1rem; font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; background:var(--noir); color:var(--blanc); text-align:left; }
+.compare-table th:first-child { border-radius:8px 0 0 0; }
+.compare-table th:last-child { border-radius:0 8px 0 0; color:var(--bleu); }
+.compare-table td { padding:.8rem 1rem; border-bottom:1px solid #eee; vertical-align:top; line-height:1.5; }
+.compare-table td:first-child { color:var(--gris); }
+.compare-table td:last-child { color:#00a651; font-weight:600; }
+.compare-table tr:last-child td { border-bottom:none; }
+.compare-table tr:nth-child(even) td { background:#fafafa; }
+.faq-section { background:#f2f4ff; border-radius:16px; padding:2rem; margin:3rem 0; }
+.faq-section h2 { font-size:1.2rem; font-weight:800; margin-bottom:1.5rem; border:none; padding:0; }
+.faq-item { border-bottom:1px solid #dde2ff; padding:1.2rem 0; cursor:pointer; }
+.faq-item:last-child { border-bottom:none; padding-bottom:0; }
+.faq-q { font-size:.95rem; font-weight:600; display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+.faq-icon { font-size:1.3rem; color:var(--bleu); flex-shrink:0; transition:transform .3s; }
+.faq-item.open .faq-icon { transform:rotate(45deg); }
+.faq-a { font-size:.86rem; color:var(--gris); line-height:1.7; max-height:0; overflow:hidden; transition:max-height .4s ease, padding .3s; }
+.faq-item.open .faq-a { max-height:300px; padding-top:.8rem; }
+.article-cta { background:var(--noir); color:var(--blanc); border-radius:16px; padding:2.5rem; text-align:center; margin:3rem 0; }
+.article-cta h3 { font-size:1.3rem; font-weight:800; color:var(--blanc); margin-bottom:.8rem; }
+.article-cta p { font-size:.88rem; color:rgba(255,255,255,.5); margin-bottom:1.8rem; max-width:480px; margin-left:auto; margin-right:auto; }
+.btn-primary { background:var(--bleu); color:var(--blanc); font-size:.85rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:1rem 2rem; border-radius:8px; text-decoration:none; animation:pulse 2.5s infinite; display:inline-block; }
+.btn-note { font-size:.72rem; color:rgba(255,255,255,.3); margin-top:.8rem; display:block; }
+.related { margin:3rem 0 0; }
+.related h3 { font-size:1rem; font-weight:700; margin-bottom:1.2rem; }
+.related-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:1rem; }
+.related-card { background:var(--card); border-radius:12px; padding:1.2rem 1.4rem; border:1px solid #eee; text-decoration:none; transition:all .2s; }
+.related-card:hover { border-color:var(--bleu); transform:translateY(-2px); }
+.related-card .tag { font-size:.65rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--bleu); margin-bottom:.5rem; }
+.related-card h4 { font-size:.88rem; font-weight:700; color:var(--noir); line-height:1.4; }
+footer { background:var(--noir); color:rgba(255,255,255,.5); padding:3rem 6vw 2rem; }
+.footer-inner { max-width:1100px; margin:0 auto; }
+.footer-bottom { display:flex; align-items:center; justify-content:space-between; border-top:1px solid rgba(255,255,255,.08); padding-top:1.5rem; font-size:.76rem; flex-wrap:wrap; gap:.5rem; }
+.footer-bottom a { color:rgba(255,255,255,.4); text-decoration:none; }
+.footer-nav { display:flex; gap:1.5rem; }
+@media(max-width:768px) { nav { padding:1rem 5vw; } .article-header, .article-body { padding-left:5vw; padding-right:5vw; } .stats-row { grid-template-columns:repeat(2,1fr); } .compare-table { font-size:.78rem; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://neosocle.fr" class="nav-logo"><span>NEO</span>SOCLE</a>
+  <a href="https://form.jotform.com/261125230398049" class="nav-cta">Diagnostic gratuit →</a>
+</nav>
+
+<header class="article-header">
+  <nav class="breadcrumb" aria-label="Fil d'Ariane">
+    <a href="https://neosocle.fr">Accueil</a><span>›</span>
+    <a href="https://neosocle.fr/#blog">Blog</a><span>›</span>
+    <span>Collecte documents cabinet comptable</span>
+  </nav>
+  <div class="article-tag">🧾 Automatisation cabinet comptable</div>
+  <h1 class="article-h1">Collecte de documents automatisée pour cabinet comptable TPE : Make + Airtable en pratique</h1>
+  <div class="article-meta">
+    <span>Par <strong>Neosocle</strong></span><span>·</span>
+    <span><time datetime="2026-05-27">27 mai 2026</time></span><span>·</span>
+    <span><strong>7 min</strong> de lecture</span>
+  </div>
+</header>
+
+<main class="article-body">
+
+  <div class="article-summary">
+    <h2>En bref — ce que couvre cet article</h2>
+    <p>Un cabinet comptable de 3 collaborateurs avec 120 dossiers perd en moyenne <strong>28 à 36 heures par mois</strong> en relances manuelles pour la collecte de pièces clients. Make et Airtable permettent d'automatiser ces relances sans remplacer ACD, Cegid ou MyUnisoft — en créant la couche de communication qui manque à ces logiciels. Résultat observé : le taux de pièces reçues à J+5 passe de 40% à plus de 80%, et chaque collaborateur récupère 10 heures par mois.</p>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-box"><div class="num">10h</div><div class="lbl">récupérées/mois par collaborateur sur les relances</div></div>
+    <div class="stat-box"><div class="num">40→82%</div><div class="lbl">taux de pièces reçues à J+5</div></div>
+    <div class="stat-box"><div class="num">+30%</div><div class="lbl">de lettres de mission signées avec relances auto</div></div>
+    <div class="stat-box"><div class="num">2 mois</div><div class="lbl">pour rentabiliser l'investissement à 150€/h</div></div>
+  </div>
+
+  <h2>Le problème que personne ne règle dans les cabinets comptables</h2>
+
+  <p>ACD, Cegid, MyUnisoft, Silae — ces logiciels font un excellent travail sur la comptabilité, la paie et les déclarations. Mais ils ne résolvent pas le problème le plus chronophage du quotidien : <strong>obtenir les documents des clients en temps et en heure</strong>.</p>
+
+  <p>Dans un cabinet de 3 collaborateurs avec 120 dossiers, voici ce qui se passe chaque mois : le 1er ou le 2, chaque collaborateur envoie manuellement des emails à ses 40 clients pour leur demander relevés bancaires, factures fournisseurs, notes de frais. Il attend. Relance. Re-relance. Appelle. Laisse un message. Rappelle. Sur 120 dossiers, <strong>40% seulement répondent dans les 5 jours</strong>. Les 60% restants déclenchent une cascade de relances manuelles.</p>
+
+  <div class="callout warning">
+    <div class="callout-icon">⚠️</div>
+    <div class="callout-text"><strong>Le coût réel :</strong> 10h/mois × 3 collaborateurs × 12 mois = 360h/an de travail à faible valeur. À 150€/h de facturation, c'est <strong>54 000€ de capacité productive mobilisée sur des relances</strong> qui pourraient être automatisées à 95%.</div>
+  </div>
+
+  <h2>Comment Make + Airtable automatisent la collecte de documents</h2>
+
+  <p>Le principe : on ne remplace pas votre logiciel comptable. On crée la couche de communication qui lui manque. Make orchestre les envois, Airtable centralise le suivi, vos collaborateurs reçoivent des alertes quand leur action est vraiment nécessaire.</p>
+
+  <div class="workflow-box">
+    <h3>Workflow — Collecte mensuelle automatisée</h3>
+    <div class="workflow-step">
+      <div class="workflow-num">1</div>
+      <div class="workflow-content"><strong>Le 1er du mois à 8h — déclenchement automatique</strong><br>Make envoie automatiquement à chaque client un email personnalisé avec un lien de dépôt unique. "Bonjour [Prénom], voici le lien pour déposer vos pièces de [mois] : [lien]". Un lien par client, pas de partage de mot de passe.</div>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num">2</div>
+      <div class="workflow-content"><strong>J+5 sans réponse → relance automatique</strong><br>Si aucun document n'est détecté dans le dossier du client à J+5, Make envoie une relance courte. "Rappel : vos pièces de [mois] ne sont pas encore reçues. Lien de dépôt : [lien]".</div>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num">3</div>
+      <div class="workflow-content"><strong>J+10 → deuxième relance + alerte collaborateur</strong><br>Second email de relance au client + notification dans Airtable pour le collaborateur responsable : "Dossier [client] — pièces toujours manquantes à J+10. Action requise."</div>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num">4</div>
+      <div class="workflow-content"><strong>Dossier complet → notification collaborateur</strong><br>Dès que toutes les pièces attendues sont détectées dans le dossier de dépôt, Make envoie une notification au collaborateur : "Dossier [client] complet — prêt pour traitement."</div>
+    </div>
+    <div class="workflow-step">
+      <div class="workflow-num">5</div>
+      <div class="workflow-content"><strong>Tableau de bord Airtable en temps réel</strong><br>Vue d'ensemble de tous les dossiers : dossiers complets (vert), en attente de relance (orange), à traitement manuel (rouge). Un coup d'œil suffit pour savoir où en est chaque dossier.</div>
+    </div>
+  </div>
+
+  <h2>Les 4 autres automatisations indispensables pour un cabinet comptable</h2>
+
+  <h3>1. Onboarding nouveau client structuré</h3>
+
+  <p>Chaque nouveau client signé déclenche aujourd'hui 4 à 6 emails manuels : bienvenue, liste de pièces initiales, accès logiciels, informations IBAN, attestations en cours... Avec Make + Docusign, dès la signature de la lettre de mission, tout part automatiquement.</p>
+
+  <div class="callout blue">
+    <div class="callout-icon">💡</div>
+    <div class="callout-text"><strong>Ce que reçoit le nouveau client automatiquement :</strong><br>Email de bienvenue + checklist pièces initiales personnalisée + lien de dépôt unique + accès au dossier collaborateur Notion/Airtable. Le collaborateur responsable reçoit une alerte dès que les pièces initiales sont déposées.</div>
+  </div>
+
+  <h3>2. Checklist bilan / clôture d'exercice automatisée</h3>
+
+  <p>Pour chaque client en fin d'exercice, il faut collecter une liste de documents spécifiques selon son statut juridique, son secteur et ses options fiscales. Aujourd'hui c'est un email personnalisé par client, rédigé à la main. Avec Make, la checklist est <strong>générée automatiquement</strong> à partir du profil du dossier dans Airtable, et envoyée avec le bon timing selon la date de clôture.</p>
+
+  <h3>3. Relances lettres de mission et devis</h3>
+
+  <p>Un prospect vous contacte, vous envoyez un devis ou une lettre de mission. Il ne répond pas. Vous avez un post-it. Le post-it disparaît. Avec Make, la relance part automatiquement à J+5, puis à J+10, puis à J+15 avec archivage automatique. Le collaborateur n'est notifié que si le prospect répond positivement.</p>
+
+  <h3>4. Newsletter fiscale mensuelle — 5 minutes au lieu de 2 heures</h3>
+
+  <p>Les cabinets qui envoient une newsletter mensuelle d'actualités fiscales à leurs clients fidélisent mieux et réduisent les appels "est-ce que j'ai quelque chose à faire ?" Mais c'est chronophage. Avec Make + Claude API, un résumé des actualités fiscales du mois est généré automatiquement, soumis pour validation (5 minutes), et envoyé à toute la liste.</p>
+
+  <h2>Avant / après : ce qui change concrètement</h2>
+
+  <table class="compare-table">
+    <thead>
+      <tr><th>Tâche</th><th>Avant (manuel)</th><th>Après (Make + Airtable)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Demande de pièces mensuelle</td><td>Email manuel × nb dossiers, 3-4h/collab</td><td>Déclenchement auto le 1er à 8h, 0 min</td></tr>
+      <tr><td>Taux pièces reçues à J+5</td><td>40% des dossiers</td><td>82% des dossiers</td></tr>
+      <tr><td>Relances clients</td><td>Appels + emails manuels, 5-6h/collab</td><td>Auto J+5 et J+10, < 30 min de supervision</td></tr>
+      <tr><td>Onboarding nouveau client</td><td>6 emails manuels, 1h par dossier</td><td>1 workflow auto, 5 min de validation</td></tr>
+      <tr><td>Suivi état des dossiers</td><td>Tableau Excel mis à jour manuellement</td><td>Airtable mis à jour en temps réel</td></tr>
+      <tr><td>Relance devis / lettre de mission</td><td>Post-it, souvent oublié</td><td>Auto J+5, J+10, J+15 + archivage</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Compatibilité avec les logiciels comptables courants</h2>
+
+  <p>Un point important : <strong>on ne touche pas à votre logiciel comptable</strong>. Make et Airtable s'ajoutent en couche de communication, pas en remplacement. Voici comment ça s'interface selon les logiciels :</p>
+
+  <ul>
+    <li><strong>ACD</strong> : Export de la liste clients en CSV. Make lit ce CSV pour personnaliser les emails de collecte. Aucune modification d'ACD requise.</li>
+    <li><strong>Cegid</strong> : Même approche par export CSV ou via API Cegid disponible sur les versions récentes.</li>
+    <li><strong>MyUnisoft</strong> : Export Excel des dossiers. Make Parse l'Excel et alimente Airtable pour le suivi.</li>
+    <li><strong>Silae</strong> : Export des données paie si vous gérez également le social. Make intègre les flux paie dans le workflow de collecte.</li>
+  </ul>
+
+  <!-- FAQ GEO -->
+  <div class="faq-section">
+    <h2>Questions fréquentes</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">Combien d'heures un cabinet comptable perd-il sur la collecte de documents ?<span class="faq-icon">+</span></div>
+      <div class="faq-a">Un cabinet de 3 collaborateurs avec 120 dossiers perd en moyenne 28 à 36 heures par mois, soit 9 à 12 heures par collaborateur. Ces heures incluent les emails de relance, les appels téléphoniques, le suivi des réponses et la relance des clients non réactifs.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Est-ce que Make est compatible avec ACD, Cegid et MyUnisoft ?<span class="faq-icon">+</span></div>
+      <div class="faq-a">ACD, Cegid et MyUnisoft gèrent la comptabilité — pas la communication client. Make crée la couche de communication qui manque, en s'appuyant sur les exports de ces logiciels (CSV, Excel, API). On ne touche pas à l'installation des logiciels comptables existants.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Quel est le taux de pièces reçues à J+5 avant et après automatisation ?<span class="faq-icon">+</span></div>
+      <div class="faq-a">Avant automatisation, le taux de pièces reçues à J+5 est en moyenne de 40% dans les cabinets qui relancent manuellement. Avec Make + Airtable et des relances automatiques à J+2 et J+5, ce taux monte à 78 à 85%. Moins de dossiers bloqués, moins de rush en clôture.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Les clients peu à l'aise avec la techno peuvent-ils utiliser le dépôt en ligne ?<span class="faq-icon">+</span></div>
+      <div class="faq-a">Le formulaire de dépôt est ultra simple : un lien dans l'email, un bouton, pas de compte à créer. On valide toujours ce point lors du diagnostic. Pour les clients vraiment réfractaires, le workflow est désactivable dossier par dossier — le collaborateur continue de les traiter manuellement.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Quel budget prévoir pour automatiser un cabinet comptable de 3 collaborateurs ?<span class="faq-icon">+</span></div>
+      <div class="faq-a">Forfait unique de 1 800 à 3 000€ selon le périmètre. Les outils (Make, Airtable, Brevo) restent en tier gratuit dans la majorité des cabinets de 1 à 5 collaborateurs. ROI estimé : 2 mois maximum à 150€/h de facturation (10h récupérées × 3 collaborateurs × 150€ = 4 500€/mois de valeur créée).</div>
+    </div>
+  </div>
+
+  <div class="article-cta">
+    <h3>30 minutes pour cartographier vos relances automatisables.</h3>
+    <p>Diagnostic gratuit, sans engagement. Vous repartez avec une carte précise des tâches automatisables dans votre cabinet et leur ROI estimé.</p>
+    <a href="https://form.jotform.com/261125230398049" class="btn-primary">Réserver mon diagnostic gratuit →</a>
+    <span class="btn-note">Compatible ACD, Cegid, MyUnisoft · Documentation incluse · Formation équipe incluse</span>
+  </div>
+
+  <div class="related">
+    <h3>À lire aussi</h3>
+    <div class="related-grid">
+      <a href="https://neosocle.fr/comptables" class="related-card">
+        <div class="tag">🧾 Comptables</div>
+        <h4>Page complète — Automatisation pour cabinets comptables TPE</h4>
+      </a>
+      <a href="https://neosocle.fr/blog/automatiser-rappels-vaccins-clinique-veterinaire" class="related-card">
+        <div class="tag">🐾 Vétérinaires</div>
+        <h4>Automatiser les rappels vaccinaux en clinique vétérinaire</h4>
+      </a>
+      <a href="https://neosocle.fr/blog/rappel-controle-vue-automatique-opticien" class="related-card">
+        <div class="tag">👓 Opticiens</div>
+        <h4>Fidélisation opticien : rappels contrôle de vue automatisés</h4>
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-bottom">
+      <div>© 2026 Neosocle. Tous droits réservés.</div>
+      <div class="footer-nav">
+        <a href="https://neosocle.fr/mentions-legales">Mentions légales</a>
+        <a href="https://neosocle.fr/confidentialite">Confidentialité</a>
+        <a href="https://neosocle.fr/#blog">Blog</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => {
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if(!open) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automatisation pour Cliniques Vétérinaires — Neosocle</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<meta name="description" content="Automatisez les rappels vaccinaux, les relances RDV et les avis Google de votre clinique. Votre ASV gagne 20h/mois. Sans techno à maîtriser.">
+<link rel="canonical" href="https://neosocle.fr/veterinaires">
+<meta property="og:title" content="Automatisation pour Cliniques Vétérinaires — Neosocle">
+<meta property="og:description" content="Rappels vaccinaux automatisés, relances post-consultation, avis Google. Votre ASV regagne 20h/mois.">
+<meta property="og:image" content="https://neosocle.fr/assets/NS_banner_1500.png">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Neosocle">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --noir: #0a0a12;
+  --bleu: #005aff;
+  --cyan: #00e6c8;
+  --blanc: #ffffff;
+  --gris: #6b6b80;
+  --bg: #f8f8f8;
+  --card: #ffffff;
+  --accent: #00c896;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--noir); overflow-x: hidden; }
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(32px); } to { opacity:1; transform:translateY(0); } }
+@keyframes lineGrow { from { transform:scaleX(0); } to { transform:scaleX(1); } }
+@keyframes pulse { 0%,100% { box-shadow:0 0 0 0 rgba(0,90,255,.4); } 50% { box-shadow:0 0 0 12px rgba(0,90,255,0); } }
+.reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:1.2rem 6vw;
+  background:rgba(248,248,248,.92); backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+.nav-logo { font-size:1.1rem; font-weight:700; letter-spacing:-.01em; text-decoration:none; color:var(--noir); }
+.nav-logo span { color:var(--bleu); }
+.nav-links { display:flex; gap:2rem; list-style:none; }
+.nav-links a { font-size:.82rem; font-weight:500; color:var(--gris); text-decoration:none; transition:color .2s; }
+.nav-links a:hover { color:var(--bleu); }
+.nav-cta {
+  background:var(--bleu); color:var(--blanc);
+  font-size:.8rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+  padding:.6rem 1.4rem; border-radius:6px; text-decoration:none;
+  animation:pulse 2.5s infinite; transition:background .2s;
+}
+.nav-cta:hover { background:#0040cc; }
+
+/* HERO */
+.hero {
+  min-height:100vh; display:flex; align-items:center;
+  padding:8rem 6vw 5rem; position:relative; overflow:hidden;
+}
+.hero-bg {
+  position:absolute; inset:0; z-index:0;
+}
+.hero-bg img {
+  width:100%; height:100%; object-fit:cover; opacity:.08; filter:grayscale(100%);
+}
+.hero-bg::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(110deg, var(--bg) 45%, rgba(0,90,255,.04) 100%);
+}
+.hero-split {
+  position:absolute; top:0; right:0;
+  width:44%; height:100%;
+  background:var(--noir);
+  clip-path:polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+  z-index:1;
+}
+.hero-split-img {
+  position:absolute; top:0; right:0;
+  width:44%; height:100%; z-index:1; overflow:hidden;
+  clip-path:polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+}
+.hero-split-img img {
+  width:100%; height:100%; object-fit:cover; opacity:.55;
+}
+.hero-split-img::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(to right, rgba(10,10,18,.9) 0%, rgba(0,90,255,.3) 100%);
+}
+.hero-inner {
+  position:relative; z-index:2;
+  max-width:1100px; margin:0 auto; width:100%;
+  display:grid; grid-template-columns:1fr 1fr; gap:6vw; align-items:center;
+}
+.hero-left { animation:fadeUp .9s ease both; }
+.hero-eyebrow {
+  font-size:.72rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--bleu); margin-bottom:1.2rem;
+  display:flex; align-items:center; gap:.6rem;
+}
+.hero-eyebrow::before {
+  content:''; display:block; width:32px; height:2px; background:var(--bleu);
+  transform-origin:left; animation:lineGrow .8s .3s ease both;
+}
+.hero-badge {
+  display:inline-flex; align-items:center; gap:.5rem;
+  background:#e8ffe8; color:#1a7a3a;
+  font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  padding:.35rem .9rem; border-radius:99px; border:1px solid #b6e8c0;
+  margin-bottom:1.2rem;
+}
+.hero-h1 {
+  font-size:clamp(2.2rem, 4.5vw, 3.8rem);
+  font-weight:900; line-height:1.05; letter-spacing:-.03em; margin-bottom:1.5rem;
+}
+.hero-h1 .split-word { position:relative; display:inline-block; }
+.hero-h1 .split-word::after {
+  content:''; position:absolute; bottom:4px; left:0; right:0;
+  height:3px; background:var(--bleu); transform-origin:left;
+  animation:lineGrow 1s .8s ease both;
+}
+.hero-sub { font-size:1rem; font-weight:300; color:var(--gris); line-height:1.7; margin-bottom:2rem; max-width:440px; }
+.hero-stats { display:flex; gap:2rem; margin-bottom:2.5rem; flex-wrap:wrap; }
+.hero-stat .num { font-size:1.8rem; font-weight:900; color:var(--bleu); letter-spacing:-.03em; }
+.hero-stat .label { font-size:.72rem; color:var(--gris); line-height:1.3; }
+.hero-cta-group { display:flex; gap:1rem; align-items:center; flex-wrap:wrap; }
+.btn-primary {
+  background:var(--bleu); color:var(--blanc);
+  font-size:.85rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+  padding:1rem 2rem; border-radius:8px; text-decoration:none;
+  animation:pulse 2.5s infinite; transition:transform .2s, background .2s;
+}
+.btn-primary:hover { transform:translateY(-2px); background:#0040cc; }
+.btn-secondary {
+  font-size:.84rem; font-weight:500; color:var(--gris);
+  text-decoration:none; padding:.9rem 1.6rem;
+  border:1.5px solid #ddd; border-radius:8px; transition:all .2s;
+}
+.btn-secondary:hover { border-color:var(--bleu); color:var(--bleu); }
+.hero-right { animation:fadeUp .9s .2s ease both; position:relative; z-index:2; }
+.stat-card {
+  background:rgba(255,255,255,.95);
+  border-radius:16px; padding:2rem;
+  box-shadow:0 24px 60px rgba(0,0,0,.14);
+}
+.stat-card-tag {
+  font-size:.65rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--bleu); margin-bottom:1.2rem;
+  display:flex; align-items:center; gap:.5rem;
+}
+.stat-card-tag::before { content:''; width:20px; height:2px; background:var(--bleu); }
+.stat-row {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:1rem 0; border-bottom:1px solid #f0f0f0;
+}
+.stat-row:last-child { border-bottom:none; padding-bottom:0; }
+.stat-label { font-size:.82rem; color:var(--gris); }
+.stat-value { font-size:.9rem; font-weight:700; color:var(--noir); }
+.stat-value.blue { color:var(--bleu); }
+.stat-value.green { color:#00a651; }
+.stat-footer {
+  margin-top:1.2rem; padding:.8rem 1rem;
+  background:#e8f4ff; border-radius:8px; border-left:3px solid var(--bleu);
+  font-size:.76rem; font-weight:600; color:#004fcc;
+}
+
+/* SECTIONS */
+section { padding:6rem 6vw; }
+.section-inner { max-width:1100px; margin:0 auto; }
+.section-label {
+  font-size:.7rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--bleu); margin-bottom:.8rem;
+  display:flex; align-items:center; gap:.6rem;
+}
+.section-label::before { content:''; display:block; width:24px; height:2px; background:var(--bleu); }
+.section-title {
+  font-size:clamp(1.8rem, 3.5vw, 3rem);
+  font-weight:900; letter-spacing:-.03em; line-height:1.1; margin-bottom:1rem;
+}
+.section-sub { font-size:1rem; color:var(--gris); max-width:540px; line-height:1.7; margin-bottom:3.5rem; }
+
+/* PROBLÈME */
+.problem { background:var(--noir); color:var(--blanc); position:relative; overflow:hidden; }
+.problem::before {
+  content:''; position:absolute; top:-60px; right:-60px;
+  width:300px; height:300px; border-radius:50%;
+  background:rgba(0,90,255,.07);
+}
+.problem .section-title { color:var(--blanc); }
+.problem .section-sub { color:rgba(255,255,255,.5); }
+.problem-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; }
+.problem-card {
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px; padding:1.8rem; transition:border-color .3s;
+  position:relative; overflow:hidden;
+}
+.problem-card:hover { border-color:rgba(0,90,255,.4); }
+.problem-card::before {
+  content:attr(data-emoji);
+  position:absolute; top:1.2rem; right:1.5rem;
+  font-size:2rem; opacity:.15;
+}
+.problem-num { font-size:3rem; font-weight:900; color:rgba(255,255,255,.06); letter-spacing:-.05em; line-height:1; margin-bottom:.8rem; }
+.problem-title { font-size:.9rem; font-weight:700; color:var(--blanc); margin-bottom:.5rem; }
+.problem-text { font-size:.88rem; line-height:1.6; color:rgba(255,255,255,.6); }
+.problem-text strong { color:var(--blanc); font-weight:600; }
+
+/* AUTOMATISATIONS */
+.auto-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.5rem; }
+.auto-card {
+  background:var(--card); border-radius:14px; padding:2rem;
+  border:1px solid #eee; transition:transform .3s, box-shadow .3s;
+  position:relative;
+}
+.auto-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,.08); }
+.auto-icon {
+  width:48px; height:48px; border-radius:12px;
+  background:#e8f4ff; display:flex; align-items:center; justify-content:center;
+  margin-bottom:1.2rem; font-size:1.3rem;
+}
+.auto-title { font-size:1rem; font-weight:700; margin-bottom:.5rem; }
+.auto-flow {
+  margin:1rem 0; padding:.8rem 1rem;
+  background:#f8faff; border-radius:8px; border-left:3px solid #c5d5ff;
+  font-size:.76rem; color:var(--gris); font-family:monospace; line-height:1.7;
+}
+.auto-flow span { display:block; }
+.auto-flow span.arrow { color:var(--bleu); font-weight:700; }
+.auto-gain {
+  margin-top:.8rem;
+  font-size:.75rem; font-weight:700; color:#00a651;
+  display:flex; align-items:center; gap:.3rem;
+}
+.auto-gain::before { content:'↑'; }
+
+/* PROCESSUS */
+.process { background:#f2f4ff; }
+.steps { display:flex; flex-direction:column; gap:0; max-width:700px; }
+.step { display:flex; gap:2rem; position:relative; padding-bottom:2.5rem; }
+.step:last-child { padding-bottom:0; }
+.step-left { display:flex; flex-direction:column; align-items:center; }
+.step-num {
+  width:48px; height:48px; border-radius:50%;
+  background:var(--bleu); color:var(--blanc);
+  font-size:.9rem; font-weight:800;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; z-index:1;
+}
+.step-line { width:2px; flex:1; background:#dde2ff; margin-top:.5rem; }
+.step:last-child .step-line { display:none; }
+.step-content { padding-top:.6rem; }
+.step-title { font-size:1.05rem; font-weight:700; margin-bottom:.4rem; }
+.step-desc { font-size:.88rem; color:var(--gris); line-height:1.6; }
+.step-delay {
+  display:inline-block; margin-top:.5rem;
+  font-size:.7rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--bleu); background:#e8f0ff; padding:2px 10px; border-radius:99px;
+}
+
+/* ROI */
+.roi { background:var(--noir); color:var(--blanc); }
+.roi .section-title { color:var(--blanc); }
+.roi .section-sub { color:rgba(255,255,255,.5); margin-bottom:2rem; }
+.roi-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:1.5rem; margin-bottom:3rem; }
+.roi-card {
+  border:1px solid rgba(255,255,255,.1); border-radius:12px;
+  padding:1.8rem; text-align:center;
+}
+.roi-num {
+  font-size:2.8rem; font-weight:900; letter-spacing:-.03em;
+  color:var(--bleu); line-height:1; margin-bottom:.5rem;
+}
+.roi-label { font-size:.82rem; color:rgba(255,255,255,.5); line-height:1.4; }
+.roi-compare {
+  background:rgba(255,255,255,.04); border-radius:12px;
+  padding:1.5rem 2rem; border:1px solid rgba(255,255,255,.08);
+}
+.roi-compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+.roi-col h4 { font-size:.8rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; margin-bottom:1rem; }
+.roi-col.before h4 { color:rgba(255,255,255,.4); }
+.roi-col.after h4 { color:var(--bleu); }
+.roi-item {
+  font-size:.84rem; color:rgba(255,255,255,.6); padding:.4rem 0;
+  border-bottom:1px solid rgba(255,255,255,.05);
+  display:flex; align-items:flex-start; gap:.5rem;
+}
+.roi-col.before .roi-item::before { content:'✗'; color:rgba(255,255,255,.3); flex-shrink:0; }
+.roi-col.after .roi-item::before { content:'✓'; color:var(--bleu); flex-shrink:0; }
+
+/* FAQ */
+.faq-item { border-bottom:1px solid #eee; padding:1.5rem 0; cursor:pointer; }
+.faq-q {
+  font-size:1rem; font-weight:600;
+  display:flex; justify-content:space-between; align-items:center; gap:1rem;
+}
+.faq-icon { font-size:1.4rem; color:var(--bleu); flex-shrink:0; transition:transform .3s; }
+.faq-item.open .faq-icon { transform:rotate(45deg); }
+.faq-a {
+  font-size:.88rem; color:var(--gris); line-height:1.7;
+  max-height:0; overflow:hidden; transition:max-height .4s ease, padding .3s;
+}
+.faq-item.open .faq-a { max-height:300px; padding-top:.8rem; }
+
+/* CTA FINAL */
+.cta-final { background:var(--noir); color:var(--blanc); text-align:center; }
+.cta-final .section-title { color:var(--blanc); max-width:700px; margin:0 auto 1rem; }
+.cta-final .section-sub { color:rgba(255,255,255,.5); margin:0 auto 2.5rem; }
+.cta-box { display:inline-flex; flex-direction:column; align-items:center; gap:1rem; }
+.cta-urgency { font-size:.78rem; color:#f5a623; font-weight:600; letter-spacing:.06em; text-transform:uppercase; }
+.cta-note { font-size:.76rem; color:rgba(255,255,255,.3); }
+
+/* FOOTER */
+footer {
+  background:var(--noir); color:rgba(255,255,255,.5);
+  padding:3rem 6vw 2rem;
+}
+.footer-inner { max-width:1100px; margin:0 auto; }
+.footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:3rem; margin-bottom:2rem; }
+.footer-brand h4 {
+  font-size:1.1rem; font-weight:700; color:var(--blanc);
+  display:flex; align-items:center; gap:.5rem; margin-bottom:.5rem;
+}
+.footer-brand h4 img { border-radius:6px; }
+.footer-tagline { font-size:.7rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--bleu); margin-bottom:.8rem; }
+.footer-brand p { font-size:.82rem; line-height:1.6; }
+.footer-col h5 { font-size:.8rem; font-weight:700; color:var(--blanc); text-transform:uppercase; letter-spacing:.08em; margin-bottom:1rem; }
+.footer-col ul { list-style:none; }
+.footer-col li { margin-bottom:.5rem; }
+.footer-col a { font-size:.82rem; color:rgba(255,255,255,.4); text-decoration:none; transition:color .2s; }
+.footer-col a:hover { color:var(--blanc); }
+.footer-bottom {
+  display:flex; align-items:center; justify-content:space-between;
+  border-top:1px solid rgba(255,255,255,.08); padding-top:1.5rem;
+  font-size:.76rem; flex-wrap:wrap; gap:.5rem;
+}
+.legal { display:flex; gap:1.5rem; }
+.legal a { color:rgba(255,255,255,.3); text-decoration:none; transition:color .2s; }
+.legal a:hover { color:var(--blanc); }
+
+@media(max-width:768px) {
+  .hero-inner { grid-template-columns:1fr; }
+  .hero-split-img { display:none; }
+  .roi-compare-grid { grid-template-columns:1fr; }
+  .footer-grid { grid-template-columns:1fr; gap:2rem; }
+  nav { padding:1rem 5vw; }
+  .nav-links { display:none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="https://neosocle.fr" class="nav-logo"><span>NEO</span>SOCLE</a>
+  <ul class="nav-links">
+    <li><a href="https://neosocle.fr/#etude">Étude</a></li>
+    <li><a href="https://neosocle.fr/#automatisation">Automatisation</a></li>
+    <li><a href="https://neosocle.fr/#aides">Aides</a></li>
+    <li><a href="https://neosocle.fr/#blog">Blog</a></li>
+  </ul>
+  <a href="https://form.jotform.com/261125230398049" class="nav-cta">Diagnostic gratuit →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-split-img" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&w=900&q=80"
+         alt="Vétérinaire en consultation avec un chien" loading="eager">
+  </div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge">🐾 Spécial cliniques vétérinaires</div>
+      <div class="hero-eyebrow">Automatisation no-code</div>
+      <h1 class="hero-h1">
+        <span style="font-size:0;position:absolute;">Automatisation no-code pour cliniques vétérinaires — Neosocle</span>
+        Votre ASV relance<br>
+        200 vaccins<br>
+        par <span class="split-word">téléphone.</span>
+      </h1>
+      <p class="hero-sub">
+        20h par mois de rappels vaccinaux manuels, un par un, par votre secrétaire. On automatise ça en 2 jours. Zéro techno à maîtriser de votre côté.
+      </p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">20h</div>
+          <div class="label">/mois regagnées<br>sur les rappels</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">-40%</div>
+          <div class="label">de no-show<br>avec rappels J-1</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">+60</div>
+          <div class="label">avis Google<br>par an en moyenne</div>
+        </div>
+      </div>
+      <div class="hero-cta-group">
+        <a href="https://form.jotform.com/261125230398049" class="btn-primary">Diagnostic gratuit — 30 min →</a>
+        <a href="https://neosocle.fr/etude" class="btn-secondary">Voir l'Étude à 897€</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="stat-card">
+        <div class="stat-card-tag">Tableau de bord — clinique type</div>
+        <div class="stat-row">
+          <span class="stat-label">Rappels vaccinaux / mois</span>
+          <span class="stat-value blue">~180 animaux</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Temps ASV actuel (manuel)</span>
+          <span class="stat-value" style="color:#e05a00">18–22h/mois</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Temps ASV après automatisation</span>
+          <span class="stat-value green">< 1h/mois</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Taux de no-show RDV actuel</span>
+          <span class="stat-value" style="color:#e05a00">12–18 %</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Taux no-show avec rappel SMS J-1</span>
+          <span class="stat-value green">3–5 %</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Délai de mise en place</span>
+          <span class="stat-value blue">2–3 jours</span>
+        </div>
+        <div class="stat-footer">⚡ Investissement unique · Aucun abonnement · Documentation incluse</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLÈME -->
+<section class="problem">
+  <div class="section-inner">
+    <div class="section-label reveal">La réalité terrain</div>
+    <h2 class="section-title reveal">Votre ASV est sous-utilisée.<br>Et ça vous coûte des clients.</h2>
+    <p class="section-sub reveal">Une Auxiliaire Spécialisée Vétérinaire qualifiée, formée, compétente — qui passe ses journées à rappeler des propriétaires pour un vaccin BCH ou un antiparasitaire de printemps. C'est un problème organisationnel, pas humain.</p>
+    <div class="problem-grid">
+      <div class="problem-card reveal" data-emoji="📋">
+        <div class="problem-num">01</div>
+        <div class="problem-title">Le protocole vaccinal, géré à la main</div>
+        <div class="problem-text">Primo-vaccination, rappel annuel BCH, séquence RCP, leishmaniose… Votre logiciel (Vetup, Veterisoft, Clovis) stocke les dates. Mais c'est votre ASV qui épluche les fichiers et appelle — un par un. <strong>180 animaux par mois en moyenne.</strong></div>
+      </div>
+      <div class="problem-card reveal" data-emoji="📅">
+        <div class="problem-num">02</div>
+        <div class="problem-title">Les no-show qui coûtent 3 à 5 consultations par semaine</div>
+        <div class="problem-text">Sans rappel SMS J-1, le taux d'absence tourne autour de <strong>12 à 18%</strong> selon les cliniques. C'est un créneau chirurgical ou une consultation de 45 min qui part à vide — et un planning impossible à optimiser.</div>
+      </div>
+      <div class="problem-card reveal" data-emoji="⭐">
+        <div class="problem-num">03</div>
+        <div class="problem-title">Vos clients adorent votre clinique. Ils ne le disent pas sur Google.</div>
+        <div class="problem-text">Les propriétaires d'animaux sont parmi les clients les plus engagés qui existent. Mais <strong>personne ne leur demande de laisser un avis au bon moment</strong> — après une consultation réussie, quand l'émotion est là.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CE QU'ON AUTOMATISE -->
+<section>
+  <div class="section-inner">
+    <div class="section-label reveal">Ce qu'on configure pour vous</div>
+    <h2 class="section-title reveal">4 workflows. 2 jours. Aucune ligne de code.</h2>
+    <p class="section-sub reveal">On s'interface avec votre logiciel vétérinaire existant. Pas de migration, pas de remplacement. On ajoute la couche de communication automatisée qui manque.</p>
+    <div class="auto-grid">
+
+      <div class="auto-card reveal">
+        <div class="auto-icon">💉</div>
+        <div class="auto-title">Rappels protocole vaccinal automatisés</div>
+        <div class="auto-flow">
+          <span>Base Vetup / Veterisoft exportée</span>
+          <span class="arrow">↓</span>
+          <span>Détection dates d'expiration J-30</span>
+          <span class="arrow">↓</span>
+          <span>SMS propriétaire : "Rex est dû pour son BCH annuel"</span>
+          <span class="arrow">↓</span>
+          <span>Lien prise de RDV direct → votre agenda</span>
+        </div>
+        <div class="auto-gain">18–20h/mois récupérées par votre ASV</div>
+      </div>
+
+      <div class="auto-card reveal">
+        <div class="auto-icon">📲</div>
+        <div class="auto-title">Rappel de RDV J-1 (suppression no-show)</div>
+        <div class="auto-flow">
+          <span>RDV créé dans votre logiciel</span>
+          <span class="arrow">↓</span>
+          <span>SMS automatique J-1 à 9h00</span>
+          <span class="arrow">↓</span>
+          <span>"RDV demain 14h pour Mia avec Dr Leblanc"</span>
+          <span class="arrow">↓</span>
+          <span>Confirmation ou annulation en 1 réponse</span>
+        </div>
+        <div class="auto-gain">-40% de no-show · créneaux libérés en avance</div>
+      </div>
+
+      <div class="auto-card reveal">
+        <div class="auto-icon">⭐</div>
+        <div class="auto-title">Demande d'avis post-consultation</div>
+        <div class="auto-flow">
+          <span>Consultation clôturée dans le logiciel</span>
+          <span class="arrow">↓</span>
+          <span>SMS propriétaire J+3 : "Comment va [Animal] ?"</span>
+          <span class="arrow">↓</span>
+          <span>Si retour positif → lien avis Google direct</span>
+          <span class="arrow">↓</span>
+          <span>Zéro friction : 1 clic vers le formulaire Google</span>
+        </div>
+        <div class="auto-gain">+50 à +100 avis Google par an (observé)</div>
+      </div>
+
+      <div class="auto-card reveal">
+        <div class="auto-icon">🔔</div>
+        <div class="auto-title">Suivi liste d'attente chirurgie / spécialistes</div>
+        <div class="auto-flow">
+          <span>Propriétaire s'inscrit sur liste via formulaire</span>
+          <span class="arrow">↓</span>
+          <span>Annulation d'un créneau détectée</span>
+          <span class="arrow">↓</span>
+          <span>SMS immédiat au 1er de la liste</span>
+          <span class="arrow">↓</span>
+          <span>Si refus → notification automatique au suivant</span>
+        </div>
+        <div class="auto-gain">Zéro créneau laissé vacant involontairement</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSUS -->
+<section class="process">
+  <div class="section-inner">
+    <div class="section-label reveal">Comment ça se passe</div>
+    <h2 class="section-title reveal">On vient, on configure, on forme.<br>Vous gardez la main.</h2>
+    <p class="section-sub reveal">Pas de prestataire fantôme. Pas de dépendance opaque. Documentation complète, formation de votre ASV incluse.</p>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-left"><div class="step-num">1</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Diagnostic — 30 min</div>
+          <div class="step-desc">On regarde ensemble votre logiciel, vos flux actuels, ce qui prend le plus de temps. On identifie les 2–3 automatisations à impact immédiat. Gratuit, sans engagement.</div>
+          <span class="step-delay">Semaine 1</span>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-left"><div class="step-num">2</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Proposition chiffrée sous 48h</div>
+          <div class="step-desc">Vous recevez le périmètre exact, le délai de mise en place, le coût total. Aucun frais récurrent si les outils utilisés restent dans le tier gratuit (cas de 90% des cliniques).</div>
+          <span class="step-delay">Semaine 1</span>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-left"><div class="step-num">3</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Configuration & tests en conditions réelles</div>
+          <div class="step-desc">On branche les outils sur vos données réelles. On teste sur 10–20 cas réels avant de généraliser. Rien ne part en production sans votre validation.</div>
+          <span class="step-delay">Semaine 2</span>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-left"><div class="step-num">4</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Formation de votre ASV + documentation</div>
+          <div class="step-desc">Session de 45 min avec votre ASV. Elle repart avec un guide pas-à-pas. Si quelque chose change dans votre logiciel, elle sait comment ajuster.</div>
+          <span class="step-delay">Semaine 2–3</span>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-left"><div class="step-num">5</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Suivi 30 jours inclus</div>
+          <div class="step-desc">Si un problème apparaît (logiciel mis à jour, format d'export modifié), je suis joignable et j'interviens sans surcoût. Après les 30 jours, vous êtes autonomes.</div>
+          <span class="step-delay">Mois 1</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROI -->
+<section class="roi">
+  <div class="section-inner">
+    <div class="section-label reveal">Impact concret</div>
+    <h2 class="section-title reveal">Ce que ça change en 90 jours.</h2>
+    <p class="section-sub reveal">Basé sur des cliniques vétérinaires avec 3 à 6 praticiens et une patientèle de 800 à 2 000 animaux actifs.</p>
+    <div class="roi-grid">
+      <div class="roi-card reveal">
+        <div class="roi-num">20h</div>
+        <div class="roi-label">Regagnées par mois par votre ASV sur les rappels vaccinaux</div>
+      </div>
+      <div class="roi-card reveal">
+        <div class="roi-num">-40%</div>
+        <div class="roi-label">De no-show grâce aux rappels SMS J-1 automatisés</div>
+      </div>
+      <div class="roi-card reveal">
+        <div class="roi-num">+60</div>
+        <div class="roi-label">Avis Google supplémentaires par an en moyenne</div>
+      </div>
+      <div class="roi-card reveal">
+        <div class="roi-num">0€</div>
+        <div class="roi-label">De coût mensuel récurrent (outils en tier gratuit)</div>
+      </div>
+    </div>
+    <div class="roi-compare reveal">
+      <div class="roi-compare-grid">
+        <div class="roi-col before">
+          <h4>Avant</h4>
+          <div class="roi-item">ASV sur téléphone 3h/jour pour rappels vaccins</div>
+          <div class="roi-item">15% de no-show · planning désorganisé</div>
+          <div class="roi-item">12 avis Google cette année</div>
+          <div class="roi-item">Liste attente chirurgie sur cahier</div>
+          <div class="roi-item">Suivi post-op inexistant</div>
+        </div>
+        <div class="roi-col after">
+          <h4>Après</h4>
+          <div class="roi-item">ASV disponible pour l'accueil et les soins</div>
+          <div class="roi-item">4% de no-show · agenda optimisé</div>
+          <div class="roi-item">60+ avis Google · meilleur référencement local</div>
+          <div class="roi-item">Liste attente gérée automatiquement</div>
+          <div class="roi-item">SMS J+3 sur chaque consultation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:#f2f4ff">
+  <div class="section-inner">
+    <div class="section-label reveal">Questions fréquentes</div>
+    <h2 class="section-title reveal">Ce que les vétérinaires nous demandent.</h2>
+    <div style="max-width:700px;margin-top:2rem">
+
+      <div class="faq-item reveal">
+        <div class="faq-q">Est-ce compatible avec mon logiciel Vetup / Veterisoft / Clovis ?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Oui. On passe par un export CSV ou une connexion API selon le logiciel. On a déjà intégré Vetup, Veterisoft et Clovis. Pour les autres, on teste lors du diagnostic — si ce n'est pas faisable, on vous le dit avant de vous facturer quoi que ce soit.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">Mon ASV doit-elle apprendre un nouveau logiciel ?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Non. De son côté, les workflows tournent en arrière-plan. Elle reçoit juste des notifications (email ou SMS) quand une action manuelle est requise — par exemple, quand un propriétaire répond. Elle n'a aucune interface à gérer au quotidien.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">Est-ce que ça respecte les règles RGPD sur les données patients animaux ?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Oui. Les outils utilisés (Make, Jotform, Brevo ou Twilio pour les SMS) sont conformes RGPD et hébergés en Europe quand disponible. Les données propriétaires ne transitent que par des connexions chiffrées. Une documentation RGPD est fournie avec chaque mission.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">Quel est le coût total ? Y a-t-il un abonnement mensuel ?<span class="faq-icon">+</span></div>
+        <div class="faq-a">La mise en place est un forfait unique (1 500 à 2 500€ selon le périmètre). Dans 90% des cliniques, les outils utilisés restent dans leur tier gratuit — donc aucun coût récurrent. Si votre volume dépasse le tier gratuit, on vous indique le coût exact avant de démarrer.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">Et si mon logiciel est mis à jour et que quelque chose casse ?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Les 30 premiers jours, j'interviens sans surcoût. Après, la documentation fournie à votre ASV couvre les cas standard. Pour les mises à jour majeures, une intervention peut être nécessaire — généralement 30 min à 1h, facturée au taux horaire (pas un forfait global).</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final" id="contact">
+  <div class="section-inner">
+    <div class="section-label reveal" style="justify-content:center">Prêt à libérer votre ASV ?</div>
+    <h2 class="section-title reveal">30 minutes pour savoir ce qu'on peut automatiser dans votre clinique.</h2>
+    <p class="section-sub reveal">Diagnostic gratuit, sans engagement. Vous repartez avec une liste des automatisations pertinentes pour votre configuration — même si on ne travaille pas ensemble.</p>
+    <div class="cta-box reveal">
+      <span class="cta-urgency">🐾 Spécialiste cliniques vétérinaires · Réponse sous 48h</span>
+      <a href="https://form.jotform.com/261125230398049" class="btn-primary" style="font-size:1rem;padding:1.2rem 3rem">
+        Réserver mon diagnostic gratuit →
+      </a>
+      <a href="https://neosocle.fr/etude" style="font-size:.84rem;color:rgba(255,255,255,.5);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:2px">
+        Ou voir l'Étude Marketing à 897€
+      </a>
+      <span class="cta-note">Sans engagement · Documentation incluse · Formation ASV incluse</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h4>
+          <img src="https://neosocle.fr/assets/NS_icon_dark.png" alt="Logo Neosocle" width="28" height="28">
+          Neosocle
+        </h4>
+        <div class="footer-tagline">Solutions IA & Automation</div>
+        <p>Votre croissance digitale, analysée. Pour les PME, TPE, artisans et indépendants en France.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="https://form.jotform.com/261125230398049">Diagnostic gratuit</a></li>
+          <li><a href="https://neosocle.fr/etude">Étude Marketing 897€</a></li>
+          <li><a href="https://form.jotform.com/261174531559056">Projet d'automatisation</a></li>
+          <li><a href="https://neosocle.fr/aides">13 aides publiques</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Secteurs</h5>
+        <ul>
+          <li><a href="https://neosocle.fr/veterinaires" style="color:rgba(255,255,255,.7)">Cliniques vétérinaires</a></li>
+          <li><a href="https://neosocle.fr/comptables">Cabinets comptables</a></li>
+          <li><a href="https://neosocle.fr/opticiens">Opticiens & audioprothésistes</a></li>
+          <li><a href="https://neosocle.fr/#blog">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Neosocle. Tous droits réservés.</div>
+      <div class="legal">
+        <a href="https://neosocle.fr/mentions-legales">Mentions légales</a>
+        <a href="https://neosocle.fr/cgv">CGV</a>
+        <a href="https://neosocle.fr/confidentialite">Confidentialité</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(els => {
+  els.forEach(el => { if(el.isIntersecting) el.target.classList.add('visible'); });
+}, { threshold:.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => {
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if(!open) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

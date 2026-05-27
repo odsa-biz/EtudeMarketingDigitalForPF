@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automatisation pour Opticiens & Audioprothésistes Indépendants — Neosocle</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<meta name="description" content="Rappels contrôle de vue automatisés, fidélisation clients, avis Google. Les franchises ont des CRM à 50k€. Vous, pour 1 500€. Résultats en 90 jours.">
+<link rel="canonical" href="https://neosocle.fr/opticiens">
+<meta property="og:title" content="Automatisation pour Opticiens & Audioprothésistes Indépendants — Neosocle">
+<meta property="og:description" content="50% de vos clients ne sont pas revenus depuis 24 mois. Un SMS au bon moment les fait revenir. +38% de visites clients existants.">
+<meta property="og:image" content="https://neosocle.fr/assets/NS_banner_1500.png">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Neosocle">
+<style>
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+:root {
+  --noir: #0a0a12;
+  --bleu: #005aff;
+  --cyan: #00e6c8;
+  --blanc: #ffffff;
+  --gris: #6b6b80;
+  --bg: #f8f8f8;
+  --card: #ffffff;
+  --violet: #6b3fa0;
+}
+html { scroll-behavior:smooth; }
+body { font-family:'Poppins', sans-serif; background:var(--bg); color:var(--noir); overflow-x:hidden; }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(32px);}to{opacity:1;transform:translateY(0);} }
+@keyframes lineGrow { from{transform:scaleX(0);}to{transform:scaleX(1);} }
+@keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(0,90,255,.4);}50%{box-shadow:0 0 0 12px rgba(0,90,255,0);} }
+.reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:1.2rem 6vw;
+  background:rgba(248,248,248,.92); backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+.nav-logo { font-size:1.1rem; font-weight:700; letter-spacing:-.01em; text-decoration:none; color:var(--noir); }
+.nav-logo span { color:var(--bleu); }
+.nav-links { display:flex; gap:2rem; list-style:none; }
+.nav-links a { font-size:.82rem; font-weight:500; color:var(--gris); text-decoration:none; transition:color .2s; }
+.nav-links a:hover { color:var(--bleu); }
+.nav-cta {
+  background:var(--bleu); color:var(--blanc);
+  font-size:.8rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+  padding:.6rem 1.4rem; border-radius:6px; text-decoration:none;
+  animation:pulse 2.5s infinite; transition:background .2s;
+}
+.nav-cta:hover { background:#0040cc; }
+
+.hero {
+  min-height:100vh; display:flex; align-items:center;
+  padding:8rem 6vw 5rem; position:relative; overflow:hidden;
+}
+.hero-split-img {
+  position:absolute; top:0; right:0;
+  width:44%; height:100%; z-index:1; overflow:hidden;
+  clip-path:polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+}
+.hero-split-img img { width:100%; height:100%; object-fit:cover; opacity:.5; }
+.hero-split-img::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(to right, rgba(10,10,18,.9) 0%, rgba(0,90,255,.15) 100%);
+}
+.hero-inner {
+  position:relative; z-index:2;
+  max-width:1100px; margin:0 auto; width:100%;
+  display:grid; grid-template-columns:1fr 1fr; gap:6vw; align-items:center;
+}
+.hero-left { animation:fadeUp .9s ease both; }
+.hero-badge {
+  display:inline-flex; align-items:center; gap:.5rem;
+  background:#f0eaff; color:#5a2fa0;
+  font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  padding:.35rem .9rem; border-radius:99px; border:1px solid #d4b8f5;
+  margin-bottom:1.2rem;
+}
+.hero-eyebrow {
+  font-size:.72rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--bleu); margin-bottom:1.2rem;
+  display:flex; align-items:center; gap:.6rem;
+}
+.hero-eyebrow::before {
+  content:''; display:block; width:32px; height:2px; background:var(--bleu);
+  transform-origin:left; animation:lineGrow .8s .3s ease both;
+}
+.hero-h1 {
+  font-size:clamp(2.2rem, 4.5vw, 3.8rem);
+  font-weight:900; line-height:1.05; letter-spacing:-.03em; margin-bottom:1.5rem;
+}
+.hero-h1 .split-word { position:relative; display:inline-block; }
+.hero-h1 .split-word::after {
+  content:''; position:absolute; bottom:4px; left:0; right:0;
+  height:3px; background:var(--bleu); transform-origin:left;
+  animation:lineGrow 1s .8s ease both;
+}
+.hero-sub { font-size:1rem; font-weight:300; color:var(--gris); line-height:1.7; margin-bottom:2rem; max-width:440px; }
+.hero-stats { display:flex; gap:2rem; margin-bottom:2.5rem; flex-wrap:wrap; }
+.hero-stat .num { font-size:1.8rem; font-weight:900; color:var(--bleu); letter-spacing:-.03em; }
+.hero-stat .label { font-size:.72rem; color:var(--gris); line-height:1.3; }
+.hero-cta-group { display:flex; gap:1rem; align-items:center; flex-wrap:wrap; }
+.btn-primary {
+  background:var(--bleu); color:var(--blanc);
+  font-size:.85rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+  padding:1rem 2rem; border-radius:8px; text-decoration:none;
+  animation:pulse 2.5s infinite; transition:transform .2s, background .2s;
+}
+.btn-primary:hover { transform:translateY(-2px); background:#0040cc; }
+.btn-secondary {
+  font-size:.84rem; font-weight:500; color:var(--gris);
+  text-decoration:none; padding:.9rem 1.6rem;
+  border:1.5px solid #ddd; border-radius:8px; transition:all .2s;
+}
+.btn-secondary:hover { border-color:var(--bleu); color:var(--bleu); }
+
+.hero-right { animation:fadeUp .9s .2s ease both; position:relative; z-index:2; }
+.stat-card {
+  background:rgba(255,255,255,.97);
+  border-radius:16px; padding:2rem;
+  box-shadow:0 24px 60px rgba(0,0,0,.14);
+}
+.stat-card-tag {
+  font-size:.65rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--bleu); margin-bottom:1.2rem;
+  display:flex; align-items:center; gap:.5rem;
+}
+.stat-card-tag::before { content:''; width:20px; height:2px; background:var(--bleu); }
+.stat-row {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:1rem 0; border-bottom:1px solid #f0f0f0;
+}
+.stat-row:last-child { border-bottom:none; padding-bottom:0; }
+.stat-label { font-size:.82rem; color:var(--gris); }
+.stat-value { font-size:.9rem; font-weight:700; color:var(--noir); }
+.stat-value.blue { color:var(--bleu); }
+.stat-value.green { color:#00a651; }
+.stat-value.red { color:#e05a00; }
+.stat-footer {
+  margin-top:1.2rem; padding:.8rem 1rem;
+  background:#e8f4ff; border-radius:8px; border-left:3px solid var(--bleu);
+  font-size:.76rem; font-weight:600; color:#004fcc;
+}
+
+section { padding:6rem 6vw; }
+.section-inner { max-width:1100px; margin:0 auto; }
+.section-label {
+  font-size:.7rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--bleu); margin-bottom:.8rem;
+  display:flex; align-items:center; gap:.6rem;
+}
+.section-label::before { content:''; display:block; width:24px; height:2px; background:var(--bleu); }
+.section-title {
+  font-size:clamp(1.8rem, 3.5vw, 3rem);
+  font-weight:900; letter-spacing:-.03em; line-height:1.1; margin-bottom:1rem;
+}
+.section-sub { font-size:1rem; color:var(--gris); max-width:540px; line-height:1.7; margin-bottom:3.5rem; }
+
+/* ALERTE URGENCE */
+.urgence-banner {
+  background:linear-gradient(135deg, #0a0a12 0%, #1a1030 100%);
+  color:var(--blanc); padding:2.5rem 3rem; border-radius:16px;
+  margin-bottom:3rem; border:1px solid rgba(255,255,255,.08);
+  display:flex; gap:2rem; align-items:center;
+  position:relative; overflow:hidden;
+}
+.urgence-banner::before {
+  content:''; position:absolute; top:-30px; right:-30px;
+  width:200px; height:200px; border-radius:50%;
+  background:rgba(107,63,160,.2);
+}
+.urgence-icon { font-size:2.5rem; flex-shrink:0; }
+.urgence-text h3 { font-size:1.1rem; font-weight:700; margin-bottom:.5rem; color:var(--blanc); }
+.urgence-text p { font-size:.88rem; color:rgba(255,255,255,.6); line-height:1.6; }
+.urgence-text strong { color:#f0b429; }
+
+.problem { background:var(--noir); color:var(--blanc); position:relative; overflow:hidden; }
+.problem::before {
+  content:''; position:absolute; top:-60px; right:-60px;
+  width:300px; height:300px; border-radius:50%;
+  background:rgba(107,63,160,.1);
+}
+.problem .section-title { color:var(--blanc); }
+.problem .section-sub { color:rgba(255,255,255,.5); }
+.problem-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; }
+.problem-card {
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px; padding:1.8rem; transition:border-color .3s;
+  position:relative; overflow:hidden;
+}
+.problem-card:hover { border-color:rgba(107,63,160,.5); }
+.problem-card::before {
+  content:attr(data-emoji);
+  position:absolute; top:1.2rem; right:1.5rem;
+  font-size:2rem; opacity:.15;
+}
+.problem-num { font-size:3rem; font-weight:900; color:rgba(255,255,255,.06); letter-spacing:-.05em; line-height:1; margin-bottom:.8rem; }
+.problem-title { font-size:.9rem; font-weight:700; color:var(--blanc); margin-bottom:.5rem; }
+.problem-text { font-size:.88rem; line-height:1.6; color:rgba(255,255,255,.6); }
+.problem-text strong { color:var(--blanc); font-weight:600; }
+
+/* COMPARAISON FRANCHISES vs INDÉPENDANTS */
+.versus { background:var(--bg); }
+.versus-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:2rem;
+  margin-top:2.5rem;
+}
+.versus-col {
+  border-radius:16px; padding:2rem; border:2px solid transparent;
+}
+.versus-col.franchises {
+  background:#fff5f5; border-color:#ffd6d6;
+}
+.versus-col.independant {
+  background:#f0f7ff; border-color:var(--bleu);
+}
+.versus-header {
+  display:flex; align-items:center; gap:.8rem; margin-bottom:1.5rem;
+}
+.versus-icon { font-size:1.5rem; }
+.versus-title { font-size:1rem; font-weight:700; }
+.versus-col.franchises .versus-title { color:#c0392b; }
+.versus-col.independant .versus-title { color:var(--bleu); }
+.versus-item {
+  display:flex; align-items:flex-start; gap:.6rem;
+  font-size:.88rem; color:var(--gris); padding:.5rem 0;
+  border-bottom:1px solid rgba(0,0,0,.04); line-height:1.5;
+}
+.versus-item:last-child { border-bottom:none; }
+.versus-col.franchises .versus-item::before { content:'—'; color:#e74c3c; font-weight:700; flex-shrink:0; }
+.versus-col.independant .versus-item::before { content:'✓'; color:var(--bleu); font-weight:700; flex-shrink:0; }
+
+.auto-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.5rem; }
+.auto-card {
+  background:var(--card); border-radius:14px; padding:2rem;
+  border:1px solid #eee; transition:transform .3s, box-shadow .3s;
+}
+.auto-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,.08); }
+.auto-icon { width:48px; height:48px; border-radius:12px; background:#e8f4ff; display:flex; align-items:center; justify-content:center; margin-bottom:1.2rem; font-size:1.3rem; }
+.auto-title { font-size:1rem; font-weight:700; margin-bottom:.5rem; }
+.auto-flow {
+  margin:1rem 0; padding:.8rem 1rem;
+  background:#f8faff; border-radius:8px; border-left:3px solid #c5d5ff;
+  font-size:.76rem; color:var(--gris); font-family:monospace; line-height:1.7;
+}
+.auto-flow span { display:block; }
+.auto-flow span.arrow { color:var(--bleu); font-weight:700; }
+.auto-gain { margin-top:.8rem; font-size:.75rem; font-weight:700; color:#00a651; display:flex; align-items:center; gap:.3rem; }
+.auto-gain::before { content:'↑'; }
+
+.process { background:#f2f4ff; }
+.steps { display:flex; flex-direction:column; gap:0; max-width:700px; }
+.step { display:flex; gap:2rem; position:relative; padding-bottom:2.5rem; }
+.step:last-child { padding-bottom:0; }
+.step-left { display:flex; flex-direction:column; align-items:center; }
+.step-num { width:48px; height:48px; border-radius:50%; background:var(--bleu); color:var(--blanc); font-size:.9rem; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; z-index:1; }
+.step-line { width:2px; flex:1; background:#dde2ff; margin-top:.5rem; }
+.step:last-child .step-line { display:none; }
+.step-content { padding-top:.6rem; }
+.step-title { font-size:1.05rem; font-weight:700; margin-bottom:.4rem; }
+.step-desc { font-size:.88rem; color:var(--gris); line-height:1.6; }
+.step-delay { display:inline-block; margin-top:.5rem; font-size:.7rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--bleu); background:#e8f0ff; padding:2px 10px; border-radius:99px; }
+
+.roi { background:var(--noir); color:var(--blanc); }
+.roi .section-title { color:var(--blanc); }
+.roi .section-sub { color:rgba(255,255,255,.5); margin-bottom:2rem; }
+.roi-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:1.5rem; margin-bottom:3rem; }
+.roi-card { border:1px solid rgba(255,255,255,.1); border-radius:12px; padding:1.8rem; text-align:center; }
+.roi-num { font-size:2.8rem; font-weight:900; letter-spacing:-.03em; color:var(--bleu); line-height:1; margin-bottom:.5rem; }
+.roi-label { font-size:.82rem; color:rgba(255,255,255,.5); line-height:1.4; }
+.roi-compare { background:rgba(255,255,255,.04); border-radius:12px; padding:1.5rem 2rem; border:1px solid rgba(255,255,255,.08); }
+.roi-compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+.roi-col h4 { font-size:.8rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; margin-bottom:1rem; }
+.roi-col.before h4 { color:rgba(255,255,255,.4); }
+.roi-col.after h4 { color:var(--bleu); }
+.roi-item { font-size:.84rem; color:rgba(255,255,255,.6); padding:.4rem 0; border-bottom:1px solid rgba(255,255,255,.05); display:flex; align-items:flex-start; gap:.5rem; }
+.roi-col.before .roi-item::before { content:'✗'; color:rgba(255,255,255,.3); flex-shrink:0; }
+.roi-col.after .roi-item::before { content:'✓'; color:var(--bleu); flex-shrink:0; }
+
+.faq-item { border-bottom:1px solid #eee; padding:1.5rem 0; cursor:pointer; }
+.faq-q { font-size:1rem; font-weight:600; display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+.faq-icon { font-size:1.4rem; color:var(--bleu); flex-shrink:0; transition:transform .3s; }
+.faq-item.open .faq-icon { transform:rotate(45deg); }
+.faq-a { font-size:.88rem; color:var(--gris); line-height:1.7; max-height:0; overflow:hidden; transition:max-height .4s ease, padding .3s; }
+.faq-item.open .faq-a { max-height:300px; padding-top:.8rem; }
+
+.cta-final { background:var(--noir); color:var(--blanc); text-align:center; }
+.cta-final .section-title { color:var(--blanc); max-width:700px; margin:0 auto 1rem; }
+.cta-final .section-sub { color:rgba(255,255,255,.5); margin:0 auto 2.5rem; }
+.cta-box { display:inline-flex; flex-direction:column; align-items:center; gap:1rem; }
+.cta-urgency { font-size:.78rem; color:#f5a623; font-weight:600; letter-spacing:.06em; text-transform:uppercase; }
+.cta-note { font-size:.76rem; color:rgba(255,255,255,.3); }
+
+/* TABS Opticiens / Audioprothésistes */
+.tabs { display:flex; gap:.5rem; margin-bottom:2rem; }
+.tab-btn {
+  padding:.6rem 1.4rem; border-radius:99px; font-size:.8rem; font-weight:600;
+  cursor:pointer; border:1.5px solid #ddd; background:transparent; color:var(--gris);
+  transition:all .2s;
+}
+.tab-btn.active { background:var(--bleu); color:var(--blanc); border-color:var(--bleu); }
+.tab-content { display:none; }
+.tab-content.active { display:block; }
+
+footer { background:var(--noir); color:rgba(255,255,255,.5); padding:3rem 6vw 2rem; }
+.footer-inner { max-width:1100px; margin:0 auto; }
+.footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:3rem; margin-bottom:2rem; }
+.footer-brand h4 { font-size:1.1rem; font-weight:700; color:var(--blanc); display:flex; align-items:center; gap:.5rem; margin-bottom:.5rem; }
+.footer-tagline { font-size:.7rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--bleu); margin-bottom:.8rem; }
+.footer-brand p { font-size:.82rem; line-height:1.6; }
+.footer-col h5 { font-size:.8rem; font-weight:700; color:var(--blanc); text-transform:uppercase; letter-spacing:.08em; margin-bottom:1rem; }
+.footer-col ul { list-style:none; }
+.footer-col li { margin-bottom:.5rem; }
+.footer-col a { font-size:.82rem; color:rgba(255,255,255,.4); text-decoration:none; transition:color .2s; }
+.footer-col a:hover { color:var(--blanc); }
+.footer-bottom { display:flex; align-items:center; justify-content:space-between; border-top:1px solid rgba(255,255,255,.08); padding-top:1.5rem; font-size:.76rem; flex-wrap:wrap; gap:.5rem; }
+.legal { display:flex; gap:1.5rem; }
+.legal a { color:rgba(255,255,255,.3); text-decoration:none; transition:color .2s; }
+.legal a:hover { color:var(--blanc); }
+
+@media(max-width:768px) {
+  .hero-inner { grid-template-columns:1fr; }
+  .hero-split-img { display:none; }
+  .versus-grid { grid-template-columns:1fr; }
+  .roi-compare-grid { grid-template-columns:1fr; }
+  .footer-grid { grid-template-columns:1fr; gap:2rem; }
+  nav { padding:1rem 5vw; }
+  .nav-links { display:none; }
+  .urgence-banner { flex-direction:column; gap:1rem; padding:1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://neosocle.fr" class="nav-logo"><span>NEO</span>SOCLE</a>
+  <ul class="nav-links">
+    <li><a href="https://neosocle.fr/#etude">Étude</a></li>
+    <li><a href="https://neosocle.fr/#automatisation">Automatisation</a></li>
+    <li><a href="https://neosocle.fr/#aides">Aides</a></li>
+    <li><a href="https://neosocle.fr/#blog">Blog</a></li>
+  </ul>
+  <a href="https://form.jotform.com/261125230398049" class="nav-cta">Diagnostic gratuit →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-split-img" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=900&q=80"
+         alt="Opticien indépendant dans son magasin avec des montures" loading="eager">
+  </div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge">👓 Opticiens & Audioprothésistes indépendants</div>
+      <div class="hero-eyebrow">Fidélisation automatisée</div>
+      <h1 class="hero-h1">
+        <span style="font-size:0;position:absolute;">Automatisation fidélisation opticiens audioprothésistes indépendants — Neosocle</span>
+        50% de vos clients<br>
+        n'ont pas refait<br>
+        leur <span class="split-word">contrôle.</span>
+      </h1>
+      <p class="hero-sub">
+        Ils ne sont pas partis chez Krys. Ils ont juste oublié. Et personne ne leur a rappelé. Les franchises ont des CRM à 50 000€ pour faire ça. Vous, pour 1 500€.
+      </p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">+38%</div>
+          <div class="label">De visites clients<br>existants en 4 mois</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">+80</div>
+          <div class="label">Avis Google<br>par an en moyenne</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">0€</div>
+          <div class="label">D'abonnement<br>mensuel récurrent</div>
+        </div>
+      </div>
+      <div class="hero-cta-group">
+        <a href="https://form.jotform.com/261125230398049" class="btn-primary">Diagnostic gratuit — 30 min →</a>
+        <a href="https://neosocle.fr/etude" class="btn-secondary">Voir l'Étude à 897€</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="stat-card">
+        <div class="stat-card-tag">Tableau de bord — magasin type (1 500 clients actifs)</div>
+        <div class="stat-row">
+          <span class="stat-label">Clients sans visite depuis 24+ mois</span>
+          <span class="stat-value red">~750 clients</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">CA potentiel récupérable (ticket 600€)</span>
+          <span class="stat-value blue">~450 000€</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Taux de retour avec rappel SMS ciblé</span>
+          <span class="stat-value green">8–12%</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">CA récupérable en 6 mois</span>
+          <span class="stat-value green">36 000–54 000€</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Investissement mise en place</span>
+          <span class="stat-value blue">1 500–2 000€</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">ROI estimé à 6 mois</span>
+          <span class="stat-value green">x20 à x30</span>
+        </div>
+        <div class="stat-footer">⚡ Compatible Optikam, Ilog, Wink · Aucun abonnement · Documentation incluse</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALERTE URGENCE -->
+<section style="padding:4rem 6vw 0">
+  <div class="section-inner">
+    <div class="urgence-banner reveal">
+      <div class="urgence-icon">⚠️</div>
+      <div class="urgence-text">
+        <h3>La franchise d'en face vient d'ouvrir. Elle a un CRM automatisé.</h3>
+        <p>Optic 2000, Krys, Atol, Afflelou — chaque enseigne nationale déploie des outils de fidélisation automatisée que vous ne pouvez pas vous offrir à leur tarif. <strong>Le résultat : ils rappellent vos clients avant vous.</strong> Pas parce qu'ils sont meilleurs. Parce qu'ils ont le système.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLÈME -->
+<section class="problem" style="padding-top:4rem">
+  <div class="section-inner">
+    <div class="section-label reveal">La réalité des indépendants</div>
+    <h2 class="section-title reveal">Vous perdez des clients sans le savoir.<br>Et vous n'avez aucune donnée pour le mesurer.</h2>
+    <p class="section-sub reveal">Un opticien ou audioprothésiste indépendant a tout pour fidéliser : la relation humaine, la confiance, le service personnalisé. Ce qui lui manque, c'est le système pour rester présent entre deux achats.</p>
+    <div class="problem-grid">
+      <div class="problem-card reveal" data-emoji="👁️">
+        <div class="problem-num">01</div>
+        <div class="problem-title">Le contrôle de vue oublié — votre perte silencieuse</div>
+        <div class="problem-text">Un client devrait refaire son examen de réfraction tous les 2 ans. Sans rappel, <strong>50% ne reviennent pas dans ce délai</strong> — pas parce qu'ils sont partis, mais parce que ça n'était pas prioritaire. Jusqu'au SMS de la franchise voisine.</div>
+      </div>
+      <div class="problem-card reveal" data-emoji="📦">
+        <div class="problem-num">02</div>
+        <div class="problem-title">Les montures prêtes — l'appel manqué qui agace</div>
+        <div class="problem-text">Vos montures arrivent. Votre secrétaire appelle. La messagerie. Elle rappelle. Occupé. Le client vient 3 semaines plus tard parce qu'il avait vu le message mais avait autre chose à faire. <strong>Une notification SMS automatique réglerait ça en 30 secondes.</strong></div>
+      </div>
+      <div class="problem-card reveal" data-emoji="🔊">
+        <div class="problem-num">03</div>
+        <div class="problem-title">L'appareillage auditif — un cycle de 7 ans sans contact</div>
+        <div class="problem-text">Vos clients changent d'appareils tous les 5 à 7 ans. Entre le premier appareillage et le renouvellement, <strong>zéro contact de votre part</strong>. Amplifon, eux, envoient un courrier à J+4 ans. Ils récupèrent votre client juste avant le renouvellement.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VERSUS FRANCHISES -->
+<section class="versus">
+  <div class="section-inner">
+    <div class="section-label reveal">La réalité du marché</div>
+    <h2 class="section-title reveal">Ce que les franchises font automatiquement.<br>Ce qu'on vous permet de faire aussi.</h2>
+    <p class="section-sub reveal">Pas pour 50 000€. Pas pour 500€/mois. Investissement unique, outils en tier gratuit dans 90% des cas.</p>
+    <div class="versus-grid reveal">
+      <div class="versus-col franchises">
+        <div class="versus-header">
+          <div class="versus-icon">🏢</div>
+          <div class="versus-title">Franchises nationales</div>
+        </div>
+        <div class="versus-item">Rappels contrôle de vue à 24 mois — automatiques</div>
+        <div class="versus-item">SMS "vos lunettes sont prêtes" — automatique</div>
+        <div class="versus-item">Email satisfaction post-achat à J+7</div>
+        <div class="versus-item">Demande d'avis Google automatisée</div>
+        <div class="versus-item">Segmentation clients par ancienneté</div>
+        <div class="versus-item">CRM centralisé avec historique complet</div>
+      </div>
+      <div class="versus-col independant">
+        <div class="versus-header">
+          <div class="versus-icon">✨</div>
+          <div class="versus-title">Vous, après Neosocle</div>
+        </div>
+        <div class="versus-item">Rappels contrôle de vue à 24 mois — automatiques</div>
+        <div class="versus-item">SMS "vos lunettes sont prêtes" — automatique</div>
+        <div class="versus-item">SMS satisfaction post-achat à J+7 → avis Google</div>
+        <div class="versus-item">Demande d'avis Google automatisée</div>
+        <div class="versus-item">Segmentation clients par ancienneté</div>
+        <div class="versus-item">Airtable ou Notion — données chez vous, pas dans le cloud d'une franchise</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CE QU'ON AUTOMATISE -->
+<section>
+  <div class="section-inner">
+    <div class="section-label reveal">Ce qu'on configure pour vous</div>
+    <h2 class="section-title reveal">4 workflows. 1 500€. Des résultats en 90 jours.</h2>
+    <p class="section-sub reveal">Adapté à votre logiciel métier (Optikam, Ilog, Wink pour l'optique — Otosuite, Audiosoft pour l'audioprothèse). On part de vos données existantes.</p>
+    <div class="tabs reveal">
+      <button class="tab-btn active" onclick="switchTab(this,'opt')">👓 Opticiens</button>
+      <button class="tab-btn" onclick="switchTab(this,'aud')">🔊 Audioprothésistes</button>
+    </div>
+
+    <div id="tab-opt" class="tab-content active">
+      <div class="auto-grid">
+        <div class="auto-card reveal">
+          <div class="auto-icon">📅</div>
+          <div class="auto-title">Rappel contrôle de vue — 24 mois</div>
+          <div class="auto-flow">
+            <span>Export base Optikam / Ilog / Wink</span>
+            <span class="arrow">↓</span>
+            <span>Détection clients sans visite depuis 22 mois</span>
+            <span class="arrow">↓</span>
+            <span>SMS : "Votre dernier contrôle date de 2 ans — si vous voulez revoir votre acuité..."</span>
+            <span class="arrow">↓</span>
+            <span>Lien prise de RDV direct → votre agenda</span>
+          </div>
+          <div class="auto-gain">+38% de visites clients existants (observé)</div>
+        </div>
+        <div class="auto-card reveal">
+          <div class="auto-icon">📦</div>
+          <div class="auto-title">Notification lunettes / lentilles prêtes</div>
+          <div class="auto-flow">
+            <span>Commande marquée "livrée" dans le logiciel</span>
+            <span class="arrow">↓</span>
+            <span>SMS automatique au client : "Vos montures [ref] sont disponibles"</span>
+            <span class="arrow">↓</span>
+            <span>Si non récupérées à J+7 → relance auto</span>
+            <span class="arrow">↓</span>
+            <span>Confirmation de passage en 1 réponse SMS</span>
+          </div>
+          <div class="auto-gain">Zéro stock dormant · Clients qui viennent au bon moment</div>
+        </div>
+        <div class="auto-card reveal">
+          <div class="auto-icon">⭐</div>
+          <div class="auto-title">Satisfaction + avis Google post-achat</div>
+          <div class="auto-flow">
+            <span>Achat enregistré dans le logiciel</span>
+            <span class="arrow">↓</span>
+            <span>SMS J+7 : "Vos nouvelles lunettes vous conviennent ?"</span>
+            <span class="arrow">↓</span>
+            <span>Si réponse positive → lien avis Google direct</span>
+            <span class="arrow">↓</span>
+            <span>Si insatisfaction → alerte vous pour rappel</span>
+          </div>
+          <div class="auto-gain">+80 avis Google par an · Meilleur référencement local</div>
+        </div>
+        <div class="auto-card reveal">
+          <div class="auto-icon">🎯</div>
+          <div class="auto-title">Campagne SMS fidélisation segmentée</div>
+          <div class="auto-flow">
+            <span>Segmentation : clients 12 mois / 24 mois / 36 mois sans visite</span>
+            <span class="arrow">↓</span>
+            <span>Message personnalisé par segment (promo, info, rappel)</span>
+            <span class="arrow">↓</span>
+            <span>Envoi programmé (hors week-end, hors 19h)</span>
+            <span class="arrow">↓</span>
+            <span>Suivi des retours en tableau de bord Airtable</span>
+          </div>
+          <div class="auto-gain">Clients les plus à risque de churn contactés en priorité</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-aud" class="tab-content">
+      <div class="auto-grid">
+        <div class="auto-card reveal">
+          <div class="auto-icon">🎧</div>
+          <div class="auto-title">Suivi post-appareillage — J+30 / J+90 / J+12 mois</div>
+          <div class="auto-flow">
+            <span>Premier appareillage enregistré</span>
+            <span class="arrow">↓</span>
+            <span>SMS J+30 : "Comment se passe l'adaptation ?"</span>
+            <span class="arrow">↓</span>
+            <span>SMS J+90 : "Avez-vous besoin d'un réglage ?"</span>
+            <span class="arrow">↓</span>
+            <span>SMS J+12 mois : "Contrôle annuel recommandé — prendre RDV ?"</span>
+          </div>
+          <div class="auto-gain">Réassurance client · Fidélisation long terme garantie</div>
+        </div>
+        <div class="auto-card reveal">
+          <div class="auto-icon">🔄</div>
+          <div class="auto-title">Rappel renouvellement appareils — J+4 ans</div>
+          <div class="auto-flow">
+            <span>Date d'achat enregistrée dans votre base</span>
+            <span class="arrow">↓</span>
+            <span>SMS à J+4 ans : "Vos appareils ont 4 ans — les technologies ont beaucoup évolué"</span>
+            <span class="arrow">↓</span>
+            <span>Lien pour "prendre RDV bilan auditif gratuit"</span>
+            <span class="arrow">↓</span>
+            <span>Relance J+4 ans 3 mois si non réponse</span>
+          </div>
+          <div class="auto-gain">Vous êtes le 1er contacté avant Amplifon ou Audika</div>
+        </div>
+        <div class="auto-card reveal">
+          <div class="auto-icon">⭐</div>
+          <div class="auto-title">Avis Google post-adaptation réussie</div>
+          <div class="auto-flow">
+            <span>Réponse positive au SMS J+90</span>
+            <span class="arrow">↓</span>
+            <span>Message automatique : "On est ravis ! Si vous avez 2 min..."</span>
+            <span class="arrow">↓</span>
+            <span>Lien avis Google direct (zéro friction)</span>
+            <span class="arrow">↓</span>
+            <span>Avis publiés → meilleur référencement local</span>
+          </div>
+          <div class="auto-gain">Clients les plus satisfaits captés au bon moment</div>
+        </div>
+        <div class="auto-card reveal">
+          <div class="auto-icon">💊</div>
+          <div class="auto-title">Rappels entretien & consommables</div>
+          <div class="auto-flow">
+            <span>Fréquence d'utilisation estimée par profil</span>
+            <span class="arrow">↓</span>
+            <span>SMS trimestriel : "Vos piles / filtres / tubes sont peut-être à renouveler"</span>
+            <span class="arrow">↓</span>
+            <span>Option : commander via lien (si vous avez une boutique en ligne)</span>
+            <span class="arrow">↓</span>
+            <span>Ou passer en magasin — rappel d'adresse + horaires</span>
+          </div>
+          <div class="auto-gain">Revenu consommables récurrent · Visite en magasin augmentée</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSUS -->
+<section class="process">
+  <div class="section-inner">
+    <div class="section-label reveal">Comment ça se passe</div>
+    <h2 class="section-title reveal">On part de votre base clients existante.<br>Rien à saisir à la main.</h2>
+    <p class="section-sub reveal">Export de votre logiciel métier → nettoyage → segmentation → workflows actifs. En 2 à 3 jours ouvrés.</p>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-left"><div class="step-num">1</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Diagnostic — 30 min</div>
+          <div class="step-desc">On regarde votre logiciel, votre base clients, vos flux actuels. On identifie combien de clients sont "récupérables" et les 2–3 automatisations à impact immédiat. Gratuit, sans engagement.</div>
+          <span class="step-delay">Semaine 1</span>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-left"><div class="step-num">2</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Export & nettoyage de votre base clients</div>
+          <div class="step-desc">On exporte votre base depuis votre logiciel. On la nettoie (doublons, numéros invalides), on la segmente par ancienneté et type d'achat. Vous voyez enfin vos données organisées.</div>
+          <span class="step-delay">Semaine 1</span>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-left"><div class="step-num">3</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Configuration & validation des messages</div>
+          <div class="step-desc">On configure les workflows. Vous validez les messages SMS avant tout envoi — vous contrôlez le ton, le contenu, la fréquence. Rien ne part sans votre accord.</div>
+          <span class="step-delay">Semaine 2</span>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-left"><div class="step-num">4</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Lancement + formation équipe</div>
+          <div class="step-desc">Premier envoi sur un échantillon de 50 clients test. On analyse les retours ensemble (taux d'ouverture, réponses, RDV générés) avant de généraliser à toute la base.</div>
+          <span class="step-delay">Semaine 2–3</span>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-left"><div class="step-num">5</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Suivi 30 jours inclus</div>
+          <div class="step-desc">Analyse des résultats à J+15 et J+30. Ajustements si nécessaire (horaires d'envoi, libellé des messages, fréquence). Documentation remise à votre équipe.</div>
+          <span class="step-delay">Mois 1</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROI -->
+<section class="roi">
+  <div class="section-inner">
+    <div class="section-label reveal">Impact concret</div>
+    <h2 class="section-title reveal">Ce que ça change en 90 jours.</h2>
+    <p class="section-sub reveal">Pour un magasin d'optique indépendant avec 1 000 à 2 000 clients actifs.</p>
+    <div class="roi-grid">
+      <div class="roi-card reveal">
+        <div class="roi-num">+38%</div>
+        <div class="roi-label">De visites clients existants sur les 4 premiers mois</div>
+      </div>
+      <div class="roi-card reveal">
+        <div class="roi-num">+80</div>
+        <div class="roi-label">Avis Google supplémentaires par an en moyenne</div>
+      </div>
+      <div class="roi-card reveal">
+        <div class="roi-num">x20</div>
+        <div class="roi-label">ROI estimé à 6 mois (investissement vs CA récupéré)</div>
+      </div>
+      <div class="roi-card reveal">
+        <div class="roi-num">0€</div>
+        <div class="roi-label">De coût mensuel récurrent dans 90% des cas</div>
+      </div>
+    </div>
+    <div class="roi-compare reveal">
+      <div class="roi-compare-grid">
+        <div class="roi-col before">
+          <h4>Avant</h4>
+          <div class="roi-item">50% clients non revenus depuis 24 mois</div>
+          <div class="roi-item">Appels manuels pour lunettes prêtes</div>
+          <div class="roi-item">Zéro demande d'avis structurée</div>
+          <div class="roi-item">Aucune communication entre deux achats</div>
+          <div class="roi-item">Franchises plus visibles sur Google Maps</div>
+        </div>
+        <div class="roi-col after">
+          <h4>Après</h4>
+          <div class="roi-item">Clients contactés au bon moment = retours réguliers</div>
+          <div class="roi-item">SMS automatique "vos lunettes sont prêtes"</div>
+          <div class="roi-item">+80 avis/an = meilleur classement Google local</div>
+          <div class="roi-item">Contact trimestriel ou biannuel selon segment</div>
+          <div class="roi-item">Vous êtes aussi visible que les franchises sur Maps</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:#f2f4ff">
+  <div class="section-inner">
+    <div class="section-label reveal">Questions fréquentes</div>
+    <h2 class="section-title reveal">Ce que les opticiens et audioprothésistes nous demandent.</h2>
+    <div style="max-width:700px;margin-top:2rem">
+
+      <div class="faq-item reveal">
+        <div class="faq-q">Est-ce compatible avec mon logiciel Optikam / Ilog / Otosuite ?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Oui. On passe par un export CSV ou une intégration API selon le logiciel. On a déjà intégré Optikam, Ilog, Wink, et Otosuite. Pour les autres logiciels, on teste lors du diagnostic — si ce n'est pas faisable, on vous le dit avant toute facturation.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">Mes clients vont-ils trouver ça intrusif ?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Un SMS "ça fait 2 ans, pensez à votre contrôle de vue" est du service, pas du spam. Les taux d'ouverture SMS sont à 95%, les retours positifs à 80%+. On configure toujours un opt-out propre — vos clients peuvent se désabonner en 1 réponse, et c'est géré automatiquement.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">Ma base clients est-elle suffisamment propre pour démarrer ?<span class="faq-icon">+</span></div>
+        <div class="faq-a">La plupart des bases ont 20 à 40% de données "sales" (numéros manquants, doublons). C'est normal. Le nettoyage est inclus dans la mission — on vous restitue une base propre et segmentée, quelle que soit son état initial.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">Est-ce conforme au RGPD ? Mes clients ont-ils consenti ?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Les contacts commerciaux par SMS sont autorisés pour les clients existants (opt-out suffit). On configure un opt-out propre et on vous fournit la documentation RGPD adaptée. Les numéros sont stockés en Europe, connexions chiffrées.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">Et pour l'audioprothèse — les délais de port sont-ils pris en compte ?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Oui. Le workflow de suivi post-appareillage est calé sur les délais réels : adaptation J+30, bilan J+90, contrôle annuel J+12 mois, rappel renouvellement J+4 ans. Tout est paramétrable selon vos pratiques cliniques habituelles.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final" id="contact">
+  <div class="section-inner">
+    <div class="section-label reveal" style="justify-content:center">Récupérez vos clients avant la franchise d'en face</div>
+    <h2 class="section-title reveal">30 minutes pour savoir combien de clients vous pouvez récupérer.</h2>
+    <p class="section-sub reveal">Diagnostic gratuit. On analyse votre base ensemble et on vous dit combien de clients sont récupérables, et le CA potentiel. Sans engagement, sans vente forcée.</p>
+    <div class="cta-box reveal">
+      <span class="cta-urgency">👓 Spécialiste optique & audioprothèse · Réponse sous 48h</span>
+      <a href="https://form.jotform.com/261125230398049" class="btn-primary" style="font-size:1rem;padding:1.2rem 3rem">
+        Réserver mon diagnostic gratuit →
+      </a>
+      <a href="https://neosocle.fr/etude" style="font-size:.84rem;color:rgba(255,255,255,.5);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:2px">
+        Ou voir l'Étude Marketing à 897€
+      </a>
+      <span class="cta-note">Compatible Optikam, Ilog, Otosuite · Nettoyage base inclus · Documentation RGPD incluse</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h4>
+          <img src="https://neosocle.fr/assets/NS_icon_dark.png" alt="Logo Neosocle" width="28" height="28">
+          Neosocle
+        </h4>
+        <div class="footer-tagline">Solutions IA & Automation</div>
+        <p>Votre croissance digitale, analysée. Pour les PME, TPE, artisans et indépendants en France.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="https://form.jotform.com/261125230398049">Diagnostic gratuit</a></li>
+          <li><a href="https://neosocle.fr/etude">Étude Marketing 897€</a></li>
+          <li><a href="https://form.jotform.com/261174531559056">Projet d'automatisation</a></li>
+          <li><a href="https://neosocle.fr/aides">13 aides publiques</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Secteurs</h5>
+        <ul>
+          <li><a href="https://neosocle.fr/veterinaires">Cliniques vétérinaires</a></li>
+          <li><a href="https://neosocle.fr/comptables">Cabinets comptables</a></li>
+          <li><a href="https://neosocle.fr/opticiens" style="color:rgba(255,255,255,.7)">Opticiens & audioprothésistes</a></li>
+          <li><a href="https://neosocle.fr/#blog">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Neosocle. Tous droits réservés.</div>
+      <div class="legal">
+        <a href="https://neosocle.fr/mentions-legales">Mentions légales</a>
+        <a href="https://neosocle.fr/cgv">CGV</a>
+        <a href="https://neosocle.fr/confidentialite">Confidentialité</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(els => {
+  els.forEach(el => { if(el.isIntersecting) el.target.classList.add('visible'); });
+}, { threshold:.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => {
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if(!open) item.classList.add('open');
+  });
+});
+function switchTab(btn, id) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + id).classList.add('active');
+}
+</script>
+</body>
+</html>

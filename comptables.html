@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automatisation pour Cabinets Comptables — Neosocle</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<meta name="description" content="Automatisez la collecte de pièces, les relances clients et l'onboarding de votre cabinet comptable TPE. Gagnez 10h/mois. Sans coder.">
+<link rel="canonical" href="https://neosocle.fr/comptables">
+<meta property="og:title" content="Automatisation pour Cabinets Comptables TPE — Neosocle">
+<meta property="og:description" content="Collecte de pièces automatisée, relances clients, onboarding. 10h/mois regagnées. Pour cabinets 1 à 5 collaborateurs.">
+<meta property="og:image" content="https://neosocle.fr/assets/NS_banner_1500.png">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Neosocle">
+<style>
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+:root {
+  --noir: #0a0a12;
+  --bleu: #005aff;
+  --cyan: #00e6c8;
+  --blanc: #ffffff;
+  --gris: #6b6b80;
+  --bg: #f8f8f8;
+  --card: #ffffff;
+  --gold: #c8860a;
+}
+html { scroll-behavior:smooth; }
+body { font-family:'Poppins', sans-serif; background:var(--bg); color:var(--noir); overflow-x:hidden; }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(32px);}to{opacity:1;transform:translateY(0);} }
+@keyframes lineGrow { from{transform:scaleX(0);}to{transform:scaleX(1);} }
+@keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(0,90,255,.4);}50%{box-shadow:0 0 0 12px rgba(0,90,255,0);} }
+.reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:1.2rem 6vw;
+  background:rgba(248,248,248,.92); backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(0,0,0,.06);
+}
+.nav-logo { font-size:1.1rem; font-weight:700; letter-spacing:-.01em; text-decoration:none; color:var(--noir); }
+.nav-logo span { color:var(--bleu); }
+.nav-links { display:flex; gap:2rem; list-style:none; }
+.nav-links a { font-size:.82rem; font-weight:500; color:var(--gris); text-decoration:none; transition:color .2s; }
+.nav-links a:hover { color:var(--bleu); }
+.nav-cta {
+  background:var(--bleu); color:var(--blanc);
+  font-size:.8rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+  padding:.6rem 1.4rem; border-radius:6px; text-decoration:none;
+  animation:pulse 2.5s infinite; transition:background .2s;
+}
+.nav-cta:hover { background:#0040cc; }
+
+.hero {
+  min-height:100vh; display:flex; align-items:center;
+  padding:8rem 6vw 5rem; position:relative; overflow:hidden;
+}
+.hero-split-img {
+  position:absolute; top:0; right:0;
+  width:44%; height:100%; z-index:1; overflow:hidden;
+  clip-path:polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+}
+.hero-split-img img { width:100%; height:100%; object-fit:cover; opacity:.5; }
+.hero-split-img::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(to right, rgba(10,10,18,.9) 0%, rgba(0,90,255,.2) 100%);
+}
+.hero-inner {
+  position:relative; z-index:2;
+  max-width:1100px; margin:0 auto; width:100%;
+  display:grid; grid-template-columns:1fr 1fr; gap:6vw; align-items:center;
+}
+.hero-left { animation:fadeUp .9s ease both; }
+.hero-badge {
+  display:inline-flex; align-items:center; gap:.5rem;
+  background:#fff8e1; color:#8a6200;
+  font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  padding:.35rem .9rem; border-radius:99px; border:1px solid #f5d68a;
+  margin-bottom:1.2rem;
+}
+.hero-eyebrow {
+  font-size:.72rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--bleu); margin-bottom:1.2rem;
+  display:flex; align-items:center; gap:.6rem;
+}
+.hero-eyebrow::before {
+  content:''; display:block; width:32px; height:2px; background:var(--bleu);
+  transform-origin:left; animation:lineGrow .8s .3s ease both;
+}
+.hero-h1 {
+  font-size:clamp(2.2rem, 4.5vw, 3.8rem);
+  font-weight:900; line-height:1.05; letter-spacing:-.03em; margin-bottom:1.5rem;
+}
+.hero-h1 .split-word { position:relative; display:inline-block; }
+.hero-h1 .split-word::after {
+  content:''; position:absolute; bottom:4px; left:0; right:0;
+  height:3px; background:var(--bleu); transform-origin:left;
+  animation:lineGrow 1s .8s ease both;
+}
+.hero-sub { font-size:1rem; font-weight:300; color:var(--gris); line-height:1.7; margin-bottom:2rem; max-width:440px; }
+.hero-stats { display:flex; gap:2rem; margin-bottom:2.5rem; flex-wrap:wrap; }
+.hero-stat .num { font-size:1.8rem; font-weight:900; color:var(--bleu); letter-spacing:-.03em; }
+.hero-stat .label { font-size:.72rem; color:var(--gris); line-height:1.3; }
+.hero-cta-group { display:flex; gap:1rem; align-items:center; flex-wrap:wrap; }
+.btn-primary {
+  background:var(--bleu); color:var(--blanc);
+  font-size:.85rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+  padding:1rem 2rem; border-radius:8px; text-decoration:none;
+  animation:pulse 2.5s infinite; transition:transform .2s, background .2s;
+}
+.btn-primary:hover { transform:translateY(-2px); background:#0040cc; }
+.btn-secondary {
+  font-size:.84rem; font-weight:500; color:var(--gris);
+  text-decoration:none; padding:.9rem 1.6rem;
+  border:1.5px solid #ddd; border-radius:8px; transition:all .2s;
+}
+.btn-secondary:hover { border-color:var(--bleu); color:var(--bleu); }
+
+.hero-right { animation:fadeUp .9s .2s ease both; position:relative; z-index:2; }
+.stat-card {
+  background:rgba(255,255,255,.97);
+  border-radius:16px; padding:2rem;
+  box-shadow:0 24px 60px rgba(0,0,0,.14);
+}
+.stat-card-tag {
+  font-size:.65rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--bleu); margin-bottom:1.2rem;
+  display:flex; align-items:center; gap:.5rem;
+}
+.stat-card-tag::before { content:''; width:20px; height:2px; background:var(--bleu); }
+.stat-row {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:1rem 0; border-bottom:1px solid #f0f0f0;
+}
+.stat-row:last-child { border-bottom:none; padding-bottom:0; }
+.stat-label { font-size:.82rem; color:var(--gris); }
+.stat-value { font-size:.9rem; font-weight:700; color:var(--noir); }
+.stat-value.blue { color:var(--bleu); }
+.stat-value.green { color:#00a651; }
+.stat-value.red { color:#e05a00; }
+.stat-footer {
+  margin-top:1.2rem; padding:.8rem 1rem;
+  background:#e8f4ff; border-radius:8px; border-left:3px solid var(--bleu);
+  font-size:.76rem; font-weight:600; color:#004fcc;
+}
+
+section { padding:6rem 6vw; }
+.section-inner { max-width:1100px; margin:0 auto; }
+.section-label {
+  font-size:.7rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--bleu); margin-bottom:.8rem;
+  display:flex; align-items:center; gap:.6rem;
+}
+.section-label::before { content:''; display:block; width:24px; height:2px; background:var(--bleu); }
+.section-title {
+  font-size:clamp(1.8rem, 3.5vw, 3rem);
+  font-weight:900; letter-spacing:-.03em; line-height:1.1; margin-bottom:1rem;
+}
+.section-sub { font-size:1rem; color:var(--gris); max-width:540px; line-height:1.7; margin-bottom:3.5rem; }
+
+.problem { background:var(--noir); color:var(--blanc); position:relative; overflow:hidden; }
+.problem::before {
+  content:''; position:absolute; top:-60px; right:-60px;
+  width:300px; height:300px; border-radius:50%;
+  background:rgba(0,90,255,.07);
+}
+.problem .section-title { color:var(--blanc); }
+.problem .section-sub { color:rgba(255,255,255,.5); }
+.problem-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:1.5rem; }
+.problem-card {
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px; padding:1.8rem; transition:border-color .3s;
+  position:relative; overflow:hidden;
+}
+.problem-card:hover { border-color:rgba(0,90,255,.4); }
+.problem-card::before {
+  content:attr(data-emoji);
+  position:absolute; top:1.2rem; right:1.5rem;
+  font-size:2rem; opacity:.15;
+}
+.problem-num { font-size:3rem; font-weight:900; color:rgba(255,255,255,.06); letter-spacing:-.05em; line-height:1; margin-bottom:.8rem; }
+.problem-title { font-size:.9rem; font-weight:700; color:var(--blanc); margin-bottom:.5rem; }
+.problem-text { font-size:.88rem; line-height:1.6; color:rgba(255,255,255,.6); }
+.problem-text strong { color:var(--blanc); font-weight:600; }
+
+.auto-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:1.5rem; }
+.auto-card {
+  background:var(--card); border-radius:14px; padding:2rem;
+  border:1px solid #eee; transition:transform .3s, box-shadow .3s;
+}
+.auto-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,.08); }
+.auto-icon { width:48px; height:48px; border-radius:12px; background:#e8f4ff; display:flex; align-items:center; justify-content:center; margin-bottom:1.2rem; font-size:1.3rem; }
+.auto-title { font-size:1rem; font-weight:700; margin-bottom:.5rem; }
+.auto-flow {
+  margin:1rem 0; padding:.8rem 1rem;
+  background:#f8faff; border-radius:8px; border-left:3px solid #c5d5ff;
+  font-size:.76rem; color:var(--gris); font-family:monospace; line-height:1.7;
+}
+.auto-flow span { display:block; }
+.auto-flow span.arrow { color:var(--bleu); font-weight:700; }
+.auto-gain { margin-top:.8rem; font-size:.75rem; font-weight:700; color:#00a651; display:flex; align-items:center; gap:.3rem; }
+.auto-gain::before { content:'↑'; }
+
+.process { background:#f2f4ff; }
+.steps { display:flex; flex-direction:column; gap:0; max-width:700px; }
+.step { display:flex; gap:2rem; position:relative; padding-bottom:2.5rem; }
+.step:last-child { padding-bottom:0; }
+.step-left { display:flex; flex-direction:column; align-items:center; }
+.step-num { width:48px; height:48px; border-radius:50%; background:var(--bleu); color:var(--blanc); font-size:.9rem; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; z-index:1; }
+.step-line { width:2px; flex:1; background:#dde2ff; margin-top:.5rem; }
+.step:last-child .step-line { display:none; }
+.step-content { padding-top:.6rem; }
+.step-title { font-size:1.05rem; font-weight:700; margin-bottom:.4rem; }
+.step-desc { font-size:.88rem; color:var(--gris); line-height:1.6; }
+.step-delay { display:inline-block; margin-top:.5rem; font-size:.7rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--bleu); background:#e8f0ff; padding:2px 10px; border-radius:99px; }
+
+.roi { background:var(--noir); color:var(--blanc); }
+.roi .section-title { color:var(--blanc); }
+.roi .section-sub { color:rgba(255,255,255,.5); margin-bottom:2rem; }
+.roi-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:1.5rem; margin-bottom:3rem; }
+.roi-card { border:1px solid rgba(255,255,255,.1); border-radius:12px; padding:1.8rem; text-align:center; }
+.roi-num { font-size:2.8rem; font-weight:900; letter-spacing:-.03em; color:var(--bleu); line-height:1; margin-bottom:.5rem; }
+.roi-label { font-size:.82rem; color:rgba(255,255,255,.5); line-height:1.4; }
+.roi-compare { background:rgba(255,255,255,.04); border-radius:12px; padding:1.5rem 2rem; border:1px solid rgba(255,255,255,.08); }
+.roi-compare-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+.roi-col h4 { font-size:.8rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; margin-bottom:1rem; }
+.roi-col.before h4 { color:rgba(255,255,255,.4); }
+.roi-col.after h4 { color:var(--bleu); }
+.roi-item { font-size:.84rem; color:rgba(255,255,255,.6); padding:.4rem 0; border-bottom:1px solid rgba(255,255,255,.05); display:flex; align-items:flex-start; gap:.5rem; }
+.roi-col.before .roi-item::before { content:'✗'; color:rgba(255,255,255,.3); flex-shrink:0; }
+.roi-col.after .roi-item::before { content:'✓'; color:var(--bleu); flex-shrink:0; }
+
+/* TÉMOIGNAGE / PROOF */
+.proof { background:var(--bg); }
+.proof-box {
+  border:1.5px solid #dde2ff; border-radius:16px;
+  padding:2.5rem; position:relative; max-width:760px;
+  background:var(--blanc);
+}
+.proof-quote {
+  font-size:1.1rem; font-weight:300; line-height:1.7; color:var(--noir);
+  margin-bottom:1.5rem; font-style:italic;
+}
+.proof-quote strong { font-weight:700; font-style:normal; }
+.proof-author { font-size:.82rem; color:var(--gris); font-weight:600; }
+.proof-tag {
+  display:inline-flex; align-items:center;
+  background:#e8f0ff; color:var(--bleu);
+  font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  padding:.25rem .8rem; border-radius:99px; margin-bottom:1rem;
+}
+
+.faq-item { border-bottom:1px solid #eee; padding:1.5rem 0; cursor:pointer; }
+.faq-q { font-size:1rem; font-weight:600; display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+.faq-icon { font-size:1.4rem; color:var(--bleu); flex-shrink:0; transition:transform .3s; }
+.faq-item.open .faq-icon { transform:rotate(45deg); }
+.faq-a { font-size:.88rem; color:var(--gris); line-height:1.7; max-height:0; overflow:hidden; transition:max-height .4s ease, padding .3s; }
+.faq-item.open .faq-a { max-height:300px; padding-top:.8rem; }
+
+.cta-final { background:var(--noir); color:var(--blanc); text-align:center; }
+.cta-final .section-title { color:var(--blanc); max-width:700px; margin:0 auto 1rem; }
+.cta-final .section-sub { color:rgba(255,255,255,.5); margin:0 auto 2.5rem; }
+.cta-box { display:inline-flex; flex-direction:column; align-items:center; gap:1rem; }
+.cta-urgency { font-size:.78rem; color:#f5a623; font-weight:600; letter-spacing:.06em; text-transform:uppercase; }
+.cta-note { font-size:.76rem; color:rgba(255,255,255,.3); }
+
+footer { background:var(--noir); color:rgba(255,255,255,.5); padding:3rem 6vw 2rem; }
+.footer-inner { max-width:1100px; margin:0 auto; }
+.footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:3rem; margin-bottom:2rem; }
+.footer-brand h4 { font-size:1.1rem; font-weight:700; color:var(--blanc); display:flex; align-items:center; gap:.5rem; margin-bottom:.5rem; }
+.footer-tagline { font-size:.7rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--bleu); margin-bottom:.8rem; }
+.footer-brand p { font-size:.82rem; line-height:1.6; }
+.footer-col h5 { font-size:.8rem; font-weight:700; color:var(--blanc); text-transform:uppercase; letter-spacing:.08em; margin-bottom:1rem; }
+.footer-col ul { list-style:none; }
+.footer-col li { margin-bottom:.5rem; }
+.footer-col a { font-size:.82rem; color:rgba(255,255,255,.4); text-decoration:none; transition:color .2s; }
+.footer-col a:hover { color:var(--blanc); }
+.footer-bottom { display:flex; align-items:center; justify-content:space-between; border-top:1px solid rgba(255,255,255,.08); padding-top:1.5rem; font-size:.76rem; flex-wrap:wrap; gap:.5rem; }
+.legal { display:flex; gap:1.5rem; }
+.legal a { color:rgba(255,255,255,.3); text-decoration:none; transition:color .2s; }
+.legal a:hover { color:var(--blanc); }
+
+@media(max-width:768px) {
+  .hero-inner { grid-template-columns:1fr; }
+  .hero-split-img { display:none; }
+  .roi-compare-grid { grid-template-columns:1fr; }
+  .footer-grid { grid-template-columns:1fr; gap:2rem; }
+  nav { padding:1rem 5vw; }
+  .nav-links { display:none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://neosocle.fr" class="nav-logo"><span>NEO</span>SOCLE</a>
+  <ul class="nav-links">
+    <li><a href="https://neosocle.fr/#etude">Étude</a></li>
+    <li><a href="https://neosocle.fr/#automatisation">Automatisation</a></li>
+    <li><a href="https://neosocle.fr/#aides">Aides</a></li>
+    <li><a href="https://neosocle.fr/#blog">Blog</a></li>
+  </ul>
+  <a href="https://form.jotform.com/261125230398049" class="nav-cta">Diagnostic gratuit →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-split-img" aria-hidden="true">
+    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80"
+         alt="Comptable au travail avec des documents et un ordinateur" loading="eager">
+  </div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-badge">🧾 Spécial cabinets comptables TPE</div>
+      <div class="hero-eyebrow">Automatisation no-code</div>
+      <h1 class="hero-h1">
+        <span style="font-size:0;position:absolute;">Automatisation no-code pour cabinets comptables TPE — Neosocle</span>
+        Vous relancez<br>
+        vos clients<br>
+        pour leurs <span class="split-word">pièces.</span>
+      </h1>
+      <p class="hero-sub">
+        La collecte de documents, c'est 8 à 12h de votre temps par mois. Des emails éparpillés, des relances manuelles, des dossiers incomplets en période de clôture. On automatise ça en 3 jours.
+      </p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">10h</div>
+          <div class="label">/mois regagnées<br>par collaborateur</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">-60%</div>
+          <div class="label">de relances<br>manuelles</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">x2</div>
+          <div class="label">Dossiers onboardés<br>sans friction</div>
+        </div>
+      </div>
+      <div class="hero-cta-group">
+        <a href="https://form.jotform.com/261125230398049" class="btn-primary">Diagnostic gratuit — 30 min →</a>
+        <a href="https://neosocle.fr/etude" class="btn-secondary">Voir l'Étude à 897€</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="stat-card">
+        <div class="stat-card-tag">Tableau de bord — cabinet type (3 collaborateurs)</div>
+        <div class="stat-row">
+          <span class="stat-label">Dossiers actifs gérés</span>
+          <span class="stat-value blue">~120 dossiers</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Temps relances collecte/mois (actuel)</span>
+          <span class="stat-value red">28–36h équipe</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Temps relances après automatisation</span>
+          <span class="stat-value green">< 4h/mois</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Taux pièces reçues à J+5 (actuel)</span>
+          <span class="stat-value red">~40 %</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Taux pièces reçues à J+5 (automatisé)</span>
+          <span class="stat-value green">~82 %</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Délai de mise en place</span>
+          <span class="stat-value blue">3–5 jours</span>
+        </div>
+        <div class="stat-footer">⚡ Compatible ACD, Cegid, MyUnisoft, Silae · Aucun abonnement récurrent</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLÈME -->
+<section class="problem">
+  <div class="section-inner">
+    <div class="section-label reveal">Le constat terrain</div>
+    <h2 class="section-title reveal">Votre cabinet perd 30h/mois<br>à courir après des relevés bancaires.</h2>
+    <p class="section-sub reveal">Les outils métier — ACD, Cegid, MyUnisoft — font du bon travail sur la compta. Mais sur la communication client, l'onboarding, les relances de collecte : vous êtes seul. Et vous payez ce vide en heures perdues.</p>
+    <div class="problem-grid">
+      <div class="problem-card reveal" data-emoji="📂">
+        <div class="problem-num">01</div>
+        <div class="problem-title">La collecte de pièces, tombeau des heures perdues</div>
+        <div class="problem-text">Relevés bancaires, factures fournisseurs, notes de frais, justificatifs TVA… Chaque mois, le même rituel : relancer chaque client, parfois 3 ou 4 fois. <strong>Un cabinet de 3 collaborateurs et 120 dossiers perd 28 à 36h par mois là-dessus.</strong></div>
+      </div>
+      <div class="problem-card reveal" data-emoji="📋">
+        <div class="problem-num">02</div>
+        <div class="problem-title">L'onboarding client — un chaos contrôlé</div>
+        <div class="problem-text">Nouveau client signé. Il faut récupérer : KBIS, statuts, historique comptable, accès logiciels, IBAN, attestations... Chaque cabinet a sa liste. <strong>Sans système, c'est 4 à 6 emails aller-retour par nouveau dossier.</strong> En période de rush, des dossiers attendent 3 semaines.</div>
+      </div>
+      <div class="problem-card reveal" data-emoji="📊">
+        <div class="problem-num">03</div>
+        <div class="problem-title">Les devis qui s'endorment, les clients perdus sans bruit</div>
+        <div class="problem-text">Vous envoyez une lettre de mission ou un devis. Votre prospect ne répond pas. Vous avez un post-it pour le rappeler. Le post-it disparaît. <strong>40% des devis envoyés n'ont pas de relance structurée.</strong> La plupart de ces prospects auraient accepté.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CE QU'ON AUTOMATISE -->
+<section>
+  <div class="section-inner">
+    <div class="section-label reveal">Ce qu'on configure pour vous</div>
+    <h2 class="section-title reveal">5 workflows qui changent votre quotidien.</h2>
+    <p class="section-sub reveal">On vient en complément de votre outil métier. Pas de migration, pas de formation lourde. On automatise la relation client — ce que ACD et Cegid ne font pas.</p>
+    <div class="auto-grid">
+
+      <div class="auto-card reveal">
+        <div class="auto-icon">📂</div>
+        <div class="auto-title">Collecte de pièces mensuelle automatisée</div>
+        <div class="auto-flow">
+          <span>Le 1er du mois à 8h — déclenchement auto</span>
+          <span class="arrow">↓</span>
+          <span>Email client : "Déposez vos pièces ici [lien]"</span>
+          <span class="arrow">↓</span>
+          <span>J+5 sans réponse → relance automatique</span>
+          <span class="arrow">↓</span>
+          <span>Notification collaborateur quand dossier complet</span>
+        </div>
+        <div class="auto-gain">8 à 12h/mois récupérées par collaborateur</div>
+      </div>
+
+      <div class="auto-card reveal">
+        <div class="auto-icon">🆕</div>
+        <div class="auto-title">Onboarding nouveau client structuré</div>
+        <div class="auto-flow">
+          <span>Signature lettre de mission (Docusign/Adobe)</span>
+          <span class="arrow">↓</span>
+          <span>Email auto : checklist pièces d'entrée + lien dépôt</span>
+          <span class="arrow">↓</span>
+          <span>Dossier Notion ou Airtable créé automatiquement</span>
+          <span class="arrow">↓</span>
+          <span>Alerte collaborateur responsable dossier</span>
+        </div>
+        <div class="auto-gain">De 6 emails manuels à 1 workflow · 45 min économisées/dossier</div>
+      </div>
+
+      <div class="auto-card reveal">
+        <div class="auto-icon">📊</div>
+        <div class="auto-title">Checklist bilan / clôture d'exercice</div>
+        <div class="auto-flow">
+          <span>Date de clôture détectée dans l'Airtable dossiers</span>
+          <span class="arrow">↓</span>
+          <span>Checklist personnalisée générée par client</span>
+          <span class="arrow">↓</span>
+          <span>Envoi client avec items manquants identifiés</span>
+          <span class="arrow">↓</span>
+          <span>Relance auto J+7 sur les éléments non reçus</span>
+        </div>
+        <div class="auto-gain">Période bilan sans coups de feu de dernière minute</div>
+      </div>
+
+      <div class="auto-card reveal">
+        <div class="auto-icon">📩</div>
+        <div class="auto-title">Relance lettre de mission et devis</div>
+        <div class="auto-flow">
+          <span>Devis ou lettre de mission envoyée</span>
+          <span class="arrow">↓</span>
+          <span>J+5 sans signature → email relance automatique</span>
+          <span class="arrow">↓</span>
+          <span>J+10 → dernière relance avec urgence douce</span>
+          <span class="arrow">↓</span>
+          <span>J+15 → alerte collaborateur + archivage auto</span>
+        </div>
+        <div class="auto-gain">+30% de taux de signature (prospect recontacté au bon moment)</div>
+      </div>
+
+      <div class="auto-card reveal">
+        <div class="auto-icon">📰</div>
+        <div class="auto-title">Newsletter fiscale mensuelle automatisée</div>
+        <div class="auto-flow">
+          <span>Template Make + résumé actualité fiscale Claude AI</span>
+          <span class="arrow">↓</span>
+          <span>Rédaction automatique résumé mensuel</span>
+          <span class="arrow">↓</span>
+          <span>Validation en 5 min par le gérant (si souhaité)</span>
+          <span class="arrow">↓</span>
+          <span>Envoi automatique à toute la liste clients</span>
+        </div>
+        <div class="auto-gain">Relation client renforcée · Zéro rédaction manuelle</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSUS -->
+<section class="process">
+  <div class="section-inner">
+    <div class="section-label reveal">Comment ça se passe</div>
+    <h2 class="section-title reveal">On travaille avec votre existant.<br>Pas à la place de lui.</h2>
+    <p class="section-sub reveal">Pas de remplacement de vos outils métier. On crée la couche de communication qui manque au-dessus d'ACD, Cegid ou MyUnisoft.</p>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-left"><div class="step-num">1</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Diagnostic — 30 min</div>
+          <div class="step-desc">On cartographie vos flux actuels : collecte, onboarding, relances. On identifie les 2–3 automatisations à impact immédiat. Gratuit, sans engagement, sans vente forcée.</div>
+          <span class="step-delay">Semaine 1</span>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-left"><div class="step-num">2</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Proposition détaillée sous 48h</div>
+          <div class="step-desc">Périmètre exact, délai, coût total. On vous dit si les outils restent en tier gratuit ou non — et le coût mensuel exact dans les deux cas. Aucune surprise.</div>
+          <span class="step-delay">Semaine 1</span>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-left"><div class="step-num">3</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Configuration & tests sur dossiers réels</div>
+          <div class="step-desc">On configure les workflows sur 5–10 dossiers tests avant généralisation. Vous voyez exactement ce que le client reçoit, et vous validez avant lancement.</div>
+          <span class="step-delay">Semaine 2</span>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-left"><div class="step-num">4</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Formation équipe + documentation complète</div>
+          <div class="step-desc">Session de 1h avec votre équipe. Chaque workflow documenté étape par étape. Si un collaborateur entre ou que quelque chose change, la documentation couvre tout.</div>
+          <span class="step-delay">Semaine 3</span>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-left"><div class="step-num">5</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Suivi 30 jours inclus</div>
+          <div class="step-desc">Les 30 jours post-lancement, j'interviens sans surcoût si quelque chose doit être ajusté. Objectif : vous êtes totalement autonomes à l'issue.</div>
+          <span class="step-delay">Mois 1</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROI -->
+<section class="roi">
+  <div class="section-inner">
+    <div class="section-label reveal">Impact concret</div>
+    <h2 class="section-title reveal">Ce que ça change en 90 jours.</h2>
+    <p class="section-sub reveal">Pour un cabinet de 2 à 4 collaborateurs avec 80 à 150 dossiers actifs.</p>
+    <div class="roi-grid">
+      <div class="roi-card reveal">
+        <div class="roi-num">10h</div>
+        <div class="roi-label">Regagnées par collaborateur et par mois sur les relances</div>
+      </div>
+      <div class="roi-card reveal">
+        <div class="roi-num">+40%</div>
+        <div class="roi-label">De pièces reçues dans les délais (J+5)</div>
+      </div>
+      <div class="roi-card reveal">
+        <div class="roi-num">-60%</div>
+        <div class="roi-label">De relances manuelles email envoyées par l'équipe</div>
+      </div>
+      <div class="roi-card reveal">
+        <div class="roi-num">2 mois</div>
+        <div class="roi-label">Pour rentabiliser l'investissement (à 150€/h)</div>
+      </div>
+    </div>
+    <div class="roi-compare reveal">
+      <div class="roi-compare-grid">
+        <div class="roi-col before">
+          <h4>Avant</h4>
+          <div class="roi-item">Relances collecte manuelles · 28h/mois équipe</div>
+          <div class="roi-item">Pièces reçues à J+5 : 40% des dossiers seulement</div>
+          <div class="roi-item">Onboarding : 6 emails aller-retour par dossier</div>
+          <div class="roi-item">Devis sans relance · 40% abandonnés</div>
+          <div class="roi-item">Newsletter fiscale : inexistante ou mensuelle manuelle</div>
+        </div>
+        <div class="roi-col after">
+          <h4>Après</h4>
+          <div class="roi-item">Relances auto · 4h/mois équipe (vérification only)</div>
+          <div class="roi-item">Pièces reçues à J+5 : 82% · clôtures sans rush</div>
+          <div class="roi-item">Onboarding : 1 lien · checklist auto · dossier créé</div>
+          <div class="roi-item">+30% de signatures avec relances structurées</div>
+          <div class="roi-item">Newsletter mensuelle auto · 5 min de validation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:#f2f4ff">
+  <div class="section-inner">
+    <div class="section-label reveal">Questions fréquentes</div>
+    <h2 class="section-title reveal">Ce que les experts-comptables nous demandent.</h2>
+    <div style="max-width:700px;margin-top:2rem">
+
+      <div class="faq-item reveal">
+        <div class="faq-q">Est-ce compatible avec mon logiciel ACD / Cegid / MyUnisoft ?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Ces outils gèrent la compta — pas la communication cliente. On crée la couche qui manque, en s'appuyant sur vos exports et les connexions disponibles. On a déjà intégré ACD, Cegid et MyUnisoft. Pour les autres logiciels, on teste lors du diagnostic.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">Mes clients sont-ils à l'aise avec le dépôt en ligne de pièces ?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Le formulaire de dépôt est ultra simple — un lien, un bouton, pas de compte à créer. On a validé que même des clients peu à l'aise avec la techno l'utilisent sans friction. Pour les clients vraiment réfractaires, le workflow reste désactivable dossier par dossier.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">Est-ce que ça respecte la confidentialité des documents comptables ?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Oui. Les dépôts sont chiffrés, hébergés en Europe (options : Google Drive chiffré, Notion, ou serveur dédié). Les accès sont restreints au collaborateur responsable du dossier. Une documentation RGPD est fournie avec chaque mission.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">Quel est le ROI concret pour mon cabinet ?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Si vous facturez 150€/h et récupérez 10h/mois par collaborateur : 1 500€/mois de valeur récupérée. Sur 2 collaborateurs : 3 000€/mois. L'investissement initial (1 800 à 3 000€) est rentabilisé en 1 à 2 mois. Ensuite, c'est du pur gain.</div>
+      </div>
+
+      <div class="faq-item reveal">
+        <div class="faq-q">Dois-je former tous mes collaborateurs ?<span class="faq-icon">+</span></div>
+        <div class="faq-a">Une session de 1h suffit. Les workflows tournent en arrière-plan — les collaborateurs reçoivent juste des notifications quand leur action est requise. Pas de nouvelle interface à apprendre au quotidien.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final" id="contact">
+  <div class="section-inner">
+    <div class="section-label reveal" style="justify-content:center">Arrêtez de courir après les relevés</div>
+    <h2 class="section-title reveal">30 minutes pour identifier ce qu'on automatise dans votre cabinet.</h2>
+    <p class="section-sub reveal">Diagnostic gratuit, sans engagement. Vous repartez avec une carte précise des tâches automatisables et leur ROI estimé — même si on ne travaille pas ensemble.</p>
+    <div class="cta-box reveal">
+      <span class="cta-urgency">🧾 Spécialiste cabinets comptables TPE · Réponse sous 48h</span>
+      <a href="https://form.jotform.com/261125230398049" class="btn-primary" style="font-size:1rem;padding:1.2rem 3rem">
+        Réserver mon diagnostic gratuit →
+      </a>
+      <a href="https://neosocle.fr/etude" style="font-size:.84rem;color:rgba(255,255,255,.5);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:2px">
+        Ou voir l'Étude Marketing à 897€
+      </a>
+      <span class="cta-note">Compatible ACD, Cegid, MyUnisoft · Documentation incluse · Formation équipe incluse</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h4>
+          <img src="https://neosocle.fr/assets/NS_icon_dark.png" alt="Logo Neosocle" width="28" height="28">
+          Neosocle
+        </h4>
+        <div class="footer-tagline">Solutions IA & Automation</div>
+        <p>Votre croissance digitale, analysée. Pour les PME, TPE, artisans et indépendants en France.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="https://form.jotform.com/261125230398049">Diagnostic gratuit</a></li>
+          <li><a href="https://neosocle.fr/etude">Étude Marketing 897€</a></li>
+          <li><a href="https://form.jotform.com/261174531559056">Projet d'automatisation</a></li>
+          <li><a href="https://neosocle.fr/aides">13 aides publiques</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Secteurs</h5>
+        <ul>
+          <li><a href="https://neosocle.fr/veterinaires">Cliniques vétérinaires</a></li>
+          <li><a href="https://neosocle.fr/comptables" style="color:rgba(255,255,255,.7)">Cabinets comptables</a></li>
+          <li><a href="https://neosocle.fr/opticiens">Opticiens & audioprothésistes</a></li>
+          <li><a href="https://neosocle.fr/#blog">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Neosocle. Tous droits réservés.</div>
+      <div class="legal">
+        <a href="https://neosocle.fr/mentions-legales">Mentions légales</a>
+        <a href="https://neosocle.fr/cgv">CGV</a>
+        <a href="https://neosocle.fr/confidentialite">Confidentialité</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(els => {
+  els.forEach(el => { if(el.isIntersecting) el.target.classList.add('visible'); });
+}, { threshold:.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => {
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if(!open) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
