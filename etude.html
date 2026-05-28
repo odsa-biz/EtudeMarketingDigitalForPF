@@ -318,13 +318,27 @@
   .nav-dropdown-item .dd-sub{font-size:11px;color:var(--gris-nav);font-weight:400;display:block}
   @media(max-width:780px){.nav-links a:not(.nav-cta){display:none}.nav-inner{padding:12px 20px}.nav-logo span{display:none}}
 
-  /* FOOTER FIXES */
-  .footer-grid{display:grid!important;grid-template-columns:1.5fr 1fr 1fr 1fr!important;gap:28px!important}
-  @media(max-width:780px){.footer-grid{grid-template-columns:1fr 1fr!important}}
+  /* FOOTER STANDARD COMPLET */
+  footer{background:#0e0e0e!important;color:rgba(248,245,240,.6);padding:60px 32px 28px!important;border-top:1px solid rgba(248,245,240,.08)!important;display:block!important}
+  .footer-inner{max-width:1180px;margin:0 auto;display:block!important}
+  .footer-grid{display:grid!important;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:28px;margin-bottom:48px}
+  @media(max-width:780px){.footer-grid{grid-template-columns:1fr 1fr!important;gap:24px}}
   @media(max-width:500px){.footer-grid{grid-template-columns:1fr!important}}
-  .footer-brand,.footer-col{display:block!important}
+  .footer-brand{display:block!important}
+  .footer-brand h4{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;color:#f8f5f0;margin-bottom:6px;display:flex!important;align-items:center;gap:10px}
+  .footer-brand h4 img{width:28px;height:28px;display:inline-block!important}
+  .footer-brand .footer-tagline{display:block!important;font-family:'Bricolage Grotesque',sans-serif;font-size:12px;color:#a5b8ff;font-weight:500;margin-bottom:14px;letter-spacing:.04em}
+  .footer-brand > p{display:block!important;font-size:14px;line-height:1.6;color:rgba(248,245,240,.55);max-width:280px}
+  .footer-col{display:block!important}
+  .footer-col h5{display:block!important;font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-weight:600;color:#f8f5f0;margin-bottom:14px;letter-spacing:.06em;text-transform:uppercase}
   .footer-col ul{list-style:none!important;padding:0!important;margin:0!important}
-  .footer-col li{display:block!important}
+  .footer-col li{display:block!important;padding:4px 0}
+  .footer-col a{color:rgba(248,245,240,.55);text-decoration:none;font-size:14px;transition:color .15s}
+  .footer-col a:hover{color:#f8f5f0}
+  .footer-bottom{border-top:1px solid rgba(248,245,240,.08);padding-top:22px;display:flex!important;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:13px;color:rgba(248,245,240,.35)}
+  .footer-bottom .legal{display:flex!important;gap:18px;flex-wrap:wrap}
+  .footer-bottom .legal a{color:rgba(248,245,240,.35);text-decoration:none;font-size:13px}
+  .footer-bottom .legal a:hover{color:#f8f5f0}
 </style>
 <meta name="description" content="Étude marketing stratégique en 48h à 897€ — audit visibilité Google et IA, radiographie concurrentielle et plan d'action 90 jours. Pour PME, TPE, artisans et indépendants. 3 places disponibles.">
 <!-- ✅ META DESCRIPTION -->
