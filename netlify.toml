@@ -26,7 +26,7 @@
 
 [[redirects]]
   from = "/aides"
-  to = "/aides.html"
+  to = "/aides/index.html"
   status = 200
 
 [[redirects]]
@@ -36,7 +36,7 @@
 
 [[redirects]]
   from = "/blog"
-  to = "/blog.html"
+  to = "/blog/index.html"
   status = 200
 
 [[redirects]]
