@@ -45,25 +45,6 @@
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
   /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.2rem 6vw;
-    background: rgba(248,248,248,.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(0,0,0,.06);
-  }
-  .nav-logo { font-size: 1.1rem; font-weight: 700; letter-spacing: -.01em; }
-  .nav-logo span { color: var(--bleu); }
-  .nav-cta {
-    background: var(--bleu); color: var(--blanc);
-    font-size: .8rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
-    padding: .6rem 1.4rem; border-radius: 6px; text-decoration: none;
-    animation: pulse 2.5s infinite;
-    transition: background .2s;
-  }
-  .nav-cta:hover { background: #0040cc; }
-
   /* ── HERO ── */
   .hero {
     min-height: 100vh;
@@ -313,10 +294,44 @@
     .hero-inner { grid-template-columns: 1fr; }
     .hero::before { display: none; }
     .forqui-grid { grid-template-columns: 1fr; }
-    nav { padding: 1rem 5vw; }
-  }
+    }
 
 
+  /* NAV STANDARD */
+  :root{--accent-nav:#1a3cff;--gris-clair-nav:#ebebeb;--gris-tres-clair-nav:#f4f2ed;--gris-nav:#5c5c5c}
+  .nav{position:sticky;top:0;z-index:100;background:rgba(248,245,240,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(14,14,14,.08)}
+  .nav-inner{max-width:1180px;margin:0 auto;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:32px}
+  .nav-logo{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.02em;color:#0e0e0e;text-decoration:none;display:flex;align-items:center;gap:10px}
+  .nav-logo img{width:32px;height:32px}
+  .nav-logo span{color:#0e0e0e}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{font-size:14px;color:#0e0e0e;text-decoration:none;font-weight:400;transition:color .15s}
+  .nav-links a:hover,.nav-links a.active{color:var(--accent-nav)}
+  .nav-links a.active{font-weight:600}
+  .nav-cta{background:var(--accent-nav)!important;color:#fff!important;padding:11px 20px;border-radius:8px;font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:700;text-decoration:none;white-space:nowrap}
+  .nav-cta:hover{background:#0a2bcc!important;color:#fff!important}
+  .nav-dropdown{position:relative}
+  .nav-dropdown-btn{font-size:14px;color:#0e0e0e;font-weight:400;cursor:pointer;background:none;border:none;padding:0;display:flex;align-items:center;gap:4px;font-family:'DM Sans',-apple-system,sans-serif}
+  .nav-dropdown-btn:hover,.nav-dropdown.open .nav-dropdown-btn{color:var(--accent-nav)}
+  .nav-dropdown-btn::after{content:'▾';font-size:10px;opacity:.6;transition:transform .15s}
+  .nav-dropdown.open .nav-dropdown-btn::after{transform:rotate(180deg)}
+  .nav-dropdown-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(-6px);background:#fff;border:1px solid var(--gris-clair-nav);border-radius:12px;padding:8px;min-width:240px;box-shadow:0 8px 32px rgba(0,0,0,.12);opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;z-index:200;margin-top:4px}
+  .nav-dropdown-menu::before{content:'';position:absolute;top:-10px;left:0;right:0;height:10px}
+  .nav-dropdown.open .nav-dropdown-menu{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+  .nav-dropdown-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;text-decoration:none;color:#0e0e0e;font-size:13px;font-weight:500;transition:background .1s}
+  .nav-dropdown-item:hover{background:var(--gris-tres-clair-nav)}
+  .nav-dropdown-item .dd-icon{font-size:16px;width:24px;text-align:center}
+  .nav-dropdown-item .dd-text{line-height:1.3}
+  .nav-dropdown-item .dd-sub{font-size:11px;color:var(--gris-nav);font-weight:400;display:block}
+  @media(max-width:780px){.nav-links a:not(.nav-cta){display:none}.nav-inner{padding:12px 20px}.nav-logo span{display:none}}
+
+  /* FOOTER FIXES */
+  .footer-grid{display:grid!important;grid-template-columns:1.5fr 1fr 1fr 1fr!important;gap:28px!important}
+  @media(max-width:780px){.footer-grid{grid-template-columns:1fr 1fr!important}}
+  @media(max-width:500px){.footer-grid{grid-template-columns:1fr!important}}
+  .footer-brand,.footer-col{display:block!important}
+  .footer-col ul{list-style:none!important;padding:0!important;margin:0!important}
+  .footer-col li{display:block!important}
 </style>
 <meta name="description" content="Étude marketing stratégique en 48h à 897€ — audit visibilité Google et IA, radiographie concurrentielle et plan d'action 90 jours. Pour PME, TPE, artisans et indépendants. 3 places disponibles.">
 <!-- ✅ META DESCRIPTION -->
@@ -350,13 +365,32 @@
   <meta name="twitter:description" content="L'analyse complète de votre marché et vos concurrents. Plan d'action 90 jours inclus. Livrée en 48h à 897€.">
   <meta name="twitter:image" content="https://neosocle.fr/assets/NS_banner_1500.png">
 
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <div class="nav-logo"><span>NEO</span>SOCLE</div>
-  <a href="https://www.jotform.com/app/261125096114348" class="nav-cta">Réserver mon étude →</a>
+<nav class="nav" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/" aria-label="Neosocle — Accueil">
+      <img src="/assets/NS_icon_dark.png" alt="Logo Neosocle" width="32" height="32" loading="eager">
+      <span>Neosocle</span>
+    </a>
+    <div class="nav-links">
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-btn">Secteurs</button>
+        <div class="nav-dropdown-menu">
+          <a class="nav-dropdown-item" href="/veterinaires"><span class="dd-icon">&#x1F43E;</span><span class="dd-text">Professionnels de santé<span class="dd-sub">Cliniques vétérinaires</span></span></a>
+          <a class="nav-dropdown-item" href="/comptables"><span class="dd-icon">&#x1F9FE;</span><span class="dd-text">Cabinets de gestion<span class="dd-sub">Experts-comptables TPE</span></span></a>
+          <a class="nav-dropdown-item" href="/opticiens"><span class="dd-icon">&#x1F453;</span><span class="dd-text">Commerçants indépendants<span class="dd-sub">Opticiens &amp; audioprothésistes</span></span></a>
+        </div>
+      </div>
+      <a href="/#services" class="active">Offres</a>
+      <a href="/aides">Aides</a>
+      <a href="/blog">Blog</a>
+      <a class="nav-cta" href="https://form.jotform.com/261125230398049" target="_blank" rel="noopener">Diagnostic gratuit →</a>
+    </div>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -619,12 +653,20 @@
       </div>
 
       <div class="footer-col">
+        <h5>Secteurs</h5>
+        <ul>
+          <li><a href="/veterinaires">&#x1F43E; Professionnels de santé</a></li>
+          <li><a href="/comptables">&#x1F9FE; Cabinets de gestion</a></li>
+          <li><a href="/opticiens">&#x1F453; Commerçants indépendants</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
         <h5>Ressources</h5>
         <ul>
-          <li><a href="/blog/ai-act-2026-pme-tpe-artisans">Guide AI Act 2026</a></li>
-          <li><a href="/blog/ia-rentable-entreprise">IA rentable</a></li>
-          <li><a href="/blog/preparer-donnees-ia-pme-tpe-artisans">Préparer ses données</a></li>
-          <li><a href="/blog" style="color:var(--blanc);font-weight:500">Tous les articles →</a></li>
+          <li><a href="/blog/aides-financement-ia-tpe-artisan">Financer son projet IA</a></li>
+          <li><a href="/blog/automatiser-rappels-vaccins-clinique-veterinaire">Auto. vétérinaires</a></li>
+          <li><a href="/blog/automatiser-collecte-documents-cabinet-comptable">Auto. comptables</a></li>
+          <li><a href="/blog" style="color:#f8f5f0;font-weight:500">Tous les articles →</a></li>
         </ul>
       </div>
 
