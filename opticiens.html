@@ -129,13 +129,7 @@ body { font-family:'Poppins', sans-serif; background:var(--bg); color:var(--noir
 .stat-value.blue { color:var(--bleu); }
 .stat-value.green { color:#00a651; }
 .stat-value.red { color:#e05a00; }
-.stat-footer {
-  margin-top:1.2rem; padding:.8rem 1rem;
-  background:#e8f4ff; border-radius:8px; border-left:3px solid var(--bleu);
-  font-size:.76rem; font-weight:600; color:#004fcc;
-}
-
-section { padding:6rem 6vw; }
+.stat-section { padding:6rem 6vw; }
 .section-inner { max-width:1100px; margin:0 auto; }
 .section-label {
   font-size:.7rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
@@ -295,18 +289,6 @@ section { padding:6rem 6vw; }
 .tab-content { display:none; }
 .tab-content.active { display:block; }
 
-footer { background:var(--noir); color:rgba(255,255,255,.5); padding:3rem 6vw 2rem; }
-.footer-inner { max-width:1100px; margin:0 auto; }
-.footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:3rem; margin-bottom:2rem; }
-.footer-brand h4 { font-size:1.1rem; font-weight:700; color:var(--blanc); display:flex; align-items:center; gap:.5rem; margin-bottom:.5rem; }
-.footer-tagline { font-size:.7rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--bleu); margin-bottom:.8rem; }
-.footer-brand p { font-size:.82rem; line-height:1.6; }
-.footer-col h5 { font-size:.8rem; font-weight:700; color:var(--blanc); text-transform:uppercase; letter-spacing:.08em; margin-bottom:1rem; }
-.footer-col ul { list-style:none; }
-.footer-col li { margin-bottom:.5rem; }
-.footer-col a { font-size:.82rem; color:rgba(255,255,255,.4); text-decoration:none; transition:color .2s; }
-.footer-col a:hover { color:var(--blanc); }
-.footer-bottom { display:flex; align-items:center; justify-content:space-between; border-top:1px solid rgba(255,255,255,.08); padding-top:1.5rem; font-size:.76rem; flex-wrap:wrap; gap:.5rem; }
 .legal { display:flex; gap:1.5rem; }
 .legal a { color:rgba(255,255,255,.3); text-decoration:none; transition:color .2s; }
 .legal a:hover { color:var(--blanc); }
@@ -316,9 +298,6 @@ footer { background:var(--noir); color:rgba(255,255,255,.5); padding:3rem 6vw 2r
   .hero-split-img { display:none; }
   .versus-grid { grid-template-columns:1fr; }
   .roi-compare-grid { grid-template-columns:1fr; }
-  .footer-grid { grid-template-columns:1fr; gap:2rem; }
-  
-  
   .urgence-banner { flex-direction:column; gap:1rem; padding:1.5rem; }
 }
   /* NAV STANDARD */
@@ -348,6 +327,27 @@ footer { background:var(--noir); color:rgba(255,255,255,.5); padding:3rem 6vw 2r
   .nav-dropdown-item .dd-text{line-height:1.3}
   .nav-dropdown-item .dd-sub{font-size:11px;color:var(--gris);font-weight:400;display:block}
   @media(max-width:780px){.nav-links a:not(.nav-cta){display:none}.nav-inner{padding:12px 20px}.nav-logo span{display:none}}
+  /* ── FOOTER STANDARD ── */
+  footer{background:#0e0e0e!important;color:rgba(248,245,240,.6);padding:60px 32px 28px;border-top:1px solid rgba(248,245,240,.08)}
+  .footer-inner{max-width:1180px;margin:0 auto;display:block!important}
+  .footer-grid{display:grid!important;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:28px;margin-bottom:48px}
+  @media(max-width:780px){.footer-grid{grid-template-columns:1fr 1fr!important;gap:24px}}
+  @media(max-width:500px){.footer-grid{grid-template-columns:1fr!important}}
+  .footer-brand{display:block!important}
+  .footer-brand h4{font-family:'Bricolage Grotesque',sans-serif;font-size:22px;font-weight:800;color:#f8f5f0;margin-bottom:6px;display:flex!important;align-items:center;gap:10px}
+  .footer-brand h4 img{width:28px;height:28px;display:inline-block!important;border-radius:0!important}
+  .footer-brand .footer-tagline{display:block!important;font-family:'Bricolage Grotesque',sans-serif;font-size:12px;color:#a5b8ff;font-weight:500;margin-bottom:14px;letter-spacing:.04em}
+  .footer-brand > p{display:block!important;font-size:14px;line-height:1.6;color:rgba(248,245,240,.55);max-width:280px}
+  .footer-col{display:block!important}
+  .footer-col h5{display:block!important;font-family:'Bricolage Grotesque',sans-serif;font-size:12px;font-weight:600;color:#f8f5f0;margin-bottom:14px;letter-spacing:.06em;text-transform:uppercase}
+  .footer-col ul{list-style:none!important;padding:0!important;margin:0!important}
+  .footer-col li{display:block!important;padding:4px 0;margin:0!important}
+  .footer-col a{color:rgba(248,245,240,.55);text-decoration:none;font-size:14px;transition:color .15s}
+  .footer-col a:hover{color:#f8f5f0}
+  .footer-bottom{border-top:1px solid rgba(248,245,240,.08);padding-top:22px;display:flex!important;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:13px;color:rgba(248,245,240,.35)}
+  .footer-bottom .legal{display:flex!important;gap:18px;flex-wrap:wrap}
+  .footer-bottom .legal a{color:rgba(248,245,240,.35);text-decoration:none;font-size:13px}
+  .footer-bottom .legal a:hover{color:#f8f5f0}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
@@ -814,37 +814,46 @@ footer { background:var(--noir); color:rgba(255,255,255,.5); padding:3rem 6vw 2r
     <div class="footer-grid">
       <div class="footer-brand">
         <h4>
-          <img src="/assets/NS_icon_white.png" alt="Logo Neosocle" width="28" height="28">
+          <img src="/assets/NS_icon_white.png" alt="Logo Neosocle" width="28" height="28" loading="lazy">
           Neosocle
         </h4>
-        <div class="footer-tagline">Solutions IA & Automation</div>
+        <div class="footer-tagline">Solutions IA &amp; Automation</div>
         <p>Votre croissance digitale, analysée. Pour les PME, TPE, artisans et indépendants en France.</p>
       </div>
       <div class="footer-col">
         <h5>Services</h5>
         <ul>
-          <li><a href="https://form.jotform.com/261125230398049">Diagnostic gratuit</a></li>
-          <li><a href="https://neosocle.fr/etude">Étude Marketing 897€</a></li>
-          <li><a href="https://form.jotform.com/261174531559056">Projet d'automatisation</a></li>
-          <li><a href="https://neosocle.fr/aides">13 aides publiques</a></li>
+          <li><a href="https://form.jotform.com/261125230398049" target="_blank" rel="noopener">Diagnostic gratuit</a></li>
+          <li><a href="/etude">Étude Marketing 897€</a></li>
+          <li><a href="https://form.jotform.com/261174531559056" target="_blank" rel="noopener">Projet d'automatisation</a></li>
+          <li><a href="/aides">13 aides publiques</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h5>Secteurs</h5>
         <ul>
-          <li><a href="https://neosocle.fr/veterinaires">Cliniques vétérinaires</a></li>
-          <li><a href="https://neosocle.fr/comptables">Cabinets comptables</a></li>
-          <li><a href="https://neosocle.fr/opticiens" style="color:rgba(255,255,255,.7)">Opticiens & audioprothésistes</a></li>
-          <li><a href="/blog">Blog</a></li>
+          <li><a href="/veterinaires">&#x1F43E; Professionnels de santé</a></li>
+          <li><a href="/comptables">&#x1F9FE; Cabinets de gestion</a></li>
+          <li><a href="/opticiens" style="color:#f8f5f0;font-weight:500">&#x1F453; Commerçants indépendants</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Ressources</h5>
+        <ul>
+          <li><a href="/blog/aides-financement-ia-tpe-artisan">Financer son projet IA</a></li>
+          <li><a href="/blog/automatiser-rappels-vaccins-clinique-veterinaire">Auto. vétérinaires</a></li>
+          <li><a href="/blog/automatiser-collecte-documents-cabinet-comptable">Auto. comptables</a></li>
+          <li><a href="/blog" style="color:#f8f5f0;font-weight:500">Tous les articles →</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <div>© 2026 Neosocle. Tous droits réservés.</div>
       <div class="legal">
-        <a href="https://neosocle.fr/mentions-legales">Mentions légales</a>
-        <a href="https://neosocle.fr/cgv">CGV</a>
-        <a href="https://neosocle.fr/confidentialite">Confidentialité</a>
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/cgv">CGV</a>
+        <a href="/confidentialite">Confidentialité</a>
+        <a href="/cookies">Cookies</a>
       </div>
     </div>
   </div>
