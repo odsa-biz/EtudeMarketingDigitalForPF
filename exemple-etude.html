@@ -117,12 +117,21 @@
     .ecart-y{background:rgba(251,191,36,.12);color:var(--yellow)}
 
     .locked-wrap{max-width:1100px;margin:0 auto 52px;padding:0 24px}
-    .locked-box{border:1px solid var(--border);border-radius:16px;overflow:hidden}
-    .locked-hdr{background:var(--bg-card2);padding:24px 32px;border-bottom:1px solid var(--border)}
-    .locked-hdr h2{font-family:var(--fh);font-size:18px;font-weight:800;margin-bottom:5px}
-    .locked-hdr p{font-size:13px;color:var(--muted)}
-    .locked-mods{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:16px}
-    @media(max-width:680px){.locked-mods{grid-template-columns:1fr 1fr}}
+    .locked-box{border:2px solid var(--orange);border-radius:20px;overflow:hidden;box-shadow:0 0 48px rgba(249,115,22,.18),0 0 0 1px rgba(249,115,22,.08);position:relative}
+    .locked-badge{display:inline-flex;align-items:center;gap:6px;background:var(--orange);color:#fff;font-family:var(--fh);font-size:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:5px 14px;border-radius:0 0 10px 0;position:absolute;top:0;left:0;z-index:2}
+    .locked-hdr{background:linear-gradient(135deg,rgba(249,115,22,.12) 0%,rgba(17,17,38,.95) 60%);padding:28px 32px 22px;border-bottom:1px solid rgba(249,115,22,.2)}
+    .locked-hdr-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .locked-hdr-txt h2{font-family:var(--fh);font-size:22px;font-weight:900;margin-bottom:5px;color:#fff}
+    .locked-hdr-txt p{font-size:13px;color:rgba(255,255,255,.55);margin-top:4px}
+    .locked-hdr-msg{background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.3);border-radius:10px;padding:10px 16px;font-size:12px;color:var(--orange);font-weight:600;max-width:260px;text-align:center;flex-shrink:0;line-height:1.5}
+    .locked-mods{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:16px;position:relative}
+    .locked-mods::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 20%,rgba(7,7,15,.85) 80%);pointer-events:none;border-radius:0 0 8px 8px}
+    .locked-cta{padding:16px 20px 20px;background:linear-gradient(to top,rgba(7,7,15,1) 0%,rgba(17,17,38,.9) 100%);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid rgba(249,115,22,.2)}
+    .locked-cta-txt{font-size:13px;color:rgba(255,255,255,.65);max-width:400px;line-height:1.5}
+    .locked-cta-txt strong{color:#fff;display:block;font-size:15px;margin-bottom:3px}
+    .btn-unlock{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#fff;font-family:var(--fh);font-size:14px;font-weight:800;padding:12px 22px;border-radius:10px;text-decoration:none;transition:transform .15s,opacity .15s;white-space:nowrap}
+    .btn-unlock:hover{transform:translateY(-1px);opacity:.92}
+    @media(max-width:680px){.locked-mods{grid-template-columns:1fr 1fr}.locked-hdr-msg{display:none}.locked-cta{flex-direction:column}}
     .lmod{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:14px;opacity:.5;position:relative}
     .lmod::after{content:'🔒';position:absolute;top:10px;right:12px;font-size:14px}
     .lm-tag{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--purple-l);margin-bottom:4px}
@@ -522,42 +531,63 @@
 <!-- LOCKED -->
 <div class="locked-wrap">
   <div class="locked-box">
+
+    <div class="locked-badge">🔒 Contenu verrouillé dans cet exemple</div>
+
     <div class="locked-hdr">
-      <h2>5 modules supplémentaires inclus</h2>
-      <p>Plan d'action 90j · Scoring des leviers · Concurrence · Positionnement · Risques</p>
+      <div class="locked-hdr-top">
+        <div class="locked-hdr-txt">
+          <h2>5 modules supplémentaires inclus dans votre étude</h2>
+          <p>Ce que vous voyez ci-dessus n'est qu'un aperçu — votre étude complète inclut également :</p>
+          <p style="margin-top:8px;font-size:12px;color:rgba(255,255,255,.4)">Plan d'action 90j · Scoring des leviers · Concurrence · Positionnement · Cartographie risques</p>
+        </div>
+        <div class="locked-hdr-msg">
+          👆 Vous consultez<br>une version partielle.<br><strong style="color:#fff;display:inline">L'étude complète<br>débloque tout.</strong>
+        </div>
+      </div>
     </div>
+
     <div class="locked-mods">
-      <div class="lmod">
+      <div class="lmod" style="filter:blur(1.5px);opacity:.6">
         <div class="lm-tag">M2</div>
         <div class="lm-title">Concurrence</div>
         <div class="lm-desc">Radiographie complète des 3-5 concurrents directs + leurs stratégies IA détectées.</div>
       </div>
-      <div class="lmod">
+      <div class="lmod" style="filter:blur(1.5px);opacity:.6">
         <div class="lm-tag">M3</div>
         <div class="lm-title">Scoring leviers</div>
         <div class="lm-desc">Classement ROI de tous les leviers identifiés. Mode FONDATION retenu.</div>
       </div>
-      <div class="lmod">
+      <div class="lmod" style="filter:blur(1.5px);opacity:.6">
         <div class="lm-tag">M3b</div>
         <div class="lm-title">Cartographie risques</div>
         <div class="lm-desc">Matrice probabilité × impact. Dépendances clés identifiées.</div>
       </div>
-      <div class="lmod">
+      <div class="lmod" style="filter:blur(1.5px);opacity:.6">
         <div class="lm-tag">M4</div>
         <div class="lm-title">Positionnement valeur</div>
-        <div class="lm-desc">Créneau "locale automatisée & réactive" — non occupé par concurrents.</div>
+        <div class="lm-desc">Créneau "locale automatisée &amp; réactive" — non occupé par concurrents.</div>
       </div>
-      <div class="lmod">
+      <div class="lmod" style="filter:blur(1.5px);opacity:.6">
         <div class="lm-tag">M6</div>
         <div class="lm-title">Plan d'action 90j</div>
         <div class="lm-desc">3 chantiers séquencés · Coûts · KPIs · Outils nommés (Make, Brevo, Vetup API).</div>
       </div>
-      <div class="lmod">
+      <div class="lmod" style="filter:blur(1.5px);opacity:.6">
         <div class="lm-tag">+</div>
         <div class="lm-title">Appel restitution</div>
-        <div class="lm-desc">45 min · Présentation personnalisée · Q&A · Ordre de priorité ajusté.</div>
+        <div class="lm-desc">45 min · Présentation personnalisée · Q&amp;A · Ordre de priorité ajusté.</div>
       </div>
     </div>
+
+    <div class="locked-cta">
+      <div class="locked-cta-txt">
+        <strong>Débloquer les 5 modules + l'appel restitution</strong>
+        Votre étude complète · Données réelles · Livrée en 48h · 897€ paiement unique
+      </div>
+      <a href="/etude" class="btn-unlock">Voir l'étude complète — 897€ →</a>
+    </div>
+
   </div>
 </div>
 
