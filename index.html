@@ -281,25 +281,41 @@ h2{font-family:var(--serif);font-size:clamp(26px,3.5vw,40px);font-weight:500;lin
 .method-body .duration{display:inline-block;font-size:11px;font-weight:500;letter-spacing:.04em;color:var(--amber-dark);background:var(--amber-bg);padding:3px 9px;border-radius:4px;margin-top:8px}
 
 .competence-section{background:#fff;padding:80px 32px;border-top:1px solid var(--border)}
-.make-workflow{background:var(--dark);border-radius:16px;padding:32px 36px;margin-top:36px;overflow:hidden;position:relative}
-.make-header{display:flex;align-items:center;gap:10px;margin-bottom:24px}
-.make-logo{width:26px;height:26px;background:#ff4f00;border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:12px;font-weight:700;color:#fff}
-.make-title{font-size:12px;font-weight:500;color:rgba(250,247,242,.6);letter-spacing:.06em;text-transform:uppercase}
-.make-status{margin-left:auto;display:flex;align-items:center;gap:5px;font-size:11px;color:#22c55e;font-weight:500}
-.make-status::before{content:'';width:7px;height:7px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
-.make-nodes{display:flex;align-items:center;flex-wrap:nowrap;overflow-x:auto;padding-bottom:8px}
-.make-node{flex-shrink:0;background:rgba(250,247,242,.06);border:1px solid rgba(250,247,242,.12);border-radius:10px;padding:12px 14px;min-width:120px;text-align:center}
-.make-node-icon{font-size:18px;margin-bottom:5px;display:block}
-.make-node-name{font-size:11px;font-weight:500;color:rgba(250,247,242,.85);line-height:1.3}
-.make-node-sub{font-size:10px;color:rgba(250,247,242,.4);margin-top:2px}
-.make-node.trigger{border-color:rgba(255,79,0,.35);background:rgba(255,79,0,.08)}
-.make-node.output{border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.06)}
-.make-node.condition{border-color:rgba(217,119,6,.3);background:rgba(217,119,6,.06)}
-.make-arrow{flex-shrink:0;width:28px;display:flex;align-items:center;justify-content:center;color:rgba(250,247,242,.25);font-size:16px}
-.make-meta{display:flex;gap:18px;margin-top:18px;padding-top:14px;border-top:1px solid rgba(250,247,242,.08);flex-wrap:wrap}
-.make-meta-item{font-size:12px;color:rgba(250,247,242,.4);display:flex;align-items:center;gap:5px}
-.make-meta-item strong{color:rgba(250,247,242,.7);font-weight:500}
+.aa-grid{display:grid;grid-template-columns:1fr 1fr;gap:.875rem;margin:2rem 0 1rem}
+@media(max-width:780px){.aa-grid{grid-template-columns:1fr}}
+.aa-avant{background:var(--bg);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.aa-avant-head{background:#F3EDE5;padding:.75rem 1rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.aa-avant-tag{font-size:11px;font-weight:500;color:var(--mid)}
+.aa-avant-time{font-size:11px;color:var(--light);margin-left:auto}
+.aa-avant-body{padding:.875rem 1rem}
+.aa-ctx{font-size:12px;color:var(--light);margin:0 0 .75rem;font-style:italic}
+.aa-task{display:flex;align-items:flex-start;gap:.5rem;padding:.375rem 0;border-bottom:.5px solid #F3EDE5}
+.aa-task:last-child{border-bottom:none}
+.aa-task-box{width:14px;height:14px;border:1.5px solid #D1C9BF;border-radius:3px;flex-shrink:0;margin-top:1px}
+.aa-task-text{font-size:12px;color:var(--mid);line-height:1.4;flex:1}
+.aa-task-dur{font-size:10px;color:var(--light);white-space:nowrap}
+.aa-avant-foot{background:#FAF0EA;padding:.625rem 1rem;font-size:12px;color:var(--light);display:flex;align-items:center;justify-content:space-between}
+.aa-avant-foot strong{color:var(--terra);font-weight:500}
+.aa-apres{background:var(--dark);border-radius:10px;overflow:hidden}
+.aa-apres-head{background:rgba(217,119,6,.15);border-bottom:1px solid rgba(217,119,6,.2);padding:.75rem 1rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+.aa-apres-badge{font-size:10px;font-weight:500;color:var(--amber);background:rgba(217,119,6,.2);padding:2px 8px;border-radius:999px;display:flex;align-items:center;gap:4px}
+.aa-apres-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:aapulse 2s infinite}
+@keyframes aapulse{0%,100%{opacity:1}50%{opacity:.4}}
+.aa-apres-time{font-size:11px;color:rgba(250,247,242,.45);margin-left:auto}
+.aa-apres-body{padding:.875rem 1rem}
+.aa-result{display:flex;align-items:flex-start;gap:.5rem;padding:.375rem 0;border-bottom:.5px solid rgba(250,247,242,.06)}
+.aa-result:last-child{border-bottom:none}
+.aa-check{width:14px;height:14px;border-radius:3px;background:#22c55e;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:9px;color:#fff;font-weight:700}
+.aa-result-text{font-size:12px;color:rgba(250,247,242,.85);line-height:1.4;flex:1}
+.aa-result-num{font-size:11px;color:var(--amber);white-space:nowrap;font-weight:500}
+.aa-apres-foot{background:rgba(34,197,94,.08);border-top:1px solid rgba(34,197,94,.12);padding:.625rem 1rem;font-size:12px;color:rgba(250,247,242,.5);display:flex;align-items:center;justify-content:space-between}
+.aa-apres-foot strong{color:#22c55e;font-weight:500}
+.aa-delta{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:.875rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.75rem}
+.aa-delta-item{text-align:center;flex:1;min-width:80px}
+.aa-delta-num{font-family:var(--serif);font-size:22px;font-weight:500;line-height:1}
+.aa-delta-lbl{font-size:11px;color:var(--mid);margin-top:3px}
+.aa-delta-sep{width:1px;height:32px;background:var(--border);flex-shrink:0}
+.aa-note{font-size:11px;color:var(--light);text-align:center;margin-bottom:1.5rem;font-style:italic}
 .competence-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
 @media(max-width:780px){.competence-grid{grid-template-columns:1fr}.make-arrow{width:18px}.make-node{min-width:95px;padding:10px}}
 .competence-item{background:var(--bg);border-radius:10px;padding:18px;border:1px solid var(--border)}
@@ -660,60 +676,117 @@ footer{background:var(--dark)!important;color:rgba(250,247,242,.6);padding:56px 
 
 <section class="competence-section" aria-labelledby="competence-title">
   <div class="section-inner">
-    <div class="section-label">Ce que vous obtenez — exemple réel</div>
+    <div class="section-label">Ce que vous recevez — format de livraison</div>
     <h2 id="competence-title">Pas une promesse. Un workflow qui tourne.<br>La documentation. La formation.</h2>
-    <p class="section-sub">Voici un exemple réel de ce qu'on configure pour un professionnel de santé. Vous voyez exactement ce que vous obtenez avant de signer quoi que ce soit.</p>
+    <p class="section-sub">Voici le format exact de ce que vous recevez à la livraison — un scénario actif, documenté, formé sur vos données.</p>
 
-    <div class="make-workflow">
-      <div class="make-header">
-        <div class="make-logo">M</div>
-        <div class="make-title">Make — Scénario actif</div>
-        <div class="make-status">Actif · 24/7</div>
-      </div>
-      <div class="make-nodes">
-        <div class="make-node trigger">
-          <span class="make-node-icon">📅</span>
-          <div class="make-node-name">Planificateur</div>
-          <div class="make-node-sub">Lundi 7h</div>
+    <div class="aa-grid">
+
+      <div class="aa-avant">
+        <div class="aa-avant-head">
+          <span style="font-size:15px">😮‍💨</span>
+          <span class="aa-avant-tag">AVANT — Lundi matin, 8h30</span>
+          <span class="aa-avant-time">⏱ chaque semaine</span>
         </div>
-        <div class="make-arrow">→</div>
-        <div class="make-node action">
-          <span class="make-node-icon">📂</span>
-          <div class="make-node-name">Export CSV</div>
-          <div class="make-node-sub">Vetup / Optikam</div>
+        <div class="aa-avant-body">
+          <p class="aa-ctx">Votre secrétaire ouvre le logiciel...</p>
+          <div class="aa-task">
+            <div class="aa-task-box"></div>
+            <span class="aa-task-text">Filtrer les RDV à relancer à J-30</span>
+            <span class="aa-task-dur">15 min</span>
+          </div>
+          <div class="aa-task">
+            <div class="aa-task-box"></div>
+            <span class="aa-task-text">Appeler un par un, laisser des messages</span>
+            <span class="aa-task-dur">45 min</span>
+          </div>
+          <div class="aa-task">
+            <div class="aa-task-box"></div>
+            <span class="aa-task-text">Noter les confirmations à la main</span>
+            <span class="aa-task-dur">10 min</span>
+          </div>
+          <div class="aa-task">
+            <div class="aa-task-box"></div>
+            <span class="aa-task-text">Rappeler ceux qui n'ont pas répondu</span>
+            <span class="aa-task-dur">20 min</span>
+          </div>
+          <div class="aa-task">
+            <div class="aa-task-box"></div>
+            <span class="aa-task-text">Recommencer la semaine suivante</span>
+            <span class="aa-task-dur">∞</span>
+          </div>
         </div>
-        <div class="make-arrow">→</div>
-        <div class="make-node condition">
-          <span class="make-node-icon">🔍</span>
-          <div class="make-node-name">Filtre</div>
-          <div class="make-node-sub">Date J-30</div>
-        </div>
-        <div class="make-arrow">→</div>
-        <div class="make-node action">
-          <span class="make-node-icon">💬</span>
-          <div class="make-node-name">SMS Brevo</div>
-          <div class="make-node-sub">Personnalisé</div>
-        </div>
-        <div class="make-arrow">→</div>
-        <div class="make-node action">
-          <span class="make-node-icon">🗃️</span>
-          <div class="make-node-name">Airtable</div>
-          <div class="make-node-sub">Log envois</div>
-        </div>
-        <div class="make-arrow">→</div>
-        <div class="make-node output">
-          <span class="make-node-icon">✅</span>
-          <div class="make-node-name">Terminé</div>
-          <div class="make-node-sub">Notif équipe</div>
+        <div class="aa-avant-foot">
+          <span>Temps perdu chaque semaine</span>
+          <strong>~90 min</strong>
         </div>
       </div>
-      <div class="make-meta">
-        <span class="make-meta-item">⚡ <strong>Dernier run :</strong> lundi 7h04</span>
-        <span class="make-meta-item">📊 <strong>Traités :</strong> 34 contacts</span>
-        <span class="make-meta-item">✉️ <strong>SMS envoyés :</strong> 34</span>
-        <span class="make-meta-item">⏱️ <strong>Durée :</strong> 1 min 12 sec</span>
+
+      <div class="aa-apres">
+        <div class="aa-apres-head">
+          <span class="aa-apres-badge"><span class="aa-apres-dot"></span>Actif</span>
+          <span style="font-size:11px;color:rgba(250,247,242,.7);font-weight:500">APRÈS — Lundi 7h04</span>
+          <span class="aa-apres-time">pendant que vous dormez</span>
+        </div>
+        <div class="aa-apres-body">
+          <p class="aa-ctx" style="color:rgba(250,247,242,.4)">Le scénario a déjà tourné...</p>
+          <div class="aa-result">
+            <div class="aa-check">✓</div>
+            <span class="aa-result-text">Patients J-30 identifiés automatiquement</span>
+            <span class="aa-result-num">34</span>
+          </div>
+          <div class="aa-result">
+            <div class="aa-check">✓</div>
+            <span class="aa-result-text">SMS personnalisés envoyés via Brevo</span>
+            <span class="aa-result-num">34</span>
+          </div>
+          <div class="aa-result">
+            <div class="aa-check">✓</div>
+            <span class="aa-result-text">Confirmations enregistrées dans Airtable</span>
+            <span class="aa-result-num">auto</span>
+          </div>
+          <div class="aa-result">
+            <div class="aa-check">✓</div>
+            <span class="aa-result-text">Rapport envoyé à votre équipe</span>
+            <span class="aa-result-num">7h05</span>
+          </div>
+          <div class="aa-result">
+            <div class="aa-check">✓</div>
+            <span class="aa-result-text">Relance automatique si pas de réponse</span>
+            <span class="aa-result-num">J+2</span>
+          </div>
+        </div>
+        <div class="aa-apres-foot">
+          <span>Temps passé par votre équipe</span>
+          <strong>0 min</strong>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="aa-delta">
+      <div class="aa-delta-item">
+        <p class="aa-delta-num" style="color:var(--terra)">−90 min</p>
+        <p class="aa-delta-lbl">récupérées chaque semaine</p>
+      </div>
+      <div class="aa-delta-sep"></div>
+      <div class="aa-delta-item">
+        <p class="aa-delta-num" style="color:var(--amber)">×52</p>
+        <p class="aa-delta-lbl">fois par an, sans y penser</p>
+      </div>
+      <div class="aa-delta-sep"></div>
+      <div class="aa-delta-item">
+        <p class="aa-delta-num" style="color:var(--dark)">1 min 12</p>
+        <p class="aa-delta-lbl">durée d'exécution</p>
+      </div>
+      <div class="aa-delta-sep"></div>
+      <div class="aa-delta-item">
+        <p class="aa-delta-num" style="color:#22c55e">0 €</p>
+        <p class="aa-delta-lbl">d'abonnement supplémentaire</p>
       </div>
     </div>
+
+    <p class="aa-note">Exemple illustratif — chaque livraison est adaptée à vos outils et votre activité réelle.</p>
 
     <div class="competence-grid">
       <div class="competence-item">
@@ -742,7 +815,7 @@ footer{background:var(--dark)!important;color:rgba(250,247,242,.6);padding:56px 
       <div>
         <div class="section-label">Programme Fondateur — 5 places</div>
         <h3>Vous ne nous connaissez pas encore. Voici pourquoi c'est votre avantage.</h3>
-        <p>On démarre notre activité — et vous le savez. En échange de cette transparence, vous obtenez <strong>-30% sur l'Étude et -40% sur la 1ère automatisation</strong>, un suivi prioritaire à 90 jours, et une disponibilité maximale : vous êtes notre priorité. En contrepartie : un témoignage documenté si les résultats sont là. Uniquement si vous l'acceptez, jamais forcé.</p>
+        <p>On démarre notre activité — et vous le savez. En échange de cette transparence, vous obtenez <strong>−40% sur la Mission complète</strong>, un suivi prioritaire à 90 jours, et une disponibilité maximale : vous êtes notre priorité. En contrepartie : un témoignage documenté si les résultats sont là. Uniquement si vous l'acceptez, jamais forcé.</p>
         <a class="btn-primary" href="https://form.jotform.com/261125230398049" target="_blank" rel="noopener" style="display:inline-flex">
           Postuler au Programme Pionnier →
         </a>
