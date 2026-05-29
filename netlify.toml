@@ -21,8 +21,8 @@
 # Pages HTML
 [[redirects]]
   from = "/etude"
-  to = "/etude.html"
-  status = 200
+  to = "/#offres"
+  status = 301
 
 [[redirects]]
   from = "/aides"
@@ -31,8 +31,8 @@
 
 [[redirects]]
   from = "/exemple-etude"
-  to = "/exemple-etude.html"
-  status = 200
+  to = "/#offres"
+  status = 301
 
 [[redirects]]
   from = "/blog"
