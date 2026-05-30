@@ -192,3 +192,35 @@ h1, h2 { font-family: var(--serif); font-weight: 500; line-height: 1.2; letter-s
   footer { padding: 44px 20px 22px; }
   .pioneer-banner { padding: .5rem 1.25rem; }
 }
+
+/* === MODAL JOTFORM === */
+#ns-modal { display:none; position:fixed; inset:0; z-index:1000; }
+#ns-modal.ns-modal-open { display:block; }
+.ns-modal-backdrop { position:absolute; inset:0; background:rgba(28,43,58,.7); backdrop-filter:blur(3px); }
+.ns-modal-box {
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:min(680px,94vw); max-height:90vh;
+  background:#FAF7F2; border-radius:14px; overflow:hidden;
+  display:flex; flex-direction:column;
+  box-shadow:0 24px 64px rgba(0,0,0,.3);
+}
+.ns-modal-header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 20px; border-bottom:1px solid #E8E0D5;
+  background:#FAF7F2; flex-shrink:0;
+}
+.ns-modal-title { display:flex; flex-direction:column; gap:2px; }
+.ns-modal-title strong { font-family:'Fraunces',Georgia,serif; font-size:16px; font-weight:500; color:#1C2B3A; }
+.ns-modal-title span { font-size:12px; color:#6B7280; }
+.ns-modal-close {
+  width:32px; height:32px; border-radius:50%; border:1px solid #E8E0D5;
+  background:transparent; cursor:pointer; font-size:14px; color:#6B7280;
+  display:flex; align-items:center; justify-content:center; transition:all .15s;
+}
+.ns-modal-close:hover { background:#1C2B3A; color:#FAF7F2; border-color:#1C2B3A; }
+.ns-modal-body { flex:1; overflow:hidden; }
+#ns-modal-iframe { width:100%; height:560px; border:none; display:block; }
+@media(max-width:600px){
+  .ns-modal-box { width:100vw; max-height:100vh; border-radius:14px 14px 0 0; top:auto; bottom:0; left:0; transform:none; }
+  #ns-modal-iframe { height:calc(100vh - 80px); }
+}
