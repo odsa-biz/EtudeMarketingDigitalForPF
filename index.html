@@ -198,6 +198,18 @@ body{font-family:var(--sans);background:var(--bg);color:var(--dark);font-size:16
 .nav-cta:hover{background:var(--terra)!important;color:#fff!important}
 @media(max-width:780px){.nav-links a:not(.nav-cta){display:none}.nav-inner{padding:12px 20px}.nav-logo span{display:none}}
 
+.top-bar{
+  width:100%;background:#1C2B3A;color:rgba(250,247,242,.82);
+  font-size:12px;font-weight:400;letter-spacing:.04em;
+  padding:9px 32px;text-align:center;
+  display:flex;align-items:center;justify-content:center;gap:0;
+  border-bottom:1px solid rgba(250,247,242,.08);
+}
+.top-bar a{color:rgba(250,247,242,.82);text-decoration:none;transition:color .15s;}
+.top-bar a:hover{color:#D97706;}
+.top-bar .tb-sep{margin:0 10px;opacity:.3;}
+.top-bar .tb-label{color:rgba(250,247,242,.4);font-size:11px;margin-right:12px;text-transform:uppercase;letter-spacing:.08em;}
+@media(max-width:600px){.top-bar .tb-label{display:none;}.top-bar{padding:8px 16px;font-size:11px;}}
 .pioneer-banner{background:var(--amber-bg);border-bottom:1px solid #FDE68A;padding:.625rem 2rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
 .pioneer-badge{font-size:11px;font-weight:500;color:var(--amber-dark);background:#FDE68A;padding:3px 12px;border-radius:999px;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;flex-shrink:0}
 .pioneer-text{font-size:13px;color:#78350F;flex:1;min-width:200px}
@@ -473,6 +485,15 @@ footer{background:var(--dark)!important;color:rgba(250,247,242,.6);padding:56px 
 </head>
 <body>
 
+<div class="top-bar" role="banner" aria-label="Secteurs accompagnés">
+  <span class="tb-label">Pour</span>
+  <a href="/veterinaires">Professionnels de santé</a>
+  <span class="tb-sep">·</span>
+  <a href="/comptables">Cabinets de gestion</a>
+  <span class="tb-sep">·</span>
+  <a href="/opticiens">Commerçants indépendants</a>
+</div>
+
 <nav class="nav" aria-label="Navigation principale">
   <div class="nav-inner">
     <a class="nav-logo" href="/" aria-label="NEOSOCLE - Accueil">
@@ -499,9 +520,6 @@ footer{background:var(--dark)!important;color:rgba(250,247,242,.6);padding:56px 
 
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero-inner">
-    <div class="hero-tag">
-      🗺 Professionnels de santé · Cabinets de gestion · Commerçants indépendants
-    </div>
     <h1 id="hero-title">
       <span style="font-size:0;position:absolute;">NEOSOCLE — Automatisation no-code pour professionnels de santé, cabinets de gestion et commerçants indépendants en France</span>
       Vous perdez du temps sur des tâches<br>qui ne font pas rentrer <em>un euro.</em>
