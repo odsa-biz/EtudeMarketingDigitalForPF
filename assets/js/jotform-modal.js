@@ -1,5 +1,6 @@
 (function(){
   var JOTFORM_URL='https://form.jotform.com/261125230398049';
+  var opened=false;
 
   function injectModal(){
     if(document.getElementById('ns-modal')) return;
@@ -18,15 +19,12 @@
           '<button class="ns-modal-close" id="ns-modal-close" aria-label="Fermer">\u2715</button>'+
         '</div>'+
         '<div class="ns-modal-body">'+
-          '<div class="ns-modal-loader" id="ns-modal-loader">Chargement du formulaire\u2026</div>'+
           '<iframe id="ns-modal-iframe"'+
-            ' src=""'+
-            ' title="Formulaire rapport NEOSOCLE"'+
+            ' title="Formulaire NEOSOCLE"'+
             ' allow="geolocation; microphone; camera; fullscreen"'+
             ' allowtransparency="true"'+
             ' frameborder="0"'+
-            ' scrolling="yes"'+
-            ' style="display:none;width:100%;height:580px;border:none;">'+
+            ' scrolling="yes">'+
           '</iframe>'+
         '</div>'+
       '</div>';
@@ -34,22 +32,14 @@
     document.getElementById('ns-modal-close').addEventListener('click',closeModal);
     document.getElementById('ns-modal-backdrop').addEventListener('click',closeModal);
     document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
-
-    var iframe=document.getElementById('ns-modal-iframe');
-    iframe.addEventListener('load',function(){
-      if(!iframe.src||iframe.src==='about:blank') return;
-      document.getElementById('ns-modal-loader').style.display='none';
-      iframe.style.display='block';
-    });
   }
 
   function openModal(){
-    var modal=document.getElementById('ns-modal');
-    var iframe=document.getElementById('ns-modal-iframe');
-    modal.classList.add('ns-modal-open');
+    document.getElementById('ns-modal').classList.add('ns-modal-open');
     document.body.style.overflow='hidden';
-    if(!iframe.src||iframe.src==='about:blank'||iframe.src===''){
-      iframe.src=JOTFORM_URL;
+    if(!opened){
+      opened=true;
+      document.getElementById('ns-modal-iframe').src=JOTFORM_URL;
     }
   }
 
