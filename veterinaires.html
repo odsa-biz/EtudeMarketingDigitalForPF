@@ -356,6 +356,72 @@ section { padding:6rem 6vw; }
   <link rel="stylesheet" href="/assets/css/neosocle.css">
 <script src="/assets/js/jotform-modal.js" defer></script>
 <script src="/assets/js/mission-modal.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://neosocle.fr/veterinaires#service",
+      "name": "Automatisation no-code pour cliniques vétérinaires",
+      "description": "NEOSOCLE configure des workflows automatisés pour les cliniques vétérinaires : rappels de vaccination, relances post-consultation, collecte d'avis Google, onboarding nouveaux clients. Mission complète dès 1 500€, sans abonnement mensuel.",
+      "url": "https://neosocle.fr/veterinaires",
+      "provider": { "@id": "https://neosocle.fr/#organization" },
+      "areaServed": { "@type": "Country", "name": "France" },
+      "audience": { "@type": "Audience", "audienceType": "Cliniques et cabinets vétérinaires" },
+      "serviceType": "Automatisation no-code",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Diagnostic gratuit",
+          "price": "0",
+          "priceCurrency": "EUR",
+          "url": "https://neosocle.fr/veterinaires#contact"
+        },
+        {
+          "@type": "Offer",
+          "name": "Mission complète automatisation vétérinaire",
+          "price": "1500",
+          "priceCurrency": "EUR",
+          "url": "https://neosocle.fr/veterinaires#contact"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://neosocle.fr/veterinaires#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Est-ce compatible avec mon logiciel vétérinaire (Vetosoft, Isyvet, Vetup) ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui. On s'intègre via export CSV ou API selon le logiciel. Les principaux logiciels vétérinaires (Vetosoft, Isyvet, Vetup, Animalia) sont compatibles. Pour les autres, on teste lors du diagnostic initial — si ce n'est pas faisable, on vous le dit avant toute facturation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Combien de temps prend la mise en place ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Entre 7 et 14 jours ouvrés pour une mission complète (2 à 4 workflows). Le diagnostic initial (30 min) est gratuit et sans engagement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Y a-t-il un abonnement mensuel ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non. La mission est facturée une seule fois, à partir de 1 500€. Dans 90% des cas, les outils utilisés restent gratuits ou en dessous de 20€/mois."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
 </head>
 <body>
 
@@ -688,10 +754,14 @@ section { padding:6rem 6vw; }
     <p class="section-sub reveal">Diagnostic gratuit, sans engagement. Vous repartez avec une liste des automatisations pertinentes pour votre configuration — même si on ne travaille pas ensemble.</p>
     <div class="cta-box reveal">
       <span class="cta-urgency">🐾 Spécialiste cliniques vétérinaires · Réponse sous 48h</span>
-      <a href="https://form.jotform.com/261125230398049" class="btn-primary" style="font-size:1rem;padding:1.2rem 3rem" target="_blank" rel="noopener">
-        Obtenir mon rapport →
-      </a>
-      
+      <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;justify-content:center">
+        <a href="https://form.jotform.com/261125230398049" class="btn-primary" style="font-size:1rem;padding:1.2rem 3rem" target="_blank" rel="noopener">
+          Obtenir mon rapport →
+        </a>
+        <a href="https://calendly.com/neosocle/appel-gratuit" class="btn-secondary" style="font-size:.88rem;padding:1rem 2rem;border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.7)" target="_blank" rel="noopener">
+          Réserver un appel gratuit
+        </a>
+      </div>
       <span class="cta-note">Sans engagement · Documentation incluse · Formation ASV incluse</span>
     </div>
   </div>
