@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>À propos de NEOSOCLE — Automatisation no-code pour TPE et indépendants</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<meta name="description" content="NEOSOCLE automatise les tâches répétitives des TPE, PME et indépendants. Découvrez notre méthode, les outils que nous maîtrisons et nos engagements.">
+<link rel="canonical" href="https://neosocle.fr/a-propos">
+<meta property="og:title" content="À propos de NEOSOCLE — Automatisation no-code pour TPE et indépendants">
+<meta property="og:description" content="NEOSOCLE automatise les tâches répétitives des TPE, PME et indépendants. Notre méthode, nos outils, nos engagements.">
+<meta property="og:image" content="https://neosocle.fr/assets/NS_banner_1500.png">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="NEOSOCLE">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://neosocle.fr/a-propos">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="/assets/favicon.ico">
+<link rel="stylesheet" href="/assets/css/neosocle.css">
+<style>
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+:root {
+  --noir: #0a0a12;
+  --bleu: #C84B31;
+  --blanc: #ffffff;
+  --gris: #6b6b80;
+  --bg: #f8f8f8;
+  --card: #ffffff;
+  --terra: #C84B31;
+}
+html { scroll-behavior:smooth; }
+body { font-family:'Poppins', sans-serif; background:var(--bg); color:var(--noir); overflow-x:hidden; }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(32px);}to{opacity:1;transform:translateY(0);} }
+@keyframes lineGrow { from{transform:scaleX(0);}to{transform:scaleX(1);} }
+.reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* HERO ÉDITORIAL */
+.hero-about {
+  background:var(--noir);
+  padding:8rem 6vw 6rem;
+  position:relative; overflow:hidden;
+}
+.hero-about::before {
+  content:''; position:absolute; top:-120px; right:-80px;
+  width:500px; height:500px; border-radius:50%;
+  background:rgba(200,75,49,.07);
+}
+.hero-about::after {
+  content:''; position:absolute; bottom:-60px; left:-40px;
+  width:300px; height:300px; border-radius:50%;
+  background:rgba(200,75,49,.04);
+}
+.hero-about-inner {
+  max-width:900px; margin:0 auto;
+  position:relative; z-index:2;
+}
+.hero-eyebrow {
+  font-size:.72rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--terra); margin-bottom:1.2rem;
+  display:flex; align-items:center; gap:.6rem;
+}
+.hero-eyebrow::before {
+  content:''; display:block; width:32px; height:2px; background:var(--terra);
+  transform-origin:left; animation:lineGrow .8s .3s ease both;
+}
+.hero-h1 {
+  font-size:clamp(2.4rem, 5vw, 4.2rem);
+  font-weight:900; line-height:1.05; letter-spacing:-.03em;
+  color:#FAF7F2; margin-bottom:1.8rem; animation:fadeUp .9s ease both;
+}
+.hero-h1 em { font-style:normal; color:var(--terra); }
+.hero-lead {
+  font-size:1.1rem; font-weight:300; color:rgba(250,247,242,.65);
+  line-height:1.75; max-width:680px; margin-bottom:2.5rem;
+  animation:fadeUp .9s .15s ease both;
+}
+.hero-tags {
+  display:flex; flex-wrap:wrap; gap:.7rem;
+  animation:fadeUp .9s .3s ease both;
+}
+.hero-tag {
+  font-size:.73rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase;
+  padding:.4rem 1rem; border-radius:99px;
+  border:1px solid rgba(250,247,242,.12); color:rgba(250,247,242,.55);
+}
+
+/* SECTIONS */
+.stat-section { padding:6rem 6vw; }
+.section-inner { max-width:1100px; margin:0 auto; }
+.section-label {
+  font-size:.7rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--terra); margin-bottom:.8rem;
+  display:flex; align-items:center; gap:.6rem;
+}
+.section-label::before { content:''; display:block; width:24px; height:2px; background:var(--terra); }
+.section-title {
+  font-size:clamp(1.8rem, 3.5vw, 3rem);
+  font-weight:900; letter-spacing:-.03em; line-height:1.1; margin-bottom:1rem;
+}
+.section-sub { font-size:1rem; color:var(--gris); max-width:600px; line-height:1.7; margin-bottom:3rem; }
+
+/* GENÈSE */
+.genese-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start;
+}
+@media(max-width:780px){ .genese-grid { grid-template-columns:1fr; gap:2rem; } }
+.genese-text p {
+  font-size:.95rem; color:var(--gris); line-height:1.8; margin-bottom:1.2rem;
+}
+.genese-text p strong { color:var(--noir); font-weight:700; }
+.genese-stats {
+  display:grid; grid-template-columns:1fr 1fr; gap:1.2rem;
+}
+.genese-stat {
+  background:var(--card); border-radius:14px; padding:1.6rem;
+  border:1px solid #eee; text-align:center;
+}
+.genese-stat .num { font-size:2.4rem; font-weight:900; color:var(--terra); letter-spacing:-.03em; line-height:1; margin-bottom:.4rem; }
+.genese-stat .lbl { font-size:.76rem; color:var(--gris); line-height:1.4; }
+
+/* OUTILS */
+.outils-section { background:var(--noir); padding:6rem 6vw; }
+.outils-section .section-title { color:#FAF7F2; }
+.outils-section .section-sub { color:rgba(250,247,242,.55); }
+.outils-section .section-label { color:var(--terra); }
+.outils-section .section-label::before { background:var(--terra); }
+.tools-grid {
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(200px, 1fr)); gap:1rem;
+}
+.tool-card {
+  background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08);
+  border-radius:14px; padding:1.4rem 1.6rem;
+  transition:border-color .25s, background .25s;
+  display:flex; flex-direction:column; gap:.5rem;
+}
+.tool-card:hover { background:rgba(255,255,255,.07); border-color:rgba(255,255,255,.2); }
+.tool-header { display:flex; align-items:center; gap:.7rem; margin-bottom:.2rem; }
+.tool-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+.tool-name { font-size:.95rem; font-weight:700; color:#FAF7F2; }
+.tool-cat {
+  font-size:.63rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase;
+  padding:.25rem .7rem; border-radius:99px; background:rgba(255,255,255,.07);
+  color:rgba(250,247,242,.5); width:fit-content;
+}
+.tool-desc { font-size:.8rem; color:rgba(250,247,242,.5); line-height:1.55; }
+
+/* MÉTHODE */
+.methode-section { background:#f2f4ff; padding:6rem 6vw; }
+.steps { display:flex; flex-direction:column; gap:0; max-width:700px; }
+.step { display:flex; gap:2rem; position:relative; padding-bottom:2.5rem; }
+.step:last-child { padding-bottom:0; }
+.step-left { display:flex; flex-direction:column; align-items:center; }
+.step-num { width:48px; height:48px; border-radius:50%; background:var(--terra); color:#fff; font-size:.9rem; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; z-index:1; }
+.step-line { width:2px; flex:1; background:#dde2ff; margin-top:.5rem; }
+.step:last-child .step-line { display:none; }
+.step-content { padding-top:.6rem; }
+.step-title { font-size:1.05rem; font-weight:700; margin-bottom:.4rem; }
+.step-desc { font-size:.88rem; color:var(--gris); line-height:1.6; }
+.step-delay { display:inline-block; margin-top:.5rem; font-size:.7rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--terra); background:#e8f0ff; padding:2px 10px; border-radius:99px; }
+
+/* ENGAGEMENTS */
+.engagements-grid {
+  display:grid; grid-template-columns:1fr 1fr; gap:2rem;
+}
+@media(max-width:780px){ .engagements-grid { grid-template-columns:1fr; } }
+.engagement-bloc {
+  background:var(--card); border-radius:14px; padding:2rem;
+  border:1px solid #eee;
+}
+.engagement-bloc.yes { border-top:3px solid #00a651; }
+.engagement-bloc.no { border-top:3px solid #e05a00; }
+.engagement-bloc h4 { font-size:.82rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; margin-bottom:1.2rem; }
+.engagement-bloc.yes h4 { color:#00a651; }
+.engagement-bloc.no h4 { color:#e05a00; }
+.engagement-item {
+  display:flex; align-items:flex-start; gap:.7rem;
+  font-size:.88rem; color:var(--gris); padding:.5rem 0;
+  border-bottom:1px solid #f5f5f5; line-height:1.5;
+}
+.engagement-item:last-child { border-bottom:none; padding-bottom:0; }
+.engagement-item .icon { font-size:1rem; flex-shrink:0; margin-top:.05rem; }
+
+/* CTA FINAL */
+.cta-section { background:var(--noir); padding:6rem 6vw; text-align:center; }
+.cta-section h2 { font-size:clamp(1.8rem,3.5vw,3rem); font-weight:900; color:#FAF7F2; margin-bottom:1rem; letter-spacing:-.03em; }
+.cta-section p { font-size:1rem; color:rgba(250,247,242,.55); max-width:480px; margin:0 auto 2.5rem; line-height:1.7; }
+.btn-primary {
+  display:inline-block; background:var(--terra); color:#fff;
+  font-size:.9rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+  padding:1.1rem 2.5rem; border-radius:8px; text-decoration:none;
+  transition:transform .2s, background .2s;
+}
+.btn-primary:hover { transform:translateY(-2px); background:#9B2C14; }
+.cta-badges { display:flex; gap:1.5rem; justify-content:center; margin-top:1.5rem; flex-wrap:wrap; }
+.cta-badge { font-size:.75rem; color:rgba(250,247,242,.4); display:flex; align-items:center; gap:.35rem; }
+
+/* NAV / FOOTER (hérités de neosocle.css) */
+.nav {
+  position:sticky; top:0; z-index:100;
+  background:rgba(250,247,242,.96);
+  backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid #E8E0D5;
+}
+.nav-inner { max-width:1180px; margin:0 auto; padding:14px 32px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+.nav-logo { font-family:'Fraunces',Georgia,serif; font-size:20px; font-weight:500; letter-spacing:-.5px; color:#1C2B3A; text-decoration:none; display:flex; align-items:center; gap:10px; }
+.nav-logo img { width:32px; height:32px; display:block; }
+.nav-logo .socle { color:#D97706; }
+.nav-links { display:flex; gap:22px; align-items:center; }
+.nav-links a { font-size:13px; color:#6B7280; text-decoration:none; font-weight:400; transition:color .15s; }
+.nav-links a:hover { color:#1C2B3A; }
+.nav-links a.active { color:#1C2B3A; font-weight:600; }
+.nav-cta { background:#1C2B3A !important; color:#fff !important; padding:9px 18px; border-radius:7px; font-size:13px; font-weight:500; transition:background .15s; white-space:nowrap; }
+.nav-cta:hover { background:#C84B31 !important; color:#fff !important; }
+@media(max-width:780px){ .nav-links a:not(.nav-cta){display:none} .nav-inner{padding:12px 20px} .nav-logo span{display:none} }
+
+footer { background:#1C2B3A !important; color:rgba(250,247,242,.6); padding:56px 32px 28px; border-top:1px solid rgba(250,247,242,.06); }
+.footer-inner { max-width:1180px; margin:0 auto; }
+.footer-grid { display:grid !important; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:28px; margin-bottom:44px; }
+@media(max-width:780px){ .footer-grid{ grid-template-columns:1fr 1fr !important; gap:22px; } }
+@media(max-width:500px){ .footer-grid{ grid-template-columns:1fr !important; } }
+.footer-brand h4 { font-family:'Fraunces',Georgia,serif; font-size:22px; font-weight:500; color:#FAF7F2; margin-bottom:5px; letter-spacing:-.25px; display:flex !important; align-items:center; gap:10px; }
+.footer-brand h4 img { width:28px; height:28px; }
+.footer-brand h4 .socle { color:#D97706; }
+.footer-tagline { display:block !important; font-size:12px; color:rgba(250,247,242,.45); font-weight:400; margin-bottom:14px; }
+.footer-brand>p { font-size:13px; line-height:1.65; max-width:280px; margin-bottom:18px; color:rgba(250,247,242,.55); }
+.footer-col h5 { font-size:11px; font-weight:500; color:rgba(250,247,242,.5); margin-bottom:14px; letter-spacing:.06em; text-transform:uppercase; }
+.footer-col ul { list-style:none !important; padding:0 !important; margin:0 !important; }
+.footer-col li { display:block !important; padding:4px 0; }
+.footer-col a { color:rgba(250,247,242,.55); text-decoration:none; font-size:13px; transition:color .15s; }
+.footer-col a:hover { color:#FAF7F2; }
+.footer-bottom { border-top:1px solid rgba(250,247,242,.06); padding-top:22px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; font-size:12px; }
+.footer-bottom .legal { display:flex; gap:18px; flex-wrap:wrap; }
+.footer-bottom .legal a { color:rgba(250,247,242,.4); text-decoration:none; }
+.footer-bottom .legal a:hover { color:#FAF7F2; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/" aria-label="NEOSOCLE — Accueil">
+      <img src="/assets/NS_icon_dark.png" alt="Logo Neosocle" width="32" height="32" loading="eager">
+      <span><span>NEO</span><span class="socle">SOCLE</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/veterinaires">Professionnels de santé</a>
+      <a href="/comptables">Cabinets de gestion</a>
+      <a href="/opticiens">Commerçants indépendants</a>
+      <a href="/aides">Aides</a>
+      <a href="/blog">Blog</a>
+      <a href="/a-propos" class="active">À propos</a>
+      <a class="nav-cta" href="https://form.jotform.com/261125230398049" target="_blank" rel="noopener">Obtenir mon rapport →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-about">
+  <div class="hero-about-inner">
+    <div class="hero-eyebrow">NEOSOCLE — Qui sommes-nous</div>
+    <h1 class="hero-h1">
+      L'automatisation<br>
+      au service des structures<br>
+      qui n'ont <em>pas de DSI.</em>
+    </h1>
+    <p class="hero-lead">
+      NEOSOCLE est né d'un constat simple : les TPE, PME et indépendants perdent chaque semaine des heures en tâches répétitives que l'IA et les outils no-code peuvent régler — sans informaticien, sans budget de grand groupe, sans abonnement opaque.
+    </p>
+    <div class="hero-tags">
+      <span class="hero-tag">No-code</span>
+      <span class="hero-tag">IA appliquée</span>
+      <span class="hero-tag">TPE · PME · Indépendants</span>
+      <span class="hero-tag">France</span>
+    </div>
+  </div>
+</section>
+
+<!-- GENÈSE -->
+<section class="stat-section">
+  <div class="section-inner">
+    <div class="section-label reveal">Pourquoi NEOSOCLE existe</div>
+    <h2 class="section-title reveal">On automatise ce que vous<br>faites à la main depuis trop longtemps.</h2>
+    <div class="genese-grid">
+      <div class="genese-text reveal">
+        <p>Les grandes entreprises ont des équipes entières dédiées à l'optimisation de leurs processus — des DSI, des développeurs, des chefs de projet digitaux. Leurs workflows tournent automatiquement. Leurs équipes ne courent pas après les documents. Leurs clients reçoivent le bon message au bon moment.</p>
+        <p>Les TPE, PME et indépendants, eux, ont les mêmes besoins — mais pas les mêmes ressources. Résultat : <strong>20 à 40% du temps de leurs équipes est absorbé par des tâches répétitives</strong> qu'aucun logiciel métier n'a résolu.</p>
+        <p>NEOSOCLE comble cet écart. Pas avec du code sur-mesure à 50 000€. Pas avec un abonnement SaaS qu'on ne comprend plus en 6 mois. Avec des outils no-code que vous maîtrisez, documentés, formés, configurés pour votre réalité terrain.</p>
+        <p><strong>Le résultat : vos automatisations vous appartiennent.</strong> Elles tournent sans nous. Vous restez autonomes.</p>
+      </div>
+      <div class="genese-stats reveal">
+        <div class="genese-stat">
+          <div class="num">20–40%</div>
+          <div class="lbl">Du temps des équipes absorbé par des tâches répétitives automatisables</div>
+        </div>
+        <div class="genese-stat">
+          <div class="num">7–14j</div>
+          <div class="lbl">Délai de mise en place d'une mission complète</div>
+        </div>
+        <div class="genese-stat">
+          <div class="num">1 500€</div>
+          <div class="lbl">Forfait unique · sans abonnement récurrent</div>
+        </div>
+        <div class="genese-stat">
+          <div class="num">100%</div>
+          <div class="lbl">Propriétaire de vos workflows après livraison</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTILS -->
+<section class="outils-section">
+  <div class="section-inner">
+    <div class="section-label reveal">Les outils qu'on maîtrise</div>
+    <h2 class="section-title reveal" style="color:#FAF7F2">Des outils éprouvés.<br>Pas des gadgets.</h2>
+    <p class="section-sub reveal">Chaque outil a été sélectionné pour sa fiabilité, sa conformité RGPD (hébergement Europe quand disponible), son tier gratuit suffisant pour 90% des cas, et sa documentation que vos équipes peuvent reprendre seules.</p>
+    <div class="tools-grid reveal">
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-dot" style="background:#FF6600"></div>
+          <div class="tool-name">Make</div>
+        </div>
+        <div class="tool-cat">Automatisation</div>
+        <div class="tool-desc">Orchestrateur central de tous les workflows. Connecte vos outils entre eux sans coder. Interface visuelle, logs d'exécution, gestion d'erreurs intégrée.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-dot" style="background:#18BFFF"></div>
+          <div class="tool-name">Airtable</div>
+        </div>
+        <div class="tool-cat">Base de données</div>
+        <div class="tool-desc">Base de données no-code accessible à toute équipe. Stocke les données clients, logs d'automatisation et tableaux de bord sans aucune technicité requise.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-dot" style="background:#000000"></div>
+          <div class="tool-name">Notion</div>
+        </div>
+        <div class="tool-cat">Documentation · CRM léger</div>
+        <div class="tool-desc">Documentation des workflows livrés, base de connaissances interne, CRM simple pour les structures qui démarrent la structuration de leur relation client.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-dot" style="background:#0B996E"></div>
+          <div class="tool-name">Brevo</div>
+        </div>
+        <div class="tool-cat">Email · SMS · Marketing</div>
+        <div class="tool-desc">Envoi d'emails et SMS transactionnels et marketing. Hébergé en Europe, conforme RGPD, API Make native. Tier gratuit généreux (300 emails/jour, SMS inclus).</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-dot" style="background:#F83E3E"></div>
+          <div class="tool-name">Jotform</div>
+        </div>
+        <div class="tool-cat">Formulaires · Collecte</div>
+        <div class="tool-desc">Formulaires de collecte de documents, de diagnostic et de prise de contact. Webhook natif Make, gestion des fichiers, logique conditionnelle avancée.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-dot" style="background:#4285F4"></div>
+          <div class="tool-name">Google Workspace</div>
+        </div>
+        <div class="tool-cat">Drive · Sheets · Gmail</div>
+        <div class="tool-desc">Intégration avec les outils Google déjà en place dans votre structure. Drive pour le stockage, Sheets pour les données, Gmail pour les notifications automatiques.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-dot" style="background:#006BFF"></div>
+          <div class="tool-name">Calendly</div>
+        </div>
+        <div class="tool-cat">Prise de RDV</div>
+        <div class="tool-desc">Prise de rendez-vous en ligne reliée à vos workflows. Confirmation automatique, rappel J-1, relance si non présenté. Lien direct depuis les SMS automatisés.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-dot" style="background:#FF4A00"></div>
+          <div class="tool-name">Zapier</div>
+        </div>
+        <div class="tool-cat">Automatisation</div>
+        <div class="tool-desc">Alternative à Make pour certains cas d'usage. Utilisé quand les connecteurs natifs Zapier sont plus adaptés ou quand votre structure l'a déjà en place.</div>
+      </div>
+
+      <div class="tool-card">
+        <div class="tool-header">
+          <div class="tool-dot" style="background:#EA4B71"></div>
+          <div class="tool-name">n8n</div>
+        </div>
+        <div class="tool-cat">Automatisation open-source</div>
+        <div class="tool-desc">Pour les structures qui préfèrent l'hébergement auto-géré ou les cas d'usage avancés (IA embarquée, traitement de données sensibles). Alternative open-source à Make.</div>
+      </div>
+
+    </div>
+    <p class="reveal" style="margin-top:2rem;font-size:.82rem;color:rgba(250,247,242,.35);text-align:center">
+      Cette liste évolue. Si vous utilisez un outil non listé, on vérifie la compatibilité lors du diagnostic — gratuitement.
+    </p>
+  </div>
+</section>
+
+<!-- MÉTHODE -->
+<section class="methode-section">
+  <div class="section-inner">
+    <div class="section-label reveal">Comment on travaille</div>
+    <h2 class="section-title reveal">4 étapes claires.<br>Aucune surprise.</h2>
+    <p class="section-sub reveal">Une méthode reproductible, transparente, pensée pour que vous restiez autonomes à l'issue — pas dépendants.</p>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-left"><div class="step-num">1</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Rapport personnalisé — on cerne votre situation</div>
+          <div class="step-desc">7 questions sur votre activité, vos outils et vos tâches les plus chronophages. Vous recevez par email vos 3 automatisations prioritaires avec une estimation du gain de temps — rédigées spécifiquement pour votre secteur et vos outils.</div>
+          <span class="step-delay">5 min — gratuit — sous 24h</span>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-left"><div class="step-num">2</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Proposition — chiffrée et priorisée</div>
+          <div class="step-desc">Sous 48h, vous recevez 1 à 3 chantiers prioritaires avec leur impact attendu, leur délai et leur coût exact. On vous dit si les outils restent en tier gratuit ou non — et le coût mensuel dans les deux cas. Aucune surprise.</div>
+          <span class="step-delay">48h — sans engagement</span>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-left"><div class="step-num">3</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Mise en place — on construit, on teste, on documente</div>
+          <div class="step-desc">Construction sur vos données réelles. Tests sur 10 à 20 cas avant généralisation. Documentation incluse — pas une vidéo YouTube, un guide étape par étape adapté à votre configuration. Formation de 45 min avec la personne qui utilisera le workflow.</div>
+          <span class="step-delay">3 à 14 jours selon le périmètre</span>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-left"><div class="step-num">4</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Suivi — on stabilise et on ajuste</div>
+          <div class="step-desc">30 jours de suivi inclus. Si quelque chose casse (mise à jour logiciel, changement de format), j'interviens sans surcoût. Objectif : vous êtes 100% autonomes à la fin du suivi.</div>
+          <span class="step-delay">30 jours après livraison</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGEMENTS -->
+<section class="stat-section">
+  <div class="section-inner">
+    <div class="section-label reveal">Ce qu'on s'engage à faire — et à ne pas faire</div>
+    <h2 class="section-title reveal">Un contrat clair.<br>Vous restez propriétaire de tout.</h2>
+    <p class="section-sub reveal">Ces engagements ne sont pas du marketing. Ce sont les conditions sous lesquelles NEOSOCLE accepte de travailler — dans les deux sens.</p>
+    <div class="engagements-grid reveal">
+      <div class="engagement-bloc yes">
+        <h4>✓ Ce qu'on s'engage à faire</h4>
+        <div class="engagement-item"><span class="icon">✓</span><span>Vous dire si votre projet n'est pas pour nous — avant de prendre votre argent</span></div>
+        <div class="engagement-item"><span class="icon">✓</span><span>Documenter chaque automatisation par écrit, étape par étape</span></div>
+        <div class="engagement-item"><span class="icon">✓</span><span>Vous orienter vers les aides publiques disponibles pour financer le projet</span></div>
+        <div class="engagement-item"><span class="icon">✓</span><span>Vous fournir un plan d'action priorisé, applicable dès la fin de l'étude</span></div>
+        <div class="engagement-item"><span class="icon">✓</span><span>Vous laisser propriétaire à 100% des workflows — sans dépendance</span></div>
+        <div class="engagement-item"><span class="icon">✓</span><span>Tester sur vos données réelles avant tout lancement en production</span></div>
+      </div>
+      <div class="engagement-bloc no">
+        <h4>✕ Ce qui n'est pas dans notre approche</h4>
+        <div class="engagement-item"><span class="icon">✕</span><span>Promettre des résultats que nous ne pouvons pas tenir</span></div>
+        <div class="engagement-item"><span class="icon">✕</span><span>Vous enfermer dans un abonnement opaque ou une dépendance prestataire</span></div>
+        <div class="engagement-item"><span class="icon">✕</span><span>Coder des solutions que vous ne comprendrez pas après livraison</span></div>
+        <div class="engagement-item"><span class="icon">✕</span><span>Inventer des témoignages clients ou des cas d'usage fictifs</span></div>
+        <div class="engagement-item"><span class="icon">✕</span><span>Vous facturer pour des outils qui ne vous seront pas utiles</span></div>
+        <div class="engagement-item"><span class="icon">✕</span><span>Livrer sans former — vous repartez autonomes, toujours</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+  <h2>Prêt à voir ce qu'on peut<br>automatiser pour vous ?</h2>
+  <p>7 questions. Vos 3 automatisations prioritaires par email. Résultat sous 24h — sans engagement, sans appel commercial.</p>
+  <a href="https://form.jotform.com/261125230398049" class="btn-primary" target="_blank" rel="noopener">
+    Obtenir mon rapport gratuit →
+  </a>
+  <div class="cta-badges">
+    <span class="cta-badge">✓ Résultats sous 24h</span>
+    <span class="cta-badge">✓ Sans engagement</span>
+    <span class="cta-badge">✓ Sans appel commercial</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h4>
+          <img src="/assets/NS_icon_white.png" alt="Logo Neosocle" width="28" height="28" loading="lazy">
+          <span><span>NEO</span><span class="socle">SOCLE</span></span>
+        </h4>
+        <div class="footer-tagline">On automatise ce qui vous fait perdre du temps.</div>
+        <p>NEOSOCLE accompagne les professionnels de santé, cabinets de gestion et commerçants indépendants qui veulent automatiser leurs tâches répétitives — sans coder, sans abonnement opaque.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Offres</h5>
+        <ul>
+          <li><a href="https://form.jotform.com/261125230398049" target="_blank" rel="noopener">Rapport personnalisé gratuit</a></li>
+          <li><a href="/#offres">Mission complète 1 500€</a></li>
+          <li><a href="https://calendly.com/neosocle/appel-gratuit" target="_blank" rel="noopener">Projet sur-mesure</a></li>
+          <li><a href="/aides">13 aides publiques</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Secteurs</h5>
+        <ul>
+          <li><a href="/veterinaires">Professionnels de santé</a></li>
+          <li><a href="/comptables">Cabinets de gestion</a></li>
+          <li><a href="/opticiens">Commerçants indépendants</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Ressources</h5>
+        <ul>
+          <li><a href="/a-propos" style="color:#f8f5f0;font-weight:500">À propos</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/aides">13 aides publiques</a></li>
+          <li><a href="/blog" style="color:#f8f5f0;font-weight:500">Tous les articles →</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 NEOSOCLE. Tous droits réservés.</div>
+      <div class="legal">
+        <a href="/mentions-legales">Mentions légales</a>
+        <a href="/cgv">CGV</a>
+        <a href="/confidentialite">Confidentialité</a>
+        <a href="/cookies">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(els => {
+  els.forEach(el => { if(el.isIntersecting) el.target.classList.add('visible'); });
+}, { threshold:.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+<script src="/cookies-banner.js" defer></script>
+</body>
+</html>

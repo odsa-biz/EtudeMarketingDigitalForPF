@@ -22,6 +22,14 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://neosocle.fr/etude"/>
   </url>
 
+  <url>
+    <loc>https://neosocle.fr/a-propos</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://neosocle.fr/a-propos"/>
+  </url>
+
   <!-- ═══════════════════════════════════════════
        PAGES SECTEURS — priorité haute
        (nouvelles pages, fort potentiel SEO+GEO)

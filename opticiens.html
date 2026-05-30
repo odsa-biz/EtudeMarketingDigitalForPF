@@ -369,6 +369,7 @@ body { font-family:'Poppins', sans-serif; background:var(--bg); color:var(--noir
       <a href="/opticiens">Commerçants indépendants</a>
       <a href="/aides">Aides</a>
       <a href="/blog">Blog</a>
+      <a href="/a-propos">À propos</a>
       <a class="nav-cta" href="https://form.jotform.com/261125230398049" target="_blank" rel="noopener">Obtenir mon rapport →</a>
     </div>
   </div>
@@ -414,7 +415,7 @@ body { font-family:'Poppins', sans-serif; background:var(--bg); color:var(--noir
     </div>
     <div class="hero-right">
       <div class="stat-card">
-        <div class="stat-card-tag">Tableau de bord — magasin type (1 500 clients actifs)</div>
+        <div class="stat-card-tag">Tableau de bord — cabinet ou magasin type</div>
         <div class="stat-row">
           <span class="stat-label">Clients sans visite depuis 24+ mois</span>
           <span class="stat-value red">~750 clients</span>
@@ -794,7 +795,7 @@ body { font-family:'Poppins', sans-serif; background:var(--bg); color:var(--noir
     <h2 class="section-title reveal">30 minutes pour savoir combien de clients vous pouvez récupérer.</h2>
     <p class="section-sub reveal">Diagnostic gratuit. On analyse votre base ensemble et on vous dit combien de clients sont récupérables, et le CA potentiel. Sans engagement, sans vente forcée.</p>
     <div class="cta-box reveal">
-      <span class="cta-urgency">👓 Spécialiste optique & audioprothèse · Réponse sous 48h</span>
+      <span class="cta-urgency" id="cta-secteur-label">👓 Spécialiste optique & audioprothèse · Réponse sous 48h</span>
       <a href="https://form.jotform.com/261125230398049" class="btn-primary" style="font-size:1rem;padding:1.2rem 3rem" target="_blank" rel="noopener">
         Obtenir mon rapport →
       </a>
@@ -870,6 +871,13 @@ function switchTab(btn, id) {
   document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
   btn.classList.add('active');
   document.getElementById('tab-' + id).classList.add('active');
+  // Mettre à jour le libellé CTA selon l'onglet actif
+  const ctaLabel = document.getElementById('cta-secteur-label');
+  if (ctaLabel) {
+    ctaLabel.textContent = id === 'aud'
+      ? '🔊 Spécialiste audioprothèse · Réponse sous 48h'
+      : '👓 Spécialiste optique · Réponse sous 48h';
+  }
 }
 </script>
 <script>
