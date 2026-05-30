@@ -354,6 +354,72 @@ body { font-family:'Poppins', sans-serif; background:var(--bg); color:var(--noir
   <link rel="stylesheet" href="/assets/css/neosocle.css">
 <script src="/assets/js/jotform-modal.js" defer></script>
 <script src="/assets/js/mission-modal.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://neosocle.fr/opticiens#service",
+      "name": "Automatisation no-code pour opticiens et audioprothesistes independants",
+      "description": "NEOSOCLE configure des workflows automatises pour les opticiens et audioprothesistes independants : rappels de controle de vue, fidelisation clients, collecte d avis Google. Les franchises ont des CRM a 50k. Vous, pour 1 500 EUR.",
+      "url": "https://neosocle.fr/opticiens",
+      "provider": { "@id": "https://neosocle.fr/#organization" },
+      "areaServed": { "@type": "Country", "name": "France" },
+      "audience": { "@type": "Audience", "audienceType": "Opticiens independants, audioprothesistes" },
+      "serviceType": "Automatisation no-code",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Diagnostic gratuit opticien",
+          "price": "0",
+          "priceCurrency": "EUR",
+          "url": "https://neosocle.fr/opticiens#contact"
+        },
+        {
+          "@type": "Offer",
+          "name": "Mission complete automatisation opticien independant",
+          "price": "1500",
+          "priceCurrency": "EUR",
+          "url": "https://neosocle.fr/opticiens#contact"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://neosocle.fr/opticiens#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Est-ce compatible avec mon logiciel Optikam, Ilog ou Otosuite ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui. On passe par un export CSV ou une integration API selon le logiciel. On a deja integre Optikam, Ilog, Wink, et Otosuite. Pour les autres logiciels, on teste lors de l etat des lieux initial — si ce n est pas faisable, on vous le dit avant toute facturation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Mes clients vont-ils trouver les SMS intrusifs ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Un SMS rappelant un controle de vue est du service, pas du spam. Les taux d ouverture SMS sont a 95%. On configure toujours un opt-out propre — vos clients peuvent se desabonner en 1 reponse."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quel est le ROI pour un opticien independant ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pour un magasin avec 1 000 a 2 000 clients actifs : +38% de visites clients existants sur les 4 premiers mois, +80 avis Google par an, ROI x20 estime a 6 mois."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
 </head>
 <body>
 
@@ -796,10 +862,15 @@ body { font-family:'Poppins', sans-serif; background:var(--bg); color:var(--noir
     <p class="section-sub reveal">Diagnostic gratuit. On analyse votre base ensemble et on vous dit combien de clients sont récupérables, et le CA potentiel. Sans engagement, sans vente forcée.</p>
     <div class="cta-box reveal">
       <span class="cta-urgency" id="cta-secteur-label">👓 Spécialiste optique & audioprothèse · Réponse sous 48h</span>
-      <a href="https://form.jotform.com/261125230398049" class="btn-primary" style="font-size:1rem;padding:1.2rem 3rem" target="_blank" rel="noopener">
-        Obtenir mon rapport →
-      </a>
-      
+      <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;justify-content:center">
+        <a href="https://form.jotform.com/261125230398049" class="btn-primary" style="font-size:1rem;padding:1.2rem 3rem" target="_blank" rel="noopener">
+          Obtenir mon rapport →
+        </a>
+        <a href="https://calendly.com/neosocle/appel-gratuit" class="btn-secondary" style="font-size:.88rem;padding:1rem 2rem;border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.7)" target="_blank" rel="noopener">
+          Réserver un appel gratuit
+        </a>
+      </div>
+      <span class="cta-note">Sans engagement · Résultats en 90 jours · 0€ de coût mensuel récurrent</span>
     </div>
   </div>
 </section>
