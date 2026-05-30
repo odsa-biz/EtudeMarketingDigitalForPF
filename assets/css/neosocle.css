@@ -218,8 +218,9 @@ h1, h2 { font-family: var(--serif); font-weight: 500; line-height: 1.2; letter-s
   display:flex; align-items:center; justify-content:center; transition:all .15s;
 }
 .ns-modal-close:hover { background:#1C2B3A; color:#FAF7F2; border-color:#1C2B3A; }
-.ns-modal-body { flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch; }
-#ns-jotform-container { padding:8px 0; }
+.ns-modal-body { flex:1; overflow:hidden; display:flex; flex-direction:column; }
+.ns-modal-loader { padding:48px 32px; text-align:center; font-size:13px; color:#6B7280; flex:1; }
+#ns-modal-iframe { flex:1; width:100%; min-height:580px; border:none; display:block; }
 @media(max-width:600px){
   .ns-modal-box { width:100vw; max-height:100vh; border-radius:14px 14px 0 0; top:auto; bottom:0; left:0; transform:none; }
   #ns-modal-iframe { height:calc(100vh - 80px); }
