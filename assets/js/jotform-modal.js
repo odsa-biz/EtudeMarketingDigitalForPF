@@ -1,6 +1,6 @@
 (function(){
-  var FORM_URL='https://form.jotform.com/261125230398049';
   var JOTFORM_ID='261125230398049';
+  var formLoaded=false;
 
   function injectModal(){
     if(document.getElementById('ns-modal')) return;
@@ -19,22 +19,32 @@
           '</div>'+
           '<button class="ns-modal-close" id="ns-modal-close" aria-label="Fermer">&#x2715;</button>'+
         '</div>'+
-        '<div class="ns-modal-body">'+
-          '<iframe id="ns-modal-iframe" src="" title="Formulaire rapport personnalisé NEOSOCLE" frameborder="0" allowfullscreen></iframe>'+
+        '<div class="ns-modal-body" id="ns-modal-body">'+
+          '<div id="ns-jotform-container" style="min-height:500px;padding:0 4px;"></div>'+
         '</div>'+
       '</div>';
     document.body.appendChild(el);
-    document.getElementById('ns-modal-close').addEventListener('click', closeModal);
-    document.getElementById('ns-modal-backdrop').addEventListener('click', closeModal);
-    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+    document.getElementById('ns-modal-close').addEventListener('click',closeModal);
+    document.getElementById('ns-modal-backdrop').addEventListener('click',closeModal);
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+  }
+
+  function loadForm(){
+    if(formLoaded) return;
+    formLoaded=true;
+    var container=document.getElementById('ns-jotform-container');
+    if(!container) return;
+    var s=document.createElement('script');
+    s.type='text/javascript';
+    s.src='https://form.jotform.com/jsform/'+JOTFORM_ID;
+    container.appendChild(s);
   }
 
   function openModal(){
     var modal=document.getElementById('ns-modal');
-    var iframe=document.getElementById('ns-modal-iframe');
-    if(!iframe.src) iframe.src='https://form.jotform.com/'+JOTFORM_ID;
     modal.classList.add('ns-modal-open');
     document.body.style.overflow='hidden';
+    loadForm();
   }
 
   function closeModal(){
@@ -55,7 +65,7 @@
     });
   }
 
-  document.addEventListener('DOMContentLoaded', function(){
+  document.addEventListener('DOMContentLoaded',function(){
     injectModal();
     interceptCTAs();
   });
