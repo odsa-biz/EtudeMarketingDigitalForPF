@@ -312,6 +312,72 @@ body { font-family:'Poppins', sans-serif; background:var(--bg); color:var(--noir
   <link rel="stylesheet" href="/assets/css/neosocle.css">
 <script src="/assets/js/jotform-modal.js" defer></script>
 <script src="/assets/js/mission-modal.js" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://neosocle.fr/comptables#service",
+      "name": "Automatisation no-code pour cabinets comptables TPE",
+      "description": "NEOSOCLE automatise la collecte de pièces comptables, les relances clients et l'onboarding pour les cabinets comptables de 1 à 5 collaborateurs. Gain moyen de 10h/mois. Mission complète dès 1 500 EUR, sans abonnement.",
+      "url": "https://neosocle.fr/comptables",
+      "provider": { "@id": "https://neosocle.fr/#organization" },
+      "areaServed": { "@type": "Country", "name": "France" },
+      "audience": { "@type": "Audience", "audienceType": "Cabinets comptables TPE, 1 a 5 collaborateurs" },
+      "serviceType": "Automatisation no-code",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Diagnostic gratuit cabinet comptable",
+          "price": "0",
+          "priceCurrency": "EUR",
+          "url": "https://neosocle.fr/comptables#contact"
+        },
+        {
+          "@type": "Offer",
+          "name": "Mission complete automatisation cabinet comptable",
+          "price": "1500",
+          "priceCurrency": "EUR",
+          "url": "https://neosocle.fr/comptables#contact"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://neosocle.fr/comptables#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Est-ce compatible avec Pennylane, ACD, Cegid ou Sage ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui. On s integre avec les principaux logiciels comptables (Pennylane, ACD, Cegid, Sage, MyUnisoft) via API ou export. Pour les autres logiciels, on verifie lors du diagnostic initial."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Combien de temps par mois cela va-t-il me faire gagner ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En moyenne, les cabinets de 1 a 5 collaborateurs recuperent 8 a 12 heures par mois sur la collecte de pieces et les relances clients. Le ROI est generalement atteint des le premier trimestre."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Faut-il former mes collaborateurs ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La formation est incluse dans la mission. On forme vos collaborateurs en 1 a 2 heures. Une documentation claire est remise a l issue de la mission."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
 </head>
 <body>
 
@@ -658,10 +724,15 @@ body { font-family:'Poppins', sans-serif; background:var(--bg); color:var(--noir
     <p class="section-sub reveal">Diagnostic gratuit, sans engagement. Vous repartez avec une carte précise des tâches automatisables et leur ROI estimé — même si on ne travaille pas ensemble.</p>
     <div class="cta-box reveal">
       <span class="cta-urgency">🧾 Spécialiste cabinets comptables TPE · Réponse sous 48h</span>
-      <a href="https://form.jotform.com/261125230398049" class="btn-primary" style="font-size:1rem;padding:1.2rem 3rem" target="_blank" rel="noopener">
-        Obtenir mon rapport →
-      </a>
-      
+      <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;justify-content:center">
+        <a href="https://form.jotform.com/261125230398049" class="btn-primary" style="font-size:1rem;padding:1.2rem 3rem" target="_blank" rel="noopener">
+          Obtenir mon rapport →
+        </a>
+        <a href="https://calendly.com/neosocle/appel-gratuit" class="btn-secondary" style="font-size:.88rem;padding:1rem 2rem;border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.7)" target="_blank" rel="noopener">
+          Réserver un appel gratuit
+        </a>
+      </div>
+      <span class="cta-note">Sans engagement · Formation collaborateurs incluse · Documentation remise</span>
     </div>
   </div>
 </section>
